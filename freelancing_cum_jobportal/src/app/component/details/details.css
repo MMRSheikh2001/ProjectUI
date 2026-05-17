@@ -1,0 +1,605 @@
+/* ── Job Hero ── */
+.job-hero {
+    background: linear-gradient(135deg, #1E4D8C 0%, #0d6efd 100%);
+    padding: 36px 0 28px;
+    color: white;
+}
+
+.company-logo-hero {
+    width: 80px;
+    height: 80px;
+    border-radius: 14px;
+    object-fit: cover;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    background: white;
+}
+
+.hero-chip {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    color: white;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+/* ── Stats Bar ── */
+.stats-bar {
+    background: white;
+    border-radius: 14px;
+    border: 1.5px solid #e9ecef;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    font-size: 22px;
+}
+
+.stat-val {
+    font-size: 18px;
+    font-weight: 700;
+    color: #212529;
+}
+
+.stat-lbl {
+    font-size: 11px;
+    color: #6c757d;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 40px;
+    background: #e9ecef;
+    margin: 0 12px;
+}
+
+/* ── Sections ── */
+.detail-section {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1.5px solid #e9ecef;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1E4D8C;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e7f1ff;
+    margin-bottom: 16px;
+}
+
+.section-title-small {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1E4D8C;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e7f1ff;
+    margin-bottom: 12px;
+}
+
+/* ── Tags ── */
+.tag-chip {
+    background: #f0f0f0;
+    color: #495057;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* ── Skills ── */
+.skill-chip {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.skill-required {
+    background: #e7f1ff;
+    color: #0d6efd;
+}
+
+.skill-soft {
+    background: #e8f5e9;
+    color: #198754;
+}
+
+/* ── Requirements ── */
+.req-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 14px;
+    border: 1px solid #e9ecef;
+    height: 100%;
+}
+
+.req-card-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6c757d;
+    margin-bottom: 6px;
+}
+
+.req-card-body {
+    font-size: 14px;
+    font-weight: 600;
+    color: #212529;
+}
+
+/* ── Benefits ── */
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #f0fff4;
+    border: 1px solid #d1f0e0;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+}
+
+.benefit-item i {
+    font-size: 18px;
+}
+
+/* ── Responsibilities ── */
+.responsibility-list {
+    list-style: none;
+    padding: 0;
+}
+
+.responsibility-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid #f8f9fa;
+    font-size: 14px;
+    color: #495057;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.responsibility-list li:last-child {
+    border-bottom: none;
+}
+
+.responsibility-list i {
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+/* ── Company Info ── */
+.company-info-card {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid #e9ecef;
+}
+
+.company-meta {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+    font-size: 13px;
+}
+
+/* ── Office Photos ── */
+.office-photo {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+/* ── Related ── */
+.related-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.related-item:last-child {
+    border-bottom: none;
+}
+
+.related-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* ── Apply Card ── */
+.apply-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    border: 2px solid #0d6efd;
+}
+
+.deadline-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    background: #f8f9fa;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* ── Overview ── */
+.overview-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.overview-row:last-child {
+    border-bottom: none;
+}
+
+/* ── Pipeline ── */
+.pipeline-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.pipeline-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #dee2e6;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.pipeline-dot-active {
+    background: #0d6efd;
+    color: white;
+}
+
+.pipeline-active {
+    font-weight: 600;
+}
+
+/* ── Sticky Sidebar ── */
+.sticky-sidebar {
+    position: sticky;
+    top: 80px;
+}
+
+/* ── GIG Styles ── */
+.seller-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    border-radius: 14px;
+    padding: 14px 18px;
+    border: 1.5px solid #e9ecef;
+}
+
+.gallery-wrap {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1.5px solid #e9ecef;
+}
+
+.gallery-main {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-thumbs {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    background: #f8f9fa;
+}
+
+.gallery-thumb {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.gallery-thumb-active {
+    border-color: #0d6efd;
+}
+
+.gig-stats-row {
+    display: flex;
+    background: white;
+    border-radius: 14px;
+    border: 1.5px solid #e9ecef;
+    overflow: hidden;
+}
+
+.gig-stat {
+    flex: 1;
+    text-align: center;
+    padding: 14px;
+    border-right: 1px solid #e9ecef;
+}
+
+.gig-stat:last-child {
+    border-right: none;
+}
+
+.gig-stat-val {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.gig-stat-lbl {
+    font-size: 11px;
+    color: #6c757d;
+}
+
+/* ── Gig Tabs ── */
+.gig-tabs {
+    display: flex;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.gig-tab {
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    color: #6c757d;
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+}
+
+.gig-tab.active {
+    color: #0d6efd;
+    border-bottom-color: #0d6efd;
+    font-weight: 600;
+}
+
+/* ── Rating ── */
+.rating-breakdown {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid #e9ecef;
+}
+
+.rating-big {
+    font-size: 42px;
+    font-weight: 800;
+    color: #212529;
+}
+
+.rating-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+/* ── Review Card ── */
+.review-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    border: 1.5px solid #e9ecef;
+}
+
+/* ── FAQ ── */
+.faq-item {
+    border-radius: 10px;
+    border: 1.5px solid #e9ecef;
+    overflow: hidden;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 16px;
+    cursor: pointer;
+    background: #f8f9fa;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.faq-answer {
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #6c757d;
+    background: white;
+    border-top: 1px solid #e9ecef;
+}
+
+/* ── Package Sidebar ── */
+.package-tabs {
+    display: flex;
+    background: #f8f9fa;
+    border-radius: 12px 12px 0 0;
+    border: 1.5px solid #e9ecef;
+    border-bottom: none;
+    overflow: hidden;
+}
+
+.package-tab {
+    flex: 1;
+    padding: 12px 8px;
+    border: none;
+    background: transparent;
+    font-size: 13px;
+    color: #6c757d;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    text-transform: capitalize;
+}
+
+.package-tab.active {
+    background: white;
+    color: #0d6efd;
+    font-weight: 700;
+}
+
+.popular-dot {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffc107;
+}
+
+.package-detail-card {
+    background: white;
+    border-radius: 0 0 14px 14px;
+    padding: 20px;
+    border: 1.5px solid #e9ecef;
+    border-top: 3px solid #0d6efd;
+}
+
+.package-price {
+    font-size: 28px;
+    font-weight: 800;
+    color: #0d6efd;
+}
+
+.pkg-meta {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #6c757d;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feature-list li {
+    padding: 5px 0;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.feature-included {
+    color: #212529;
+}
+
+.feature-excluded {
+    color: #adb5bd;
+}
+
+.feature-included i {
+    color: #198754;
+}
+
+.feature-excluded i {
+    color: #dc3545;
+}
+
+/* ── Comparison Table ── */
+.comparison-table table {
+    border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 8px 6px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 12px;
+}
+
+.comparison-table th {
+    color: #6c757d;
+    font-weight: 600;
+}
+
+/* ── Related Gigs ── */
+.related-gig-card {
+    display: block;
+    background: white;
+    border-radius: 10px;
+    border: 1.5px solid #e9ecef;
+    overflow: hidden;
+    transition: all 0.15s;
+}
+
+.related-gig-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.related-gig-img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* ── Modal ── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-box {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    width: 100%;
+    max-width: 560px;
+    animation: slideUp 0.2s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

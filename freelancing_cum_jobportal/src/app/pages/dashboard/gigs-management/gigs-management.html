@@ -1,0 +1,326 @@
+<div class="d-flex">
+    <app-sidebar></app-sidebar>
+
+    <div class="main-content">
+
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h4 class="fw-bold mb-0">Gigs Management</h4>
+                <small class="text-muted">Manage your freelance services</small>
+            </div>
+            <div class="d-flex gap-2">
+                <span *ngIf="saveSuccess" class="badge bg-success py-2 px-3">
+                    <i class="bi bi-check-circle me-1"></i>Gig Created!
+                </span>
+            </div>
+        </div>
+
+        <!-- Stats row -->
+        <!-- Replace the entire stats row with this clean version -->
+        <div class="row g-3 mb-4">
+            <div class="col-6 col-md-3">
+                <div class="mini-stat mini-blue">
+                    <div class="mini-val">{{ myGigs.length }}</div>
+                    <div class="mini-lbl">Total Gigs</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="mini-stat mini-green">
+                    <div class="mini-val">{{ activeGigsCount }}</div>
+                    <div class="mini-lbl">Active</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="mini-stat mini-amber">
+                    <div class="mini-val">{{ myOrders.length }}</div>
+                    <div class="mini-lbl">Total Orders</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="mini-stat mini-purple">
+                    <div class="mini-val">৳{{ getTotalEarnings() | number }}</div>
+                    <div class="mini-lbl">Earned</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tab-nav mb-4">
+            <button class="tab-btn" [class.active]="activeTab === 'my-gigs'" (click)="activeTab = 'my-gigs'">
+                <i class="bi bi-grid me-2"></i>My Gigs
+                <span class="badge bg-primary ms-2">{{ myGigs.length }}</span>
+            </button>
+            <button class="tab-btn" [class.active]="activeTab === 'create'" (click)="activeTab = 'create'">
+                <i class="bi bi-plus-circle me-2"></i>Create Gig
+            </button>
+            <button class="tab-btn" [class.active]="activeTab === 'orders'" (click)="activeTab = 'orders'">
+                <i class="bi bi-box me-2"></i>Orders Received
+                <span class="badge bg-success ms-2">{{ myOrders.length }}</span>
+            </button>
+        </div>
+
+        <!-- Loading -->
+        <div *ngIf="loading" class="text-center py-5">
+            <div class="spinner-border text-primary"></div>
+        </div>
+
+        <!-- ── MY GIGS ── -->
+        <div *ngIf="!loading && activeTab === 'my-gigs'">
+            <div *ngIf="myGigs.length === 0" class="empty-state">
+                <i class="bi bi-grid"></i>
+                <p class="mt-2 mb-3">No gigs created yet</p>
+                <button class="btn btn-primary btn-sm" (click)="activeTab = 'create'">
+                    Create Your First Gig
+                </button>
+            </div>
+
+            <div class="row g-3" *ngIf="myGigs.length > 0">
+                <div class="col-md-6 col-lg-4" *ngFor="let gig of myGigs">
+                    <div class="gig-manage-card">
+                        <div class="gig-img-wrap">
+                            <img [src]="gig.coverImage || 'https://picsum.photos/seed/gig/300/200'"
+                                class="gig-cover-img" onerror="this.src='https://picsum.photos/300/200'">
+                            <span class="gig-status-badge badge {{ getStatusClass(gig.status) }}">
+                                {{ gig.status | titlecase }}
+                            </span>
+                        </div>
+                        <div class="p-3">
+                            <div class="fw-semibold small mb-1 line-clamp-2">{{ gig.title }}</div>
+                            <div class="text-muted small mb-2">
+                                {{ getCategoryName(gig.categoryId) }}
+                            </div>
+                            <div class="d-flex justify-content-between mb-3">
+                                <div class="d-flex align-items-center gap-1">
+                                    <i class="bi bi-star-fill text-warning" style="font-size:12px"></i>
+                                    <small class="fw-semibold">{{ gig.rating || 0 }}</small>
+                                </div>
+                                <div class="text-muted small">
+                                    <i class="bi bi-box me-1"></i>{{ gig.totalOrders || 0 }} orders
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a [routerLink]="['/details', 'gig', gig.id]"
+                                    class="btn btn-outline-primary btn-sm flex-grow-1">
+                                    <i class="bi bi-eye me-1"></i>View
+                                </a>
+                                <button class="btn btn-sm flex-grow-1"
+                                    [class.btn-outline-warning]="gig.status === 'active'"
+                                    [class.btn-outline-success]="gig.status !== 'active'"
+                                    (click)="toggleGigStatus(gig)">
+                                    <i class="bi me-1" [class.bi-pause-circle]="gig.status === 'active'"
+                                        [class.bi-play-circle]="gig.status !== 'active'"></i>
+                                    {{ gig.status === 'active' ? 'Pause' : 'Activate' }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ── CREATE GIG ── -->
+        <div *ngIf="activeTab === 'create'">
+            <form [formGroup]="gigForm" (ngSubmit)="submitGig()">
+
+                <!-- Basic Info -->
+                <div class="dash-card mb-4">
+                    <h6 class="section-title">Gig Information</h6>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label small fw-semibold">Gig Title *</label>
+                            <input formControlName="title" type="text" class="form-control"
+                                placeholder="I will build your Angular web application...">
+                            <div *ngIf="gigForm.get('title')?.touched && gigForm.get('title')?.invalid"
+                                class="text-danger small mt-1">
+                                Minimum 10 characters
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold">Category *</label>
+                            <select formControlName="categoryId" class="form-select">
+                                <option value="">Select category</option>
+                                <option *ngFor="let cat of categories" [value]="cat.id">
+                                    {{ cat.name }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-semibold">Tags (comma separated)</label>
+                            <input formControlName="tags" type="text" class="form-control"
+                                placeholder="Angular, TypeScript, Bootstrap">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-semibold">Cover Image URL</label>
+                            <input formControlName="coverImage" type="url" class="form-control"
+                                placeholder="https://...">
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label small fw-semibold">Description *</label>
+                            <textarea formControlName="description" class="form-control" rows="5"
+                                placeholder="Describe your gig in detail (min 50 chars)..."></textarea>
+                            <div *ngIf="gigForm.get('description')?.touched && gigForm.get('description')?.invalid"
+                                class="text-danger small mt-1">
+                                Minimum 50 characters required
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Packages -->
+                <div class="dash-card mb-4">
+                    <h6 class="section-title">Packages</h6>
+                    <div class="row g-4">
+
+                        <!-- Basic -->
+                        <div class="col-md-4">
+                            <div class="package-form-card package-basic">
+                                <div class="package-form-header">Basic</div>
+                                <div class="p-3">
+                                    <div class="mb-2">
+                                        <label class="form-label small fw-semibold">Price ($)</label>
+                                        <input formControlName="basicPrice" type="number"
+                                            class="form-control form-control-sm">
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label small fw-semibold">Delivery (days)</label>
+                                        <input formControlName="basicDeliveryDays" type="number"
+                                            class="form-control form-control-sm">
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label small fw-semibold">Revisions</label>
+                                        <input formControlName="basicRevisions" type="number"
+                                            class="form-control form-control-sm">
+                                    </div>
+                                    <div>
+                                        <label class="form-label small fw-semibold">What's included</label>
+                                        <textarea formControlName="basicFeatures" rows="2"
+                                            class="form-control form-control-sm"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Standard -->
+                        <div class="col-md-4">
+                            <div class="package-form-card package-standard">
+                                <div class="package-form-header">
+                                    Standard <span class="badge bg-warning text-dark ms-1"
+                                        style="font-size:10px">Popular</span>
+                                </div>
+                                <div class="p-3">
+                                    <div class="mb-2">
+                                        <label class="form-label small fw-semibold">Price ($)</label>
+                                        <input formControlName="standardPrice" type="number"
+                                            class="form-control form-control-sm">
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label small fw-semibold">Delivery (days)</label>
+                                        <input formControlName="standardDeliveryDays" type="number"
+                                            class="form-control form-control-sm">
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label small fw-semibold">Revisions</label>
+                                        <input formControlName="standardRevisions" type="number"
+                                            class="form-control form-control-sm">
+                                    </div>
+                                    <div>
+                                        <label class="form-label small fw-semibold">What's included</label>
+                                        <textarea formControlName="standardFeatures" rows="2"
+                                            class="form-control form-control-sm"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Premium -->
+                        <div class="col-md-4">
+                            <div class="package-form-card package-premium">
+                                <div class="package-form-header">Premium</div>
+                                <div class="p-3">
+                                    <div class="mb-2">
+                                        <label class="form-label small fw-semibold">Price ($)</label>
+                                        <input formControlName="premiumPrice" type="number"
+                                            class="form-control form-control-sm">
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label small fw-semibold">Delivery (days)</label>
+                                        <input formControlName="premiumDeliveryDays" type="number"
+                                            class="form-control form-control-sm">
+                                    </div>
+                                    <div class="mb-2">
+                                        <label class="form-label small fw-semibold">Revisions</label>
+                                        <input formControlName="premiumRevisions" type="number"
+                                            class="form-control form-control-sm">
+                                    </div>
+                                    <div>
+                                        <label class="form-label small fw-semibold">What's included</label>
+                                        <textarea formControlName="premiumFeatures" rows="2"
+                                            class="form-control form-control-sm"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary px-5" [disabled]="saving">
+                        <span *ngIf="saving" class="spinner-border spinner-border-sm me-2"></span>
+                        {{ saving ? 'Publishing...' : 'Publish Gig' }}
+                    </button>
+                    <button type="button" class="btn btn-outline-secondary"
+                        (click)="activeTab = 'my-gigs'">Cancel</button>
+                </div>
+
+            </form>
+        </div>
+
+        <!-- ── ORDERS RECEIVED ── -->
+        <div *ngIf="!loading && activeTab === 'orders'">
+            <div *ngIf="myOrders.length === 0" class="empty-state">
+                <i class="bi bi-box"></i>
+                <p class="mt-2">No orders received yet</p>
+            </div>
+
+            <div class="dash-card" *ngIf="myOrders.length > 0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Amount</th>
+                                <th>Commission</th>
+                                <th>Net</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let order of myOrders">
+                                <td class="fw-semibold text-primary small">
+                                    #{{ (order.id + '').slice(0,8) }}
+                                </td>
+                                <td class="small">৳{{ order.totalAmount | number }}</td>
+                                <td class="text-muted small">-৳{{ order.commissionAmount | number }}</td>
+                                <td class="text-success fw-semibold small">
+                                    ৳{{ (order.totalAmount - order.commissionAmount) | number }}
+                                </td>
+                                <td>
+                                    <span class="badge {{ getStatusClass(order.status) }}">
+                                        {{ order.status | titlecase }}
+                                    </span>
+                                </td>
+                                <td class="text-muted small">
+                                    {{ order.createdAt | date:'dd MMM yyyy' }}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,90 @@
+.main-content {
+    flex: 1;
+    padding: 24px;
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+.dash-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1.5px solid #e9ecef;
+}
+
+.balance-card {
+    border-radius: 14px;
+    padding: 20px;
+    color: white;
+}
+
+.balance-main {
+    background: linear-gradient(135deg, #1E4D8C, #0d6efd);
+}
+
+.balance-green {
+    background: linear-gradient(135deg, #198754, #28a745);
+}
+
+.balance-amber {
+    background: linear-gradient(135deg, #fd7e14, #ffc107);
+}
+
+.balance-gray {
+    background: linear-gradient(135deg, #495057, #6c757d);
+}
+
+.balance-label {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-bottom: 6px;
+}
+
+.balance-amount {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.method-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.method-item:last-child {
+    border-bottom: none;
+}
+
+.method-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: #e7f1ff;
+    color: #0d6efd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-box {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    width: 100%;
+    max-width: 420px;
+}
+
+.nav-link {
+    cursor: pointer;
+}

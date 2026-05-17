@@ -1,0 +1,194 @@
+<div class="admin-layout">
+
+    <!-- Admin Sidebar -->
+    <div class="admin-sidebar">
+        <div class="admin-sidebar-header">
+            <i class="bi bi-shield-fill-check text-warning me-2"></i>
+            <span class="fw-bold text-white">Admin Panel</span>
+        </div>
+        <nav class="admin-nav">
+            <a routerLink="/admin" class="admin-nav-link">
+                <i class="bi bi-speedometer2 me-2"></i>Dashboard
+            </a>
+            <a routerLink="/admin/management" class="admin-nav-link">
+                <i class="bi bi-people me-2"></i>Management
+            </a>
+            <a routerLink="/admin/analytics" class="admin-nav-link active">
+                <i class="bi bi-graph-up me-2"></i>Analytics
+            </a>
+            <div class="admin-nav-divider"></div>
+            <a routerLink="/" class="admin-nav-link">
+                <i class="bi bi-house me-2"></i>View Site
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="admin-main">
+        <div class="admin-topbar">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h4 class="fw-bold mb-0">Analytics</h4>
+                    <div class="text-muted small">Platform performance overview</div>
+                </div>
+                <select class="form-select form-select-sm w-auto" [(ngModel)]="dateRange" (change)="applyRange()">
+                    <option value="7">Last 7 days</option>
+                    <option value="30">Last 30 days</option>
+                    <option value="90">Last 90 days</option>
+                </select>
+            </div>
+        </div>
+
+        <div *ngIf="loading" class="text-center py-5">
+            <div class="spinner-border text-primary"></div>
+        </div>
+
+        <div *ngIf="!loading" class="p-4">
+
+            <!-- KPI Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-md-3">
+                    <div class="kpi-card kpi-blue">
+                        <i class="bi bi-cash-stack kpi-icon"></i>
+                        <div class="kpi-val">৳{{ totalRevenue | number }}</div>
+                        <div class="kpi-lbl">Total Revenue</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="kpi-card kpi-green">
+                        <i class="bi bi-percent kpi-icon"></i>
+                        <div class="kpi-val">৳{{ totalCommission | number }}</div>
+                        <div class="kpi-lbl">Commission ({{ getCommissionRate() }}%)</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="kpi-card kpi-amber">
+                        <i class="bi bi-people kpi-icon"></i>
+                        <div class="kpi-val">{{ totalNewUsers | number }}</div>
+                        <div class="kpi-lbl">Total Users</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="kpi-card kpi-purple">
+                        <div class="d-flex align-items-center gap-1">
+                            <div class="kpi-val">{{ getGrowthRate() }}%</div>
+                            <i class="bi fs-5" [class.bi-arrow-up-circle-fill]="getGrowthRate() >= 0"
+                                [class.text-success]="getGrowthRate() >= 0"
+                                [class.bi-arrow-down-circle-fill]="getGrowthRate() < 0"
+                                [class.text-danger]="getGrowthRate() < 0"></i>
+                        </div>
+                        <div class="kpi-lbl">Revenue Growth</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="row g-4 mb-4">
+
+                <!-- Revenue Chart -->
+                <div class="col-lg-6">
+                    <div class="analytics-card">
+                        <div class="analytics-card-header">
+                            <h6 class="fw-bold mb-0">
+                                <i class="bi bi-bar-chart-fill text-primary me-2"></i>
+                                Daily Revenue (৳)
+                            </h6>
+                        </div>
+                        <div class="chart-area">
+                            <div *ngFor="let day of filteredAnalytics" class="chart-bar-col">
+                                <div class="chart-bar-val">৳{{ day.revenue | number:'1.0-0' }}</div>
+                                <div class="chart-bar-track">
+                                    <div class="chart-bar-fill bar-blue"
+                                        [style.height]="getBarHeight(day.revenue, 'revenue')"></div>
+                                </div>
+                                <div class="chart-bar-label">{{ day.date | date:'dd/MM' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Users Chart -->
+                <div class="col-lg-6">
+                    <div class="analytics-card">
+                        <div class="analytics-card-header">
+                            <h6 class="fw-bold mb-0">
+                                <i class="bi bi-people-fill text-success me-2"></i>
+                                Total Users
+                            </h6>
+                        </div>
+                        <div class="chart-area">
+                            <div *ngFor="let day of filteredAnalytics" class="chart-bar-col">
+                                <div class="chart-bar-val">{{ day.totalUsers }}</div>
+                                <div class="chart-bar-track">
+                                    <div class="chart-bar-fill bar-green"
+                                        [style.height]="getBarHeight(day.totalUsers, 'users')"></div>
+                                </div>
+                                <div class="chart-bar-label">{{ day.date | date:'dd/MM' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Orders Chart -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-6">
+                    <div class="analytics-card">
+                        <div class="analytics-card-header">
+                            <h6 class="fw-bold mb-0">
+                                <i class="bi bi-box-fill text-warning me-2"></i>
+                                Daily Orders
+                            </h6>
+                        </div>
+                        <div class="chart-area">
+                            <div *ngFor="let day of filteredAnalytics" class="chart-bar-col">
+                                <div class="chart-bar-val">{{ day.totalOrders }}</div>
+                                <div class="chart-bar-track">
+                                    <div class="chart-bar-fill bar-amber"
+                                        [style.height]="getBarHeight(day.totalOrders, 'orders')"></div>
+                                </div>
+                                <div class="chart-bar-label">{{ day.date | date:'dd/MM' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Table -->
+                <div class="col-lg-6">
+                    <div class="analytics-card">
+                        <div class="analytics-card-header">
+                            <h6 class="fw-bold mb-0">
+                                <i class="bi bi-table text-info me-2"></i>
+                                Daily Summary
+                            </h6>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover table-sm mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Users</th>
+                                        <th>Orders</th>
+                                        <th>Revenue</th>
+                                        <th>Commission</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let day of filteredAnalytics.slice().reverse()">
+                                        <td class="small fw-semibold">{{ day.date | date:'dd MMM' }}</td>
+                                        <td class="small">{{ day.totalUsers }}</td>
+                                        <td class="small">{{ day.totalOrders }}</td>
+                                        <td class="small text-success fw-semibold">৳{{ day.revenue | number }}</td>
+                                        <td class="small text-primary">৳{{ day.commission | number }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,176 @@
+<app-navbar></app-navbar>
+
+<div class="page-header">
+    <div class="container">
+        <h3 class="fw-bold mb-1">Browse Gigs</h3>
+        <p class="mb-0 opacity-75">{{ filteredGigs.length }} services available</p>
+    </div>
+</div>
+
+<div class="container py-4">
+    <div class="row g-4">
+
+        <!-- FILTER SIDEBAR -->
+        <div class="col-lg-3">
+            <div class="filter-card">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="fw-bold mb-0">
+                        <i class="bi bi-funnel me-2 text-primary"></i>Filters
+                    </h6>
+                    <button class="btn btn-link btn-sm p-0 text-danger" (click)="clearFilters()">Clear All</button>
+                </div>
+
+                <!-- Search -->
+                <div class="mb-3">
+                    <label class="filter-label">Search</label>
+                    <input type="text" class="form-control form-control-sm" placeholder="Search gigs..."
+                        [(ngModel)]="searchKeyword" (input)="applyFilters()">
+                </div>
+
+                <!-- Category -->
+                <div class="mb-3">
+                    <label class="filter-label">Category</label>
+                    <div *ngFor="let cat of categories" class="form-check">
+                        <input class="form-check-input" type="radio" [value]="cat.id" [(ngModel)]="selectedCategory"
+                            (change)="applyFilters()" [id]="'cat-' + cat.id">
+                        <label class="form-check-label small" [for]="'cat-' + cat.id">
+                            {{ cat.name }}
+                        </label>
+                    </div>
+                    <div class="form-check mt-1">
+                        <input class="form-check-input" type="radio" value="" [(ngModel)]="selectedCategory"
+                            (change)="applyFilters()" id="cat-all">
+                        <label class="form-check-label small" for="cat-all">All Categories</label>
+                    </div>
+                </div>
+
+                <!-- Rating -->
+                <div class="mb-3">
+                    <label class="filter-label">Minimum Rating</label>
+                    <div class="form-check" *ngFor="let r of [4, 3, 2, 1]">
+                        <input class="form-check-input" type="radio" [value]="r" [(ngModel)]="selectedRating"
+                            (change)="applyFilters()" [id]="'rating-' + r">
+                        <label class="form-check-label small d-flex align-items-center gap-1" [for]="'rating-' + r">
+                            <span class="text-warning">
+                                <i class="bi bi-star-fill" *ngFor="let s of [].constructor(r)"></i>
+                            </span>
+                            {{ r }}+ Stars
+                        </label>
+                    </div>
+                    <div class="form-check mt-1">
+                        <input class="form-check-input" type="radio" [value]="0" [(ngModel)]="selectedRating"
+                            (change)="applyFilters()" id="rating-all">
+                        <label class="form-check-label small" for="rating-all">All Ratings</label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- GIGS GRID -->
+        <div class="col-lg-9">
+
+            <!-- Sort bar -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted small">
+                    Showing {{ pagedGigs.length }} of {{ filteredGigs.length }} gigs
+                </span>
+                <select class="form-select form-select-sm w-auto" [(ngModel)]="sortBy" (change)="applyFilters()">
+                    <option value="popular">Most Popular</option>
+                    <option value="top-rated">Top Rated</option>
+                </select>
+            </div>
+
+            <!-- Loading -->
+            <div *ngIf="loading" class="text-center py-5">
+                <div class="spinner-border text-primary"></div>
+                <p class="mt-2 text-muted">Loading gigs...</p>
+            </div>
+
+            <!-- Error -->
+            <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+            <!-- No results -->
+            <div *ngIf="!loading && filteredGigs.length === 0" class="text-center py-5">
+                <i class="bi bi-search" style="font-size: 48px; color: #dee2e6;"></i>
+                <p class="mt-3 text-muted">No gigs found.</p>
+                <button class="btn btn-outline-primary btn-sm" (click)="clearFilters()">
+                    Clear Filters
+                </button>
+            </div>
+
+            <!-- Gig Cards -->
+            <div class="row g-3" *ngIf="!loading && pagedGigs.length > 0">
+                <div class="col-md-6 col-lg-4" *ngFor="let gig of pagedGigs">
+                    <div class="gig-card">
+
+                        <!-- Cover image -->
+                        <div class="gig-img-wrap">
+                            <img [src]="gig.coverImage || 'https://picsum.photos/seed/gig/300/200'" class="gig-image"
+                                onerror="this.src='https://picsum.photos/300/200'">
+                            <span class="category-badge">{{ getCategoryName(gig.categoryId) }}</span>
+                        </div>
+
+                        <!-- Body -->
+                        <div class="p-3">
+                            <h6 class="gig-title">{{ gig.title }}</h6>
+
+                            <!-- Seller -->
+                            <div class="d-flex align-items-center mb-2">
+                                <img [src]="'https://i.pravatar.cc/24?img=' + gig.freelancerId" class="rounded-circle me-2" width="24"
+                                    height="24" onerror="this.src='https://i.pravatar.cc/24'">
+                                <small class="text-muted">Freelancer</small>
+                            </div>
+
+                            <!-- Rating -->
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="text-warning me-1">
+                                    <i *ngFor="let s of getStars(gig.rating || 0)" class="bi {{ s }}"
+                                        style="font-size: 11px;"></i>
+                                </span>
+                                <small class="text-muted fw-semibold">{{ gig.rating }}</small>
+                                <small class="text-muted ms-1">({{ gig.totalOrders }})</small>
+                            </div>
+
+                            <hr class="my-2">
+
+                            <!-- Price and action -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="text-muted" style="font-size: 11px;">Starting at</div>
+                                    <div class="fw-bold text-primary">৳{{ gig.startingPrice | number }}</div>
+                                </div>
+                                <a [routerLink]="['/details', 'gig', gig.id]" class="btn btn-primary btn-sm">
+                                    Order Now
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <nav *ngIf="totalPages > 1" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" [class.disabled]="currentPage === 1">
+                        <a class="page-link" (click)="currentPage = currentPage - 1">
+                            <i class="bi bi-chevron-left"></i>
+                        </a>
+                    </li>
+                    <li class="page-item" *ngFor="let p of pages" [class.active]="p === currentPage">
+                        <a class="page-link" (click)="currentPage = p">{{ p }}</a>
+                    </li>
+                    <li class="page-item" [class.disabled]="currentPage === totalPages">
+                        <a class="page-link" (click)="currentPage = currentPage + 1">
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

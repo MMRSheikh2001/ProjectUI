@@ -1,0 +1,282 @@
+<div class="admin-layout">
+
+    <!-- Admin Sidebar -->
+    <div class="admin-sidebar">
+        <div class="admin-sidebar-header">
+            <i class="bi bi-shield-fill-check text-warning me-2"></i>
+            <span class="fw-bold text-white">Admin Panel</span>
+        </div>
+        <nav class="admin-nav">
+            <a routerLink="/admin" class="admin-nav-link">
+                <i class="bi bi-speedometer2 me-2"></i>Dashboard
+            </a>
+            <a routerLink="/admin/management" class="admin-nav-link active">
+                <i class="bi bi-people me-2"></i>Management
+            </a>
+            <a routerLink="/admin/analytics" class="admin-nav-link">
+                <i class="bi bi-graph-up me-2"></i>Analytics
+            </a>
+            <div class="admin-nav-divider"></div>
+            <a routerLink="/" class="admin-nav-link">
+                <i class="bi bi-house me-2"></i>View Site
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="admin-main">
+        <div class="admin-topbar">
+            <h4 class="fw-bold mb-0">Management</h4>
+            <div class="text-muted small">Users · Reports · Disputes</div>
+        </div>
+
+        <div *ngIf="loading" class="text-center py-5">
+            <div class="spinner-border text-primary"></div>
+        </div>
+
+        <div *ngIf="!loading" class="p-4">
+
+            <!-- Tabs -->
+            <div class="tab-nav mb-4">
+                <button class="tab-btn" [class.active]="activeTab === 'users'" (click)="activeTab = 'users'">
+                    <i class="bi bi-people me-2"></i>Users
+                    <span class="badge bg-primary ms-2">{{ users.length }}</span>
+                </button>
+                <button class="tab-btn" [class.active]="activeTab === 'reports'" (click)="activeTab = 'reports'">
+                    <i class="bi bi-flag me-2"></i>Reports
+                    <span class="badge bg-danger ms-2">{{ reports.length }}</span>
+                </button>
+                <button class="tab-btn" [class.active]="activeTab === 'disputes'" (click)="activeTab = 'disputes'">
+                    <i class="bi bi-shield-exclamation me-2"></i>Disputes
+                    <span class="badge bg-warning text-dark ms-2">{{ disputes.length }}</span>
+                </button>
+            </div>
+
+            <!-- ── USERS ── -->
+            <div *ngIf="activeTab === 'users'">
+
+                <!-- Filters -->
+                <div class="d-flex gap-2 mb-3">
+                    <input type="text" class="form-control form-control-sm" style="max-width: 300px;"
+                        placeholder="Search by name or email..." [(ngModel)]="searchUser" (input)="filterUsers()">
+                    <select class="form-select form-select-sm w-auto" [(ngModel)]="filterStatus"
+                        (change)="filterUsers()">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="suspended">Suspended</option>
+                        <option value="banned">Banned</option>
+                    </select>
+                    <span class="text-muted small align-self-center">
+                        {{ filteredUsers.length }} users
+                    </span>
+                </div>
+
+                <div class="admin-card">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>User</th>
+                                    <th>Contact</th>
+                                    <th>Role</th>
+                                    <th>Verified</th>
+                                    <th>Status</th>
+                                    <th>Joined</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let user of filteredUsers">
+                                    <td>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <img [src]="user.profileImage" class="user-avatar-sm"
+                                                onerror="this.src='https://i.pravatar.cc/32'">
+                                            <div>
+                                                <div class="fw-semibold small">{{ user.name }}</div>
+                                                <div class="text-muted" style="font-size:11px">
+                                                    {{ user.city }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-muted small">{{ user.email }}</td>
+                                    <td>
+                                        <span class="badge" [class.bg-danger]="user.role === 'admin'"
+                                            [class.bg-primary]="user.role === 'user'">
+                                            {{ user.role | titlecase }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <i class="bi" [class.bi-patch-check-fill]="user.isVerified"
+                                            [class.text-success]="user.isVerified"
+                                            [class.bi-x-circle]="!user.isVerified"
+                                            [class.text-muted]="!user.isVerified"></i>
+                                    </td>
+                                    <td>
+                                        <span class="badge {{ getStatusClass(user.status ?? '') }}">
+                                            {{ user.status | titlecase }}
+                                        </span>
+                                    </td>
+                                    <td class="text-muted small">
+                                        {{ user.createdAt | date:'dd MMM yy' }}
+                                    </td>
+                                    <td>
+                                        <div class="d-flex gap-1" *ngIf="!isCurrentAdmin(user)">
+                                            <button *ngIf="user.status !== 'active'"
+                                                class="btn btn-outline-success btn-xs"
+                                                (click)="confirmUserAction('activate', user)" title="Activate">
+                                                <i class="bi bi-check-circle"></i>
+                                            </button>
+                                            <button *ngIf="user.status === 'active'"
+                                                class="btn btn-outline-warning btn-xs"
+                                                (click)="confirmUserAction('suspend', user)" title="Suspend">
+                                                <i class="bi bi-pause-circle"></i>
+                                            </button>
+                                            <button *ngIf="user.status !== 'banned'"
+                                                class="btn btn-outline-danger btn-xs"
+                                                (click)="confirmUserAction('ban', user)" title="Ban">
+                                                <i class="bi bi-slash-circle"></i>
+                                            </button>
+                                        </div>
+                                        <span *ngIf="isCurrentAdmin(user)" class="text-muted small">You</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── REPORTS ── -->
+            <div *ngIf="activeTab === 'reports'">
+                <div *ngIf="reports.length === 0" class="empty-state">
+                    <i class="bi bi-flag"></i>
+                    <p class="mt-2">No reports</p>
+                </div>
+
+                <div class="admin-card" *ngIf="reports.length > 0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Report ID</th>
+                                    <th>Reported By</th>
+                                    <th>Reason</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let report of reports">
+                                    <td class="small fw-semibold">#{{ (report.id + '').slice(0,8) }}</td>
+                                    <td class="text-muted small">#{{ (report.reportedBy + '').slice(0,8) }}</td>
+                                    <td class="small">{{ (report.reason || '').slice(0, 80) }}</td>
+                                    <td>
+                                        <span class="badge {{ getStatusClass(report.status) }}">
+                                            {{ report.status | titlecase }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex gap-1">
+                                            <button *ngIf="report.status === 'pending'"
+                                                class="btn btn-outline-info btn-xs"
+                                                (click)="updateReportStatus(report, 'reviewed')">
+                                                Review
+                                            </button>
+                                            <button
+                                                *ngIf="report.status !== 'actioned' && report.status !== 'dismissed'"
+                                                class="btn btn-outline-success btn-xs"
+                                                (click)="updateReportStatus(report, 'actioned')">
+                                                Action
+                                            </button>
+                                            <button *ngIf="report.status !== 'dismissed'"
+                                                class="btn btn-outline-secondary btn-xs"
+                                                (click)="updateReportStatus(report, 'dismissed')">
+                                                Dismiss
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── DISPUTES ── -->
+            <div *ngIf="activeTab === 'disputes'">
+                <div *ngIf="disputes.length === 0" class="empty-state">
+                    <i class="bi bi-shield-check"></i>
+                    <p class="mt-2">No disputes</p>
+                </div>
+
+                <div class="admin-card" *ngIf="disputes.length > 0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Dispute ID</th>
+                                    <th>Order</th>
+                                    <th>Raised By</th>
+                                    <th>Reason</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let dispute of disputes">
+                                    <td class="small fw-semibold">#{{ (dispute.id + '').slice(0,8) }}</td>
+                                    <td class="text-primary small">#{{ (dispute.orderId + '').slice(0,8) }}</td>
+                                    <td class="text-muted small">#{{ (dispute.raisedBy + '').slice(0,8) }}</td>
+                                    <td class="small">{{ (dispute.reason || '').slice(0, 80) }}</td>
+                                    <td>
+                                        <span class="badge {{ getStatusClass(dispute.status) }}">
+                                            {{ dispute.status | titlecase }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex gap-1"
+                                            *ngIf="dispute.status !== 'resolved' && dispute.status !== 'closed'">
+                                            <button class="btn btn-outline-success btn-xs"
+                                                (click)="resolveDispute(dispute, 'Release payment to freelancer')">
+                                                Release
+                                            </button>
+                                            <button class="btn btn-outline-warning btn-xs"
+                                                (click)="resolveDispute(dispute, 'Refund issued to client')">
+                                                Refund
+                                            </button>
+                                        </div>
+                                        <span *ngIf="dispute.status === 'resolved'" class="text-muted small">
+                                            {{ dispute.adminAction }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Confirm Modal -->
+<div *ngIf="confirmAction" class="modal-overlay" (click)="confirmAction = null">
+    <div class="confirm-modal" (click)="$event.stopPropagation()">
+        <h6 class="fw-bold mb-2">Confirm Action</h6>
+        <p class="text-muted small mb-3">
+            Are you sure you want to
+            <strong class="text-danger">{{ confirmAction.type }}</strong>
+            user <strong>{{ confirmAction.userName }}</strong>?
+        </p>
+        <div class="d-flex gap-2">
+            <button class="btn btn-danger btn-sm flex-grow-1" (click)="executeAction()">
+                Confirm
+            </button>
+            <button class="btn btn-outline-secondary btn-sm" (click)="confirmAction = null">
+                Cancel
+            </button>
+        </div>
+    </div>
+</div>

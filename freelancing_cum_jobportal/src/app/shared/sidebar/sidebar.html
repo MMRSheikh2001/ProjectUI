@@ -1,0 +1,72 @@
+<div class="sidebar d-flex flex-column p-3 bg-white shadow-sm" style="min-height: 100vh; width: 240px;">
+
+    <!-- Logo -->
+    <a routerLink="/" class="text-decoration-none mb-4">
+        <h5 class="fw-bold text-primary mb-0">
+            <i class="bi bi-briefcase-fill me-2"></i>WorkBridge
+        </h5>
+    </a>
+
+    <!-- User info -->
+    <div class="mb-3 p-2 bg-light rounded">
+        <div class="d-flex align-items-center gap-2">
+            <img [src]="auth.getCurrentUser()?.profileImage || 'https://i.pravatar.cc/36'" 
+                class="rounded-circle" width="36" height="36"
+                style="object-fit:cover"
+                onerror="this.src='https://i.pravatar.cc/36'">
+            <div>
+                <div class="fw-semibold small">{{ auth.getCurrentUser()?.name }}</div>
+                <div class="text-muted" style="font-size:11px">
+                    {{ auth.getCurrentUser()?.role }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation links -->
+    <nav class="nav flex-column gap-1">
+        <a routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+            class="nav-link sidebar-link">
+            <i class="bi bi-grid me-2"></i>Dashboard
+        </a>
+
+        <!-- User/Freelancer specific -->
+        <ng-container *ngIf="auth.isUser()">
+            <a routerLink="/dashboard/profile" routerLinkActive="active" class="nav-link sidebar-link">
+                <i class="bi bi-person me-2"></i>My CV
+            </a>
+            <a routerLink="/dashboard/gigs" routerLinkActive="active" class="nav-link sidebar-link">
+                <i class="bi bi-grid-3x3-gap me-2"></i>My Gigs
+            </a>
+        </ng-container>
+
+        <!-- Company/Employer specific -->
+        <ng-container *ngIf="auth.isCompany()">
+            <a routerLink="/dashboard/jobs" routerLinkActive="active" class="nav-link sidebar-link">
+                <i class="bi bi-briefcase me-2"></i>Manage Jobs
+            </a>
+        </ng-container>
+
+        <!-- Shared links -->
+        <a routerLink="/dashboard/orders" routerLinkActive="active" class="nav-link sidebar-link">
+            <i class="bi bi-box me-2"></i>Orders
+        </a>
+        <a routerLink="/dashboard/chat" routerLinkActive="active" class="nav-link sidebar-link">
+            <i class="bi bi-chat me-2"></i>Chat
+        </a>
+        <a routerLink="/dashboard/wallet" routerLinkActive="active" class="nav-link sidebar-link">
+            <i class="bi bi-wallet2 me-2"></i>Wallet
+        </a>
+        <a routerLink="/dashboard/notifications" routerLinkActive="active" class="nav-link sidebar-link">
+            <i class="bi bi-bell me-2"></i>Notifications
+        </a>
+    </nav>
+
+    <!-- Logout at bottom -->
+    <div class="mt-auto">
+        <hr>
+        <button (click)="logout()" class="btn btn-outline-danger btn-sm w-100">
+            <i class="bi bi-box-arrow-right me-2"></i>Logout
+        </button>
+    </div>
+</div>

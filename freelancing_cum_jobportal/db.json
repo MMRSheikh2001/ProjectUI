@@ -1,0 +1,5035 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Mahbub Rahman",
+      "email": "mahbub@workbridge.com",
+      "password": "password123",
+      "phone": "01712345678",
+      "city": "Dhaka",
+      "area": "Gulshan",
+      "profileImage": "https://i.pravatar.cc/150?u=mahbub",
+      "isVerified": true,
+      "status": "active",
+      "isDeleted": false,
+      "createdAt": "2024-01-01T00:00:00Z",
+      "role": "user",
+      "isSuperAdmin": false,
+      "tagline": "Senior Angular Developer & Frontend Architect",
+      "bio": "Building high-performance web applications with Angular for 5+ years. Expert in RxJS, NgRx, and scalable frontend architectures."
+    },
+    {
+      "id": "2",
+      "name": "Sabbir Hossain",
+      "email": "admin@workbridge.com",
+      "password": "admin123",
+      "phone": "01900000000",
+      "city": "Dhaka",
+      "area": "Motijheel",
+      "profileImage": "https://i.pravatar.cc/150?u=sabbir",
+      "isVerified": true,
+      "status": "active",
+      "isDeleted": false,
+      "createdAt": "2024-01-01T00:00:00Z",
+      "role": "admin",
+      "isSuperAdmin": true
+    },
+    {
+      "id": "3",
+      "name": "Tanvir Ahmed",
+      "email": "tanvir@techsolutions.com",
+      "password": "password123",
+      "phone": "01811112222",
+      "city": "Chittagong",
+      "area": "Agrabad",
+      "profileImage": "https://i.pravatar.cc/150?u=tanvir",
+      "isVerified": true,
+      "status": "active",
+      "isDeleted": false,
+      "createdAt": "2024-02-15T10:30:00Z",
+      "role": "company",
+      "isSuperAdmin": false,
+      "tagline": "CEO at TechSolutions BD",
+      "bio": "Visionary leader in the tech industry with over 10 years of experience in managing high-scale software projects."
+    },
+    {
+      "id": "4",
+      "name": "Rehana Parvin",
+      "email": "rehana@creative.com",
+      "password": "password123",
+      "phone": "01655554444",
+      "city": "Dhaka",
+      "area": "Dhanmondi",
+      "profileImage": "https://i.pravatar.cc/150?u=rehana",
+      "isVerified": true,
+      "status": "active",
+      "isDeleted": false,
+      "createdAt": "2024-03-10T14:20:00Z",
+      "role": "user",
+      "isSuperAdmin": false,
+      "tagline": "Creative Graphic Designer & UI/UX Expert",
+      "bio": "Passionate about creating beautiful and functional designs that enhance user experiences."
+    },
+    {
+      "id": "5",
+      "name": "Badrul Islam",
+      "email": "badrul@mobileapps.com",
+      "password": "password123",
+      "phone": "01511110000",
+      "city": "Sylhet",
+      "area": "Zindabazar",
+      "profileImage": "https://i.pravatar.cc/150?u=badrul",
+      "isVerified": true,
+      "status": "active",
+      "isDeleted": false,
+      "createdAt": "2024-05-01T09:00:00Z",
+      "role": "company",
+      "isSuperAdmin": false,
+      "tagline": "Expert Flutter & React Native Developer",
+      "bio": "Building cross-platform mobile apps that provide native performance and stunning visuals."
+    },
+    {
+      "id": "6",
+      "name": "Shaharan Kabir",
+      "email": "shaharan@codehub.com",
+      "password": "password123",
+      "phone": "01722223333",
+      "city": "Rajshahi",
+      "area": "Uposhohor",
+      "profileImage": "https://i.pravatar.cc/150?u=shaharan",
+      "isVerified": true,
+      "status": "active",
+      "isDeleted": false,
+      "createdAt": "2024-06-15T16:45:00Z",
+      "role": "user",
+      "isSuperAdmin": false,
+      "tagline": "Full Stack Web Developer & Open Source Contributor",
+      "bio": "Expert in Node.js, Python, and cloud infrastructure. Passionate about building scalable backends and clean frontend interfaces."
+    }
+  ],
+  "categories": [
+    {
+      "id": "c1",
+      "name": "Web Development"
+    },
+    {
+      "id": "c2",
+      "name": "Mobile Apps"
+    },
+    {
+      "id": "c3",
+      "name": "Graphic Design"
+    },
+    {
+      "id": "c4",
+      "name": "Digital Marketing"
+    },
+    {
+      "id": "c5",
+      "name": "Writing & Translation"
+    },
+    {
+      "id": "c6",
+      "name": "Video & Animation"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "j1",
+      "employerId": "3",
+      "title": "Social Media Manager",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Tanvir Ahmed",
+      "companyLogo": "https://i.pravatar.cc/150?u=tanvir",
+      "city": "Khulna",
+      "area": "Main Area",
+      "salaryMin": 45696,
+      "salaryMax": 65913,
+      "jobType": "full-time",
+      "experienceRequired": "1+ years",
+      "deadline": "2026-06-25",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.488Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 5,
+      "workplaceType": "remote",
+      "division": "Khulna",
+      "district": "Khulna",
+      "fullAddress": "Sector 1, Road 2, Khulna",
+      "industry": "Business",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 1,
+      "experienceYearsMax": 8,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": true,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 473,
+      "applicantsCount": 7,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Visionary leader in the tech industry with over 10 years of experience in managing high-scale software projects.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j2",
+      "employerId": "3",
+      "title": "Mobile App Developer (Flutter)",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Tanvir Ahmed",
+      "companyLogo": "https://i.pravatar.cc/150?u=tanvir",
+      "city": "Rajshahi",
+      "area": "Main Area",
+      "salaryMin": 24890,
+      "salaryMax": 58376,
+      "jobType": "part-time",
+      "experienceRequired": "2+ years",
+      "deadline": "2026-06-20",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 3,
+      "workplaceType": "hybrid",
+      "division": "Rajshahi",
+      "district": "Rajshahi",
+      "fullAddress": "Sector 1, Road 2, Rajshahi",
+      "industry": "Business",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 1,
+      "experienceYearsMax": 8,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": false,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 405,
+      "applicantsCount": 9,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Visionary leader in the tech industry with over 10 years of experience in managing high-scale software projects.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j3",
+      "employerId": "5",
+      "title": "Backend Engineer (Node.js)",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Badrul Islam",
+      "companyLogo": "https://i.pravatar.cc/150?u=badrul",
+      "city": "Rajshahi",
+      "area": "Main Area",
+      "salaryMin": 22634,
+      "salaryMax": 48663,
+      "jobType": "remote",
+      "experienceRequired": "4+ years",
+      "deadline": "2026-06-19",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 1,
+      "workplaceType": "onsite",
+      "division": "Rajshahi",
+      "district": "Rajshahi",
+      "fullAddress": "Sector 1, Road 2, Rajshahi",
+      "industry": "Marketing",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 1,
+      "experienceYearsMax": 8,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": false,
+      "isFeatured": true,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 187,
+      "applicantsCount": 15,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Building cross-platform mobile apps that provide native performance and stunning visuals.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j4",
+      "employerId": "5",
+      "title": "Backend Engineer (Node.js)",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Badrul Islam",
+      "companyLogo": "https://i.pravatar.cc/150?u=badrul",
+      "city": "Dhaka",
+      "area": "Main Area",
+      "salaryMin": 25254,
+      "salaryMax": 42621,
+      "jobType": "part-time",
+      "experienceRequired": "2+ years",
+      "deadline": "2026-06-15",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 3,
+      "workplaceType": "onsite",
+      "division": "Dhaka",
+      "district": "Dhaka",
+      "fullAddress": "Sector 1, Road 2, Dhaka",
+      "industry": "Software & Technology",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 2,
+      "experienceYearsMax": 8,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": true,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 300,
+      "applicantsCount": 3,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Building cross-platform mobile apps that provide native performance and stunning visuals.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j5",
+      "employerId": "3",
+      "title": "Senior Angular Developer",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Tanvir Ahmed",
+      "companyLogo": "https://i.pravatar.cc/150?u=tanvir",
+      "city": "Khulna",
+      "area": "Main Area",
+      "salaryMin": 33199,
+      "salaryMax": 46210,
+      "jobType": "contract",
+      "experienceRequired": "3+ years",
+      "deadline": "2026-06-16",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 3,
+      "workplaceType": "remote",
+      "division": "Khulna",
+      "district": "Khulna",
+      "fullAddress": "Sector 1, Road 2, Khulna",
+      "industry": "Business",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 1,
+      "experienceYearsMax": 3,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": false,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 19,
+      "applicantsCount": 19,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Visionary leader in the tech industry with over 10 years of experience in managing high-scale software projects.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j6",
+      "employerId": "5",
+      "title": "Full Stack Developer",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Badrul Islam",
+      "companyLogo": "https://i.pravatar.cc/150?u=badrul",
+      "city": "Sylhet",
+      "area": "Main Area",
+      "salaryMin": 32555,
+      "salaryMax": 54840,
+      "jobType": "remote",
+      "experienceRequired": "3+ years",
+      "deadline": "2026-06-17",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 3,
+      "workplaceType": "hybrid",
+      "division": "Sylhet",
+      "district": "Sylhet",
+      "fullAddress": "Sector 1, Road 2, Sylhet",
+      "industry": "Software & Technology",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 1,
+      "experienceYearsMax": 4,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": false,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 25,
+      "applicantsCount": 16,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Building cross-platform mobile apps that provide native performance and stunning visuals.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j7",
+      "employerId": "5",
+      "title": "Mobile App Developer (Flutter)",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Badrul Islam",
+      "companyLogo": "https://i.pravatar.cc/150?u=badrul",
+      "city": "Barisal",
+      "area": "Main Area",
+      "salaryMin": 24359,
+      "salaryMax": 54081,
+      "jobType": "contract",
+      "experienceRequired": "4+ years",
+      "deadline": "2026-06-13",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 2,
+      "workplaceType": "hybrid",
+      "division": "Barisal",
+      "district": "Barisal",
+      "fullAddress": "Sector 1, Road 2, Barisal",
+      "industry": "Marketing",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 2,
+      "experienceYearsMax": 5,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": true,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 173,
+      "applicantsCount": 8,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Building cross-platform mobile apps that provide native performance and stunning visuals.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j8",
+      "employerId": "5",
+      "title": "Full Stack Developer",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Badrul Islam",
+      "companyLogo": "https://i.pravatar.cc/150?u=badrul",
+      "city": "Barisal",
+      "area": "Main Area",
+      "salaryMin": 31473,
+      "salaryMax": 45124,
+      "jobType": "part-time",
+      "experienceRequired": "1+ years",
+      "deadline": "2026-06-16",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 4,
+      "workplaceType": "onsite",
+      "division": "Barisal",
+      "district": "Barisal",
+      "fullAddress": "Sector 1, Road 2, Barisal",
+      "industry": "Creative Design",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 1,
+      "experienceYearsMax": 5,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": true,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 31,
+      "applicantsCount": 11,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Building cross-platform mobile apps that provide native performance and stunning visuals.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j9",
+      "employerId": "5",
+      "title": "Social Media Manager",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Badrul Islam",
+      "companyLogo": "https://i.pravatar.cc/150?u=badrul",
+      "city": "Rangpur",
+      "area": "Main Area",
+      "salaryMin": 38689,
+      "salaryMax": 86265,
+      "jobType": "part-time",
+      "experienceRequired": "2+ years",
+      "deadline": "2026-06-24",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 5,
+      "workplaceType": "remote",
+      "division": "Rangpur",
+      "district": "Rangpur",
+      "fullAddress": "Sector 1, Road 2, Rangpur",
+      "industry": "Software & Technology",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 1,
+      "experienceYearsMax": 8,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": false,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 361,
+      "applicantsCount": 16,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Building cross-platform mobile apps that provide native performance and stunning visuals.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j10",
+      "employerId": "5",
+      "title": "Lead UI/UX Designer",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Badrul Islam",
+      "companyLogo": "https://i.pravatar.cc/150?u=badrul",
+      "city": "Dhaka",
+      "area": "Main Area",
+      "salaryMin": 22949,
+      "salaryMax": 62778,
+      "jobType": "contract",
+      "experienceRequired": "2+ years",
+      "deadline": "2026-06-24",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 5,
+      "workplaceType": "hybrid",
+      "division": "Dhaka",
+      "district": "Dhaka",
+      "fullAddress": "Sector 1, Road 2, Dhaka",
+      "industry": "Business",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 2,
+      "experienceYearsMax": 5,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": false,
+      "isFeatured": true,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 496,
+      "applicantsCount": 20,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Building cross-platform mobile apps that provide native performance and stunning visuals.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j11",
+      "employerId": "3",
+      "title": "Senior Angular Developer",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Tanvir Ahmed",
+      "companyLogo": "https://i.pravatar.cc/150?u=tanvir",
+      "city": "Rajshahi",
+      "area": "Main Area",
+      "salaryMin": 34601,
+      "salaryMax": 60818,
+      "jobType": "full-time",
+      "experienceRequired": "4+ years",
+      "deadline": "2026-06-19",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 1,
+      "workplaceType": "onsite",
+      "division": "Rajshahi",
+      "district": "Rajshahi",
+      "fullAddress": "Sector 1, Road 2, Rajshahi",
+      "industry": "Marketing",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 2,
+      "experienceYearsMax": 5,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": true,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 416,
+      "applicantsCount": 9,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Visionary leader in the tech industry with over 10 years of experience in managing high-scale software projects.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j12",
+      "employerId": "5",
+      "title": "Project Manager",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Badrul Islam",
+      "companyLogo": "https://i.pravatar.cc/150?u=badrul",
+      "city": "Barisal",
+      "area": "Main Area",
+      "salaryMin": 32706,
+      "salaryMax": 77535,
+      "jobType": "remote",
+      "experienceRequired": "5+ years",
+      "deadline": "2026-06-27",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 1,
+      "workplaceType": "remote",
+      "division": "Barisal",
+      "district": "Barisal",
+      "fullAddress": "Sector 1, Road 2, Barisal",
+      "industry": "Creative Design",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 2,
+      "experienceYearsMax": 6,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": false,
+      "isFeatured": true,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 69,
+      "applicantsCount": 8,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Building cross-platform mobile apps that provide native performance and stunning visuals.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j13",
+      "employerId": "3",
+      "title": "Project Manager",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Tanvir Ahmed",
+      "companyLogo": "https://i.pravatar.cc/150?u=tanvir",
+      "city": "Mymensingh",
+      "area": "Main Area",
+      "salaryMin": 41432,
+      "salaryMax": 60495,
+      "jobType": "remote",
+      "experienceRequired": "4+ years",
+      "deadline": "2026-06-12",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 1,
+      "workplaceType": "onsite",
+      "division": "Mymensingh",
+      "district": "Mymensingh",
+      "fullAddress": "Sector 1, Road 2, Mymensingh",
+      "industry": "Creative Design",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 2,
+      "experienceYearsMax": 8,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": false,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 194,
+      "applicantsCount": 6,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Visionary leader in the tech industry with over 10 years of experience in managing high-scale software projects.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j14",
+      "employerId": "5",
+      "title": "Project Manager",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Badrul Islam",
+      "companyLogo": "https://i.pravatar.cc/150?u=badrul",
+      "city": "Khulna",
+      "area": "Main Area",
+      "salaryMin": 38206,
+      "salaryMax": 56211,
+      "jobType": "contract",
+      "experienceRequired": "5+ years",
+      "deadline": "2026-06-13",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 2,
+      "workplaceType": "onsite",
+      "division": "Khulna",
+      "district": "Khulna",
+      "fullAddress": "Sector 1, Road 2, Khulna",
+      "industry": "Business",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 2,
+      "experienceYearsMax": 4,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": false,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 225,
+      "applicantsCount": 11,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Building cross-platform mobile apps that provide native performance and stunning visuals.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j15",
+      "employerId": "3",
+      "title": "Product Designer",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Tanvir Ahmed",
+      "companyLogo": "https://i.pravatar.cc/150?u=tanvir",
+      "city": "Rangpur",
+      "area": "Main Area",
+      "salaryMin": 22965,
+      "salaryMax": 60106,
+      "jobType": "remote",
+      "experienceRequired": "5+ years",
+      "deadline": "2026-06-19",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 3,
+      "workplaceType": "hybrid",
+      "division": "Rangpur",
+      "district": "Rangpur",
+      "fullAddress": "Sector 1, Road 2, Rangpur",
+      "industry": "Software & Technology",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 2,
+      "experienceYearsMax": 4,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": false,
+      "isFeatured": true,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 382,
+      "applicantsCount": 18,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Visionary leader in the tech industry with over 10 years of experience in managing high-scale software projects.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j16",
+      "employerId": "5",
+      "title": "Product Designer",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Badrul Islam",
+      "companyLogo": "https://i.pravatar.cc/150?u=badrul",
+      "city": "Chittagong",
+      "area": "Main Area",
+      "salaryMin": 47702,
+      "salaryMax": 61348,
+      "jobType": "contract",
+      "experienceRequired": "1+ years",
+      "deadline": "2026-06-24",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.489Z",
+      "publishedDate": "2026-05-16T21:45:05.489Z",
+      "vacancyCount": 5,
+      "workplaceType": "onsite",
+      "division": "Chittagong",
+      "district": "Chittagong",
+      "fullAddress": "Sector 1, Road 2, Chittagong",
+      "industry": "Software & Technology",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 2,
+      "experienceYearsMax": 5,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": false,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 448,
+      "applicantsCount": 8,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Building cross-platform mobile apps that provide native performance and stunning visuals.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j17",
+      "employerId": "3",
+      "title": "Project Manager",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Tanvir Ahmed",
+      "companyLogo": "https://i.pravatar.cc/150?u=tanvir",
+      "city": "Khulna",
+      "area": "Main Area",
+      "salaryMin": 22155,
+      "salaryMax": 53618,
+      "jobType": "full-time",
+      "experienceRequired": "4+ years",
+      "deadline": "2026-06-18",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.490Z",
+      "publishedDate": "2026-05-16T21:45:05.490Z",
+      "vacancyCount": 2,
+      "workplaceType": "remote",
+      "division": "Khulna",
+      "district": "Khulna",
+      "fullAddress": "Sector 1, Road 2, Khulna",
+      "industry": "Marketing",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 1,
+      "experienceYearsMax": 5,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": false,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 199,
+      "applicantsCount": 7,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Visionary leader in the tech industry with over 10 years of experience in managing high-scale software projects.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j18",
+      "employerId": "5",
+      "title": "Backend Engineer (Node.js)",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Badrul Islam",
+      "companyLogo": "https://i.pravatar.cc/150?u=badrul",
+      "city": "Rajshahi",
+      "area": "Main Area",
+      "salaryMin": 29897,
+      "salaryMax": 63869,
+      "jobType": "part-time",
+      "experienceRequired": "2+ years",
+      "deadline": "2026-06-27",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.490Z",
+      "publishedDate": "2026-05-16T21:45:05.490Z",
+      "vacancyCount": 1,
+      "workplaceType": "hybrid",
+      "division": "Rajshahi",
+      "district": "Rajshahi",
+      "fullAddress": "Sector 1, Road 2, Rajshahi",
+      "industry": "Business",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 1,
+      "experienceYearsMax": 8,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": false,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 174,
+      "applicantsCount": 15,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Building cross-platform mobile apps that provide native performance and stunning visuals.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j19",
+      "employerId": "3",
+      "title": "Project Manager",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Tanvir Ahmed",
+      "companyLogo": "https://i.pravatar.cc/150?u=tanvir",
+      "city": "Rangpur",
+      "area": "Main Area",
+      "salaryMin": 24301,
+      "salaryMax": 39455,
+      "jobType": "remote",
+      "experienceRequired": "4+ years",
+      "deadline": "2026-06-23",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.491Z",
+      "publishedDate": "2026-05-16T21:45:05.491Z",
+      "vacancyCount": 5,
+      "workplaceType": "remote",
+      "division": "Rangpur",
+      "district": "Rangpur",
+      "fullAddress": "Sector 1, Road 2, Rangpur",
+      "industry": "Creative Design",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 1,
+      "experienceYearsMax": 3,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": false,
+      "isFeatured": false,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 262,
+      "applicantsCount": 10,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Visionary leader in the tech industry with over 10 years of experience in managing high-scale software projects.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    },
+    {
+      "id": "j20",
+      "employerId": "3",
+      "title": "Lead UI/UX Designer",
+      "description": "We are looking for a talented individual to join our growing team. You will be responsible for building high-quality software and collaborating with other team members.",
+      "companyName": "Tanvir Ahmed",
+      "companyLogo": "https://i.pravatar.cc/150?u=tanvir",
+      "city": "Chittagong",
+      "area": "Main Area",
+      "salaryMin": 43689,
+      "salaryMax": 76541,
+      "jobType": "full-time",
+      "experienceRequired": "4+ years",
+      "deadline": "2026-06-19",
+      "status": "open",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T21:45:05.491Z",
+      "publishedDate": "2026-05-16T21:45:05.491Z",
+      "vacancyCount": 5,
+      "workplaceType": "remote",
+      "division": "Chittagong",
+      "district": "Chittagong",
+      "fullAddress": "Sector 1, Road 2, Chittagong",
+      "industry": "Marketing",
+      "educationLevel": "Bachelor's Degree",
+      "preferredUniversities": [
+        "BUET",
+        "DU",
+        "NSU",
+        "AIUB"
+      ],
+      "experienceYearsMin": 1,
+      "experienceYearsMax": 3,
+      "preferredIndustries": [
+        "IT",
+        "E-commerce",
+        "Fintech"
+      ],
+      "requiredSkills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "CSS"
+      ],
+      "softSkills": [
+        "Communication",
+        "Teamwork",
+        "Problem Solving"
+      ],
+      "languageRequirements": "English, Bengali",
+      "responsibilities": [
+        "Develop new features",
+        "Fix bugs",
+        "Write clean code"
+      ],
+      "dailyTasks": [
+        "Morning standup",
+        "Coding",
+        "Code review"
+      ],
+      "kpis": [
+        "Code quality",
+        "On-time delivery"
+      ],
+      "benefits": [
+        {
+          "name": "Health Insurance",
+          "icon": "bi-plus-circle"
+        },
+        {
+          "name": "Performance Bonus",
+          "icon": "bi-star"
+        }
+      ],
+      "salaryNegotiable": true,
+      "festivalBonus": true,
+      "mobileAllowance": false,
+      "medicalAllowance": true,
+      "lunchFacility": true,
+      "performanceBonus": true,
+      "flexibleHours": true,
+      "workFromHome": true,
+      "genderPreference": "Any",
+      "isUrgent": true,
+      "isFeatured": true,
+      "tags": [
+        "Software",
+        "Development",
+        "IT"
+      ],
+      "viewCount": 411,
+      "applicantsCount": 8,
+      "companyInfo": {
+        "website": "https://example.com",
+        "industry": "IT",
+        "companySize": "50-200",
+        "foundedYear": 2010,
+        "overview": "Visionary leader in the tech industry with over 10 years of experience in managing high-scale software projects.",
+        "linkedinUrl": "https://linkedin.com",
+        "facebookUrl": "https://facebook.com",
+        "isVerified": true,
+        "officeImages": []
+      },
+      "teamEnvironment": "Collaborative and innovative",
+      "growthOpportunity": "High growth potential"
+    }
+  ],
+  "gigs": [
+    {
+      "id": "g1",
+      "freelancerId": "4",
+      "categoryId": "c1",
+      "title": "I will design a professional logo for your brand",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 4790,
+      "rating": "4.6",
+      "totalOrders": 24,
+      "coverImage": "https://picsum.photos/seed/gig1/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig1a/600/400",
+        "https://picsum.photos/seed/gig1b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Web Development"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 3,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": false,
+      "totalRevenue": 22614,
+      "repeatClientPercent": 40,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 806,
+      "savedCount": 92,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    },
+    {
+      "id": "g2",
+      "freelancerId": "4",
+      "categoryId": "c6",
+      "title": "I will design a professional logo for your brand",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 4838,
+      "rating": "4.4",
+      "totalOrders": 46,
+      "coverImage": "https://picsum.photos/seed/gig2/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig2a/600/400",
+        "https://picsum.photos/seed/gig2b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Video & Animation"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 3,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": false,
+      "totalRevenue": 15956,
+      "repeatClientPercent": 14,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 865,
+      "savedCount": 74,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    },
+    {
+      "id": "g3",
+      "freelancerId": "1",
+      "categoryId": "c4",
+      "title": "I will write SEO optimized content for your blog",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 2473,
+      "rating": "4.5",
+      "totalOrders": 84,
+      "coverImage": "https://picsum.photos/seed/gig3/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig3a/600/400",
+        "https://picsum.photos/seed/gig3b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Digital Marketing"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 0,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": false,
+      "totalRevenue": 5314,
+      "repeatClientPercent": 37,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 357,
+      "savedCount": 44,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    },
+    {
+      "id": "g4",
+      "freelancerId": "4",
+      "categoryId": "c1",
+      "title": "I will build a responsive Angular website",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 2353,
+      "rating": "4.2",
+      "totalOrders": 70,
+      "coverImage": "https://picsum.photos/seed/gig4/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig4a/600/400",
+        "https://picsum.photos/seed/gig4b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Web Development"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 0,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": true,
+      "totalRevenue": 5167,
+      "repeatClientPercent": 32,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 435,
+      "savedCount": 38,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    },
+    {
+      "id": "g5",
+      "freelancerId": "1",
+      "categoryId": "c1",
+      "title": "I will design a professional logo for your brand",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 856,
+      "rating": "5.0",
+      "totalOrders": 5,
+      "coverImage": "https://picsum.photos/seed/gig5/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig5a/600/400",
+        "https://picsum.photos/seed/gig5b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Web Development"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 0,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": false,
+      "totalRevenue": 47490,
+      "repeatClientPercent": 31,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 345,
+      "savedCount": 19,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    },
+    {
+      "id": "g6",
+      "freelancerId": "6",
+      "categoryId": "c6",
+      "title": "I will translate your documents from English to Bengali",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 3004,
+      "rating": "4.8",
+      "totalOrders": 59,
+      "coverImage": "https://picsum.photos/seed/gig6/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig6a/600/400",
+        "https://picsum.photos/seed/gig6b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Video & Animation"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 1,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": false,
+      "totalRevenue": 41307,
+      "repeatClientPercent": 17,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 449,
+      "savedCount": 48,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    },
+    {
+      "id": "g7",
+      "freelancerId": "1",
+      "categoryId": "c6",
+      "title": "I will animate your logo in 4K",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 1927,
+      "rating": "4.9",
+      "totalOrders": 37,
+      "coverImage": "https://picsum.photos/seed/gig7/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig7a/600/400",
+        "https://picsum.photos/seed/gig7b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Video & Animation"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 4,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": false,
+      "totalRevenue": 37475,
+      "repeatClientPercent": 26,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 520,
+      "savedCount": 74,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    },
+    {
+      "id": "g8",
+      "freelancerId": "6",
+      "categoryId": "c6",
+      "title": "I will translate your documents from English to Bengali",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 933,
+      "rating": "4.1",
+      "totalOrders": 94,
+      "coverImage": "https://picsum.photos/seed/gig8/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig8a/600/400",
+        "https://picsum.photos/seed/gig8b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Video & Animation"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 3,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": false,
+      "totalRevenue": 17139,
+      "repeatClientPercent": 21,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 814,
+      "savedCount": 77,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    },
+    {
+      "id": "g9",
+      "freelancerId": "4",
+      "categoryId": "c4",
+      "title": "I will write SEO optimized content for your blog",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 3526,
+      "rating": "4.3",
+      "totalOrders": 77,
+      "coverImage": "https://picsum.photos/seed/gig9/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig9a/600/400",
+        "https://picsum.photos/seed/gig9b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Digital Marketing"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 5,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": false,
+      "totalRevenue": 40230,
+      "repeatClientPercent": 29,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 937,
+      "savedCount": 23,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    },
+    {
+      "id": "g10",
+      "freelancerId": "6",
+      "categoryId": "c6",
+      "title": "I will build a responsive Angular website",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 4809,
+      "rating": "4.1",
+      "totalOrders": 79,
+      "coverImage": "https://picsum.photos/seed/gig10/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig10a/600/400",
+        "https://picsum.photos/seed/gig10b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Video & Animation"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 0,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": false,
+      "totalRevenue": 39422,
+      "repeatClientPercent": 17,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 792,
+      "savedCount": 19,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    },
+    {
+      "id": "g11",
+      "freelancerId": "1",
+      "categoryId": "c5",
+      "title": "I will write SEO optimized content for your blog",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 1507,
+      "rating": "4.1",
+      "totalOrders": 28,
+      "coverImage": "https://picsum.photos/seed/gig11/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig11a/600/400",
+        "https://picsum.photos/seed/gig11b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Writing & Translation"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 0,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": false,
+      "totalRevenue": 32625,
+      "repeatClientPercent": 33,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 830,
+      "savedCount": 45,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    },
+    {
+      "id": "g12",
+      "freelancerId": "4",
+      "categoryId": "c4",
+      "title": "I will build a responsive Angular website",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 1060,
+      "rating": "4.9",
+      "totalOrders": 93,
+      "coverImage": "https://picsum.photos/seed/gig12/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig12a/600/400",
+        "https://picsum.photos/seed/gig12b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Digital Marketing"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 5,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": false,
+      "totalRevenue": 19718,
+      "repeatClientPercent": 13,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 227,
+      "savedCount": 72,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    },
+    {
+      "id": "g13",
+      "freelancerId": "1",
+      "categoryId": "c3",
+      "title": "I will write SEO optimized content for your blog",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 3642,
+      "rating": "4.4",
+      "totalOrders": 38,
+      "coverImage": "https://picsum.photos/seed/gig13/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig13a/600/400",
+        "https://picsum.photos/seed/gig13b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Graphic Design"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 3,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": false,
+      "totalRevenue": 18419,
+      "repeatClientPercent": 13,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 880,
+      "savedCount": 15,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    },
+    {
+      "id": "g14",
+      "freelancerId": "1",
+      "categoryId": "c4",
+      "title": "I will create a stunning mobile app with Flutter",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 2303,
+      "rating": "4.1",
+      "totalOrders": 84,
+      "coverImage": "https://picsum.photos/seed/gig14/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig14a/600/400",
+        "https://picsum.photos/seed/gig14b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Digital Marketing"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 1,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": false,
+      "totalRevenue": 45840,
+      "repeatClientPercent": 27,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 838,
+      "savedCount": 73,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    },
+    {
+      "id": "g15",
+      "freelancerId": "1",
+      "categoryId": "c1",
+      "title": "I will manage your social media marketing",
+      "description": "I provide high-quality services with a focus on client satisfaction. I have years of experience in this field and have worked with many happy clients.",
+      "status": "active",
+      "isDeleted": false,
+      "startingPrice": 2835,
+      "rating": "4.5",
+      "totalOrders": 17,
+      "coverImage": "https://picsum.photos/seed/gig15/600/400",
+      "images": [
+        "https://picsum.photos/seed/gig15a/600/400",
+        "https://picsum.photos/seed/gig15b/600/400"
+      ],
+      "videoUrl": "",
+      "tags": [
+        "Creative",
+        "Professional",
+        "Web Development"
+      ],
+      "technologies": [
+        "Angular",
+        "Figma",
+        "Node.js"
+      ],
+      "whatYouGet": [
+        "High Quality Work",
+        "Unlimited Revisions",
+        "Source File"
+      ],
+      "faqs": [
+        {
+          "question": "How long does it take?",
+          "answer": "Usually 3-5 days depending on the scope."
+        }
+      ],
+      "reviews": [],
+      "queueCount": 5,
+      "responseTime": "1 hour",
+      "languages": [
+        "English",
+        "Bengali"
+      ],
+      "isFeatured": false,
+      "totalRevenue": 12114,
+      "repeatClientPercent": 21,
+      "communicationRating": 5,
+      "deliveryRating": 4.9,
+      "valueRating": 4.8,
+      "viewCount": 506,
+      "savedCount": 30,
+      "publishedDate": "2026-05-16T21:45:05.491Z"
+    }
+  ],
+  "gigPackages": [
+    {
+      "id": "pkg-g1-basic",
+      "gigId": "g1",
+      "name": "basic",
+      "price": 4790,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g1-standard",
+      "gigId": "g1",
+      "name": "standard",
+      "price": 9580,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g1-premium",
+      "gigId": "g1",
+      "name": "premium",
+      "price": 14370,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g2-basic",
+      "gigId": "g2",
+      "name": "basic",
+      "price": 4838,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g2-standard",
+      "gigId": "g2",
+      "name": "standard",
+      "price": 9676,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g2-premium",
+      "gigId": "g2",
+      "name": "premium",
+      "price": 14514,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g3-basic",
+      "gigId": "g3",
+      "name": "basic",
+      "price": 2473,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g3-standard",
+      "gigId": "g3",
+      "name": "standard",
+      "price": 4946,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g3-premium",
+      "gigId": "g3",
+      "name": "premium",
+      "price": 7419,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g4-basic",
+      "gigId": "g4",
+      "name": "basic",
+      "price": 2353,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g4-standard",
+      "gigId": "g4",
+      "name": "standard",
+      "price": 4706,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g4-premium",
+      "gigId": "g4",
+      "name": "premium",
+      "price": 7059,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g5-basic",
+      "gigId": "g5",
+      "name": "basic",
+      "price": 856,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g5-standard",
+      "gigId": "g5",
+      "name": "standard",
+      "price": 1712,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g5-premium",
+      "gigId": "g5",
+      "name": "premium",
+      "price": 2568,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g6-basic",
+      "gigId": "g6",
+      "name": "basic",
+      "price": 3004,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g6-standard",
+      "gigId": "g6",
+      "name": "standard",
+      "price": 6008,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g6-premium",
+      "gigId": "g6",
+      "name": "premium",
+      "price": 9012,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g7-basic",
+      "gigId": "g7",
+      "name": "basic",
+      "price": 1927,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g7-standard",
+      "gigId": "g7",
+      "name": "standard",
+      "price": 3854,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g7-premium",
+      "gigId": "g7",
+      "name": "premium",
+      "price": 5781,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g8-basic",
+      "gigId": "g8",
+      "name": "basic",
+      "price": 933,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g8-standard",
+      "gigId": "g8",
+      "name": "standard",
+      "price": 1866,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g8-premium",
+      "gigId": "g8",
+      "name": "premium",
+      "price": 2799,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g9-basic",
+      "gigId": "g9",
+      "name": "basic",
+      "price": 3526,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g9-standard",
+      "gigId": "g9",
+      "name": "standard",
+      "price": 7052,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g9-premium",
+      "gigId": "g9",
+      "name": "premium",
+      "price": 10578,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g10-basic",
+      "gigId": "g10",
+      "name": "basic",
+      "price": 4809,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g10-standard",
+      "gigId": "g10",
+      "name": "standard",
+      "price": 9618,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g10-premium",
+      "gigId": "g10",
+      "name": "premium",
+      "price": 14427,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g11-basic",
+      "gigId": "g11",
+      "name": "basic",
+      "price": 1507,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g11-standard",
+      "gigId": "g11",
+      "name": "standard",
+      "price": 3014,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g11-premium",
+      "gigId": "g11",
+      "name": "premium",
+      "price": 4521,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g12-basic",
+      "gigId": "g12",
+      "name": "basic",
+      "price": 1060,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g12-standard",
+      "gigId": "g12",
+      "name": "standard",
+      "price": 2120,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g12-premium",
+      "gigId": "g12",
+      "name": "premium",
+      "price": 3180,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g13-basic",
+      "gigId": "g13",
+      "name": "basic",
+      "price": 3642,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g13-standard",
+      "gigId": "g13",
+      "name": "standard",
+      "price": 7284,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g13-premium",
+      "gigId": "g13",
+      "name": "premium",
+      "price": 10926,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g14-basic",
+      "gigId": "g14",
+      "name": "basic",
+      "price": 2303,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g14-standard",
+      "gigId": "g14",
+      "name": "standard",
+      "price": 4606,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g14-premium",
+      "gigId": "g14",
+      "name": "premium",
+      "price": 6909,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g15-basic",
+      "gigId": "g15",
+      "name": "basic",
+      "price": 2835,
+      "deliveryDays": 6,
+      "revisions": 2,
+      "features": "1 page design, responsive, source code",
+      "description": "Full service basic package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": false,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g15-standard",
+      "gigId": "g15",
+      "name": "standard",
+      "price": 5670,
+      "deliveryDays": 5,
+      "revisions": 4,
+      "features": "2 page design, responsive, source code",
+      "description": "Full service standard package with everything you need to get started.",
+      "popular": true,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    },
+    {
+      "id": "pkg-g15-premium",
+      "gigId": "g15",
+      "name": "premium",
+      "price": 8505,
+      "deliveryDays": 4,
+      "revisions": 999,
+      "features": "3 page design, responsive, source code",
+      "description": "Full service premium package with everything you need to get started.",
+      "popular": false,
+      "includesSourceCode": true,
+      "includesCommercialUse": true,
+      "featureList": [
+        "Responsive Design",
+        "Source Code",
+        "Deployment"
+      ]
+    }
+  ],
+  "jobApplications": [
+    {
+      "id": "app1",
+      "jobId": "j9",
+      "applicantId": "6",
+      "coverLetter": "I am writing to express my strong interest in the Social Media Manager position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "hired",
+      "appliedAt": "2026-05-14"
+    },
+    {
+      "id": "app2",
+      "jobId": "j8",
+      "applicantId": "4",
+      "coverLetter": "I am writing to express my strong interest in the Full Stack Developer position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "pending",
+      "appliedAt": "2026-05-12"
+    },
+    {
+      "id": "app3",
+      "jobId": "j8",
+      "applicantId": "6",
+      "coverLetter": "I am writing to express my strong interest in the Full Stack Developer position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "hired",
+      "appliedAt": "2026-05-6"
+    },
+    {
+      "id": "app4",
+      "jobId": "j7",
+      "applicantId": "6",
+      "coverLetter": "I am writing to express my strong interest in the Mobile App Developer (Flutter) position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "reviewed",
+      "appliedAt": "2026-05-15"
+    },
+    {
+      "id": "app5",
+      "jobId": "j6",
+      "applicantId": "6",
+      "coverLetter": "I am writing to express my strong interest in the Full Stack Developer position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "shortlisted",
+      "appliedAt": "2026-05-11"
+    },
+    {
+      "id": "app6",
+      "jobId": "j12",
+      "applicantId": "4",
+      "coverLetter": "I am writing to express my strong interest in the Project Manager position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "shortlisted",
+      "appliedAt": "2026-05-6"
+    },
+    {
+      "id": "app7",
+      "jobId": "j9",
+      "applicantId": "1",
+      "coverLetter": "I am writing to express my strong interest in the Social Media Manager position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "hired",
+      "appliedAt": "2026-05-6"
+    },
+    {
+      "id": "app8",
+      "jobId": "j3",
+      "applicantId": "1",
+      "coverLetter": "I am writing to express my strong interest in the Backend Engineer (Node.js) position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "hired",
+      "appliedAt": "2026-05-11"
+    },
+    {
+      "id": "app9",
+      "jobId": "j19",
+      "applicantId": "4",
+      "coverLetter": "I am writing to express my strong interest in the Project Manager position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "shortlisted",
+      "appliedAt": "2026-05-15"
+    },
+    {
+      "id": "app10",
+      "jobId": "j19",
+      "applicantId": "1",
+      "coverLetter": "I am writing to express my strong interest in the Project Manager position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "shortlisted",
+      "appliedAt": "2026-05-4"
+    },
+    {
+      "id": "app11",
+      "jobId": "j5",
+      "applicantId": "1",
+      "coverLetter": "I am writing to express my strong interest in the Senior Angular Developer position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "hired",
+      "appliedAt": "2026-05-1"
+    },
+    {
+      "id": "app12",
+      "jobId": "j16",
+      "applicantId": "4",
+      "coverLetter": "I am writing to express my strong interest in the Product Designer position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "shortlisted",
+      "appliedAt": "2026-05-10"
+    },
+    {
+      "id": "app13",
+      "jobId": "j8",
+      "applicantId": "1",
+      "coverLetter": "I am writing to express my strong interest in the Full Stack Developer position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "hired",
+      "appliedAt": "2026-05-8"
+    },
+    {
+      "id": "app14",
+      "jobId": "j8",
+      "applicantId": "6",
+      "coverLetter": "I am writing to express my strong interest in the Full Stack Developer position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "rejected",
+      "appliedAt": "2026-05-3"
+    },
+    {
+      "id": "app15",
+      "jobId": "j5",
+      "applicantId": "6",
+      "coverLetter": "I am writing to express my strong interest in the Senior Angular Developer position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "reviewed",
+      "appliedAt": "2026-05-11"
+    },
+    {
+      "id": "app16",
+      "jobId": "j15",
+      "applicantId": "6",
+      "coverLetter": "I am writing to express my strong interest in the Product Designer position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "shortlisted",
+      "appliedAt": "2026-05-4"
+    },
+    {
+      "id": "app17",
+      "jobId": "j18",
+      "applicantId": "4",
+      "coverLetter": "I am writing to express my strong interest in the Backend Engineer (Node.js) position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "shortlisted",
+      "appliedAt": "2026-05-11"
+    },
+    {
+      "id": "app18",
+      "jobId": "j15",
+      "applicantId": "6",
+      "coverLetter": "I am writing to express my strong interest in the Product Designer position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "hired",
+      "appliedAt": "2026-05-5"
+    },
+    {
+      "id": "app19",
+      "jobId": "j11",
+      "applicantId": "6",
+      "coverLetter": "I am writing to express my strong interest in the Senior Angular Developer position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "hired",
+      "appliedAt": "2026-05-10"
+    },
+    {
+      "id": "app20",
+      "jobId": "j8",
+      "applicantId": "4",
+      "coverLetter": "I am writing to express my strong interest in the Full Stack Developer position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "pending",
+      "appliedAt": "2026-05-8"
+    },
+    {
+      "id": "app21",
+      "jobId": "j13",
+      "applicantId": "4",
+      "coverLetter": "I am writing to express my strong interest in the Project Manager position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "shortlisted",
+      "appliedAt": "2026-05-13"
+    },
+    {
+      "id": "app22",
+      "jobId": "j19",
+      "applicantId": "1",
+      "coverLetter": "I am writing to express my strong interest in the Project Manager position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "hired",
+      "appliedAt": "2026-05-5"
+    },
+    {
+      "id": "app23",
+      "jobId": "j19",
+      "applicantId": "4",
+      "coverLetter": "I am writing to express my strong interest in the Project Manager position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "shortlisted",
+      "appliedAt": "2026-05-8"
+    },
+    {
+      "id": "app24",
+      "jobId": "j7",
+      "applicantId": "4",
+      "coverLetter": "I am writing to express my strong interest in the Mobile App Developer (Flutter) position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "shortlisted",
+      "appliedAt": "2026-05-6"
+    },
+    {
+      "id": "app25",
+      "jobId": "j5",
+      "applicantId": "4",
+      "coverLetter": "I am writing to express my strong interest in the Senior Angular Developer position. With my background in software development and my passion for building high-quality applications, I believe I would be a valuable asset to your team.",
+      "status": "hired",
+      "appliedAt": "2026-05-11"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ord1",
+      "gigId": "g6",
+      "clientId": "3",
+      "freelancerId": "6",
+      "totalAmount": 3004,
+      "commissionAmount": 300,
+      "status": "revision",
+      "isDeleted": false,
+      "createdAt": "2026-05-12",
+      "completedAt": ""
+    },
+    {
+      "id": "ord2",
+      "gigId": "g9",
+      "clientId": "5",
+      "freelancerId": "4",
+      "totalAmount": 3526,
+      "commissionAmount": 353,
+      "status": "active",
+      "isDeleted": false,
+      "createdAt": "2026-05-6",
+      "completedAt": ""
+    },
+    {
+      "id": "ord3",
+      "gigId": "g15",
+      "clientId": "5",
+      "freelancerId": "1",
+      "totalAmount": 8505,
+      "commissionAmount": 851,
+      "status": "active",
+      "isDeleted": false,
+      "createdAt": "2026-05-11",
+      "completedAt": ""
+    },
+    {
+      "id": "ord4",
+      "gigId": "g1",
+      "clientId": "5",
+      "freelancerId": "4",
+      "totalAmount": 14370,
+      "commissionAmount": 1437,
+      "status": "pending",
+      "isDeleted": false,
+      "createdAt": "2026-05-14",
+      "completedAt": ""
+    },
+    {
+      "id": "ord5",
+      "gigId": "g13",
+      "clientId": "5",
+      "freelancerId": "1",
+      "totalAmount": 10926,
+      "commissionAmount": 1093,
+      "status": "cancelled",
+      "isDeleted": false,
+      "createdAt": "2026-05-4",
+      "completedAt": ""
+    },
+    {
+      "id": "ord6",
+      "gigId": "g6",
+      "clientId": "3",
+      "freelancerId": "6",
+      "totalAmount": 9012,
+      "commissionAmount": 901,
+      "status": "revision",
+      "isDeleted": false,
+      "createdAt": "2026-05-11",
+      "completedAt": ""
+    },
+    {
+      "id": "ord7",
+      "gigId": "g15",
+      "clientId": "5",
+      "freelancerId": "1",
+      "totalAmount": 5670,
+      "commissionAmount": 567,
+      "status": "cancelled",
+      "isDeleted": false,
+      "createdAt": "2026-05-12",
+      "completedAt": ""
+    },
+    {
+      "id": "ord8",
+      "gigId": "g9",
+      "clientId": "3",
+      "freelancerId": "4",
+      "totalAmount": 3526,
+      "commissionAmount": 353,
+      "status": "pending",
+      "isDeleted": false,
+      "createdAt": "2026-05-12",
+      "completedAt": ""
+    },
+    {
+      "id": "ord9",
+      "gigId": "g13",
+      "clientId": "3",
+      "freelancerId": "1",
+      "totalAmount": 3642,
+      "commissionAmount": 364,
+      "status": "pending",
+      "isDeleted": false,
+      "createdAt": "2026-05-2",
+      "completedAt": ""
+    },
+    {
+      "id": "ord10",
+      "gigId": "g12",
+      "clientId": "3",
+      "freelancerId": "4",
+      "totalAmount": 1060,
+      "commissionAmount": 106,
+      "status": "delivered",
+      "isDeleted": false,
+      "createdAt": "2026-05-15",
+      "completedAt": ""
+    },
+    {
+      "id": "ord11",
+      "gigId": "g5",
+      "clientId": "5",
+      "freelancerId": "1",
+      "totalAmount": 2568,
+      "commissionAmount": 257,
+      "status": "completed",
+      "isDeleted": false,
+      "createdAt": "2026-05-10",
+      "completedAt": ""
+    },
+    {
+      "id": "ord12",
+      "gigId": "g4",
+      "clientId": "5",
+      "freelancerId": "4",
+      "totalAmount": 2353,
+      "commissionAmount": 235,
+      "status": "cancelled",
+      "isDeleted": false,
+      "createdAt": "2026-05-7",
+      "completedAt": ""
+    },
+    {
+      "id": "ord13",
+      "gigId": "g13",
+      "clientId": "3",
+      "freelancerId": "1",
+      "totalAmount": 10926,
+      "commissionAmount": 1093,
+      "status": "completed",
+      "isDeleted": false,
+      "createdAt": "2026-05-5",
+      "completedAt": ""
+    },
+    {
+      "id": "ord14",
+      "gigId": "g1",
+      "clientId": "3",
+      "freelancerId": "4",
+      "totalAmount": 4790,
+      "commissionAmount": 479,
+      "status": "pending",
+      "isDeleted": false,
+      "createdAt": "2026-05-14",
+      "completedAt": ""
+    },
+    {
+      "id": "ord15",
+      "gigId": "g13",
+      "clientId": "5",
+      "freelancerId": "1",
+      "totalAmount": 7284,
+      "commissionAmount": 728,
+      "status": "cancelled",
+      "isDeleted": false,
+      "createdAt": "2026-05-14",
+      "completedAt": ""
+    },
+    {
+      "gigId": "g8",
+      "clientId": "zYqE5RwO52Q",
+      "freelancerId": "6",
+      "totalAmount": 1866,
+      "commissionAmount": 187,
+      "status": "active",
+      "isDeleted": false,
+      "createdAt": "2026-05-16T22:13:03.842Z",
+      "completedAt": "",
+      "id": "kmTPReawlvw"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "notif-1-1",
+      "userId": "1",
+      "message": "Your order has been updated",
+      "type": "warning",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-1-2",
+      "userId": "1",
+      "message": "Welcome to WorkBridge!",
+      "type": "warning",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-1-3",
+      "userId": "1",
+      "message": "Your order has been updated",
+      "type": "danger",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-1-4",
+      "userId": "1",
+      "message": "You have a new message",
+      "type": "success",
+      "isRead": false,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-1-5",
+      "userId": "1",
+      "message": "Your order has been updated",
+      "type": "info",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-2-1",
+      "userId": "2",
+      "message": "Welcome to WorkBridge!",
+      "type": "danger",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-2-2",
+      "userId": "2",
+      "message": "Your order has been updated",
+      "type": "success",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-2-3",
+      "userId": "2",
+      "message": "Welcome to WorkBridge!",
+      "type": "system",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-2-4",
+      "userId": "2",
+      "message": "You have a new message",
+      "type": "system",
+      "isRead": false,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-2-5",
+      "userId": "2",
+      "message": "You have a new message",
+      "type": "system",
+      "isRead": false,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-3-1",
+      "userId": "3",
+      "message": "Your order has been updated",
+      "type": "danger",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-3-2",
+      "userId": "3",
+      "message": "You have a new message",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-3-3",
+      "userId": "3",
+      "message": "New job application received",
+      "type": "warning",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-3-4",
+      "userId": "3",
+      "message": "Welcome to WorkBridge!",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-3-5",
+      "userId": "3",
+      "message": "Welcome to WorkBridge!",
+      "type": "system",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-4-1",
+      "userId": "4",
+      "message": "You have a new message",
+      "type": "success",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-4-2",
+      "userId": "4",
+      "message": "Welcome to WorkBridge!",
+      "type": "danger",
+      "isRead": false,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-4-3",
+      "userId": "4",
+      "message": "Welcome to WorkBridge!",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-4-4",
+      "userId": "4",
+      "message": "You have a new message",
+      "type": "success",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-4-5",
+      "userId": "4",
+      "message": "Welcome to WorkBridge!",
+      "type": "system",
+      "isRead": false,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-5-1",
+      "userId": "5",
+      "message": "New job application received",
+      "type": "danger",
+      "isRead": false,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-5-2",
+      "userId": "5",
+      "message": "New job application received",
+      "type": "info",
+      "isRead": false,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-5-3",
+      "userId": "5",
+      "message": "You have a new message",
+      "type": "info",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-5-4",
+      "userId": "5",
+      "message": "New job application received",
+      "type": "warning",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-5-5",
+      "userId": "5",
+      "message": "Your order has been updated",
+      "type": "danger",
+      "isRead": false,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-6-1",
+      "userId": "6",
+      "message": "You have a new message",
+      "type": "warning",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-6-2",
+      "userId": "6",
+      "message": "You have a new message",
+      "type": "system",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-6-3",
+      "userId": "6",
+      "message": "Your order has been updated",
+      "type": "success",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-6-4",
+      "userId": "6",
+      "message": "Your order has been updated",
+      "type": "system",
+      "isRead": false,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    },
+    {
+      "id": "notif-6-5",
+      "userId": "6",
+      "message": "Your order has been updated",
+      "type": "danger",
+      "isRead": true,
+      "createdAt": "2026-05-16T21:45:05.492Z"
+    }
+  ],
+  "employerDashboardStats": [
+    {
+      "id": "stats-3",
+      "userId": "3",
+      "activeJobs": 3,
+      "totalApplicants": 16,
+      "shortlisted": 9,
+      "hired": 2,
+      "interviewsScheduled": 3,
+      "jobViews": 382,
+      "topJobTitle": "Senior Developer",
+      "topJobApplicants": 29,
+      "totalSpent": 10313,
+      "orderedGigsCount": 3
+    },
+    {
+      "id": "stats-5",
+      "userId": "5",
+      "activeJobs": 3,
+      "totalApplicants": 29,
+      "shortlisted": 8,
+      "hired": 3,
+      "interviewsScheduled": 3,
+      "jobViews": 798,
+      "topJobTitle": "Senior Developer",
+      "topJobApplicants": 19,
+      "totalSpent": 10522,
+      "orderedGigsCount": 3
+    }
+  ],
+  "freelancerStats": [
+    {
+      "id": "fstats-1",
+      "userId": "1",
+      "totalEarnings": 84283,
+      "monthlyEarnings": 7960,
+      "ordersCompleted": 34,
+      "ordersInProgress": 0,
+      "responseRate": 100,
+      "completionRate": 98,
+      "repeatClientRate": 25,
+      "averageRating": 4.9,
+      "totalReviews": 38,
+      "onlineStatus": true,
+      "lastSeen": "2026-05-16T21:45:05.492Z",
+      "memberSince": "2024-01-01",
+      "portfolioItems": [],
+      "employmentHistory": [],
+      "weeklyEarnings": [
+        500,
+        1200,
+        800,
+        2000,
+        1500,
+        300,
+        0
+      ],
+      "monthlyOrderData": [
+        5,
+        8,
+        12,
+        10,
+        15,
+        7
+      ]
+    },
+    {
+      "id": "fstats-4",
+      "userId": "4",
+      "totalEarnings": 31921,
+      "monthlyEarnings": 11035,
+      "ordersCompleted": 20,
+      "ordersInProgress": 4,
+      "responseRate": 100,
+      "completionRate": 98,
+      "repeatClientRate": 25,
+      "averageRating": 4.9,
+      "totalReviews": 24,
+      "onlineStatus": true,
+      "lastSeen": "2026-05-16T21:45:05.492Z",
+      "memberSince": "2024-01-01",
+      "portfolioItems": [],
+      "employmentHistory": [],
+      "weeklyEarnings": [
+        500,
+        1200,
+        800,
+        2000,
+        1500,
+        300,
+        0
+      ],
+      "monthlyOrderData": [
+        5,
+        8,
+        12,
+        10,
+        15,
+        7
+      ]
+    },
+    {
+      "id": "fstats-6",
+      "userId": "6",
+      "totalEarnings": 54175,
+      "monthlyEarnings": 4560,
+      "ordersCompleted": 50,
+      "ordersInProgress": 3,
+      "responseRate": 100,
+      "completionRate": 98,
+      "repeatClientRate": 25,
+      "averageRating": 4.9,
+      "totalReviews": 45,
+      "onlineStatus": true,
+      "lastSeen": "2026-05-16T21:45:05.492Z",
+      "memberSince": "2024-01-01",
+      "portfolioItems": [],
+      "employmentHistory": [],
+      "weeklyEarnings": [
+        500,
+        1200,
+        800,
+        2000,
+        1500,
+        300,
+        0
+      ],
+      "monthlyOrderData": [
+        5,
+        8,
+        12,
+        10,
+        15,
+        7
+      ]
+    }
+  ],
+  "jobseekerDashboardStats": [
+    {
+      "id": "jstats-1",
+      "userId": "1",
+      "profileCompletion": 85,
+      "resumeScore": 72,
+      "appliedJobs": 16,
+      "savedJobs": 6,
+      "profileViews": 189,
+      "interviewInvitations": 4,
+      "shortlisted": 1,
+      "rejected": 0,
+      "recommendedJobsCount": 12
+    },
+    {
+      "id": "jstats-4",
+      "userId": "4",
+      "profileCompletion": 85,
+      "resumeScore": 72,
+      "appliedJobs": 20,
+      "savedJobs": 2,
+      "profileViews": 200,
+      "interviewInvitations": 4,
+      "shortlisted": 3,
+      "rejected": 0,
+      "recommendedJobsCount": 12
+    },
+    {
+      "id": "jstats-6",
+      "userId": "6",
+      "profileCompletion": 85,
+      "resumeScore": 72,
+      "appliedJobs": 12,
+      "savedJobs": 6,
+      "profileViews": 94,
+      "interviewInvitations": 5,
+      "shortlisted": 2,
+      "rejected": 5,
+      "recommendedJobsCount": 12
+    }
+  ],
+  "resumes": [
+    {
+      "id": "res-1",
+      "userId": "1",
+      "summary": "Building high-performance web applications with Angular for 5+ years. Expert in RxJS, NgRx, and scalable frontend architectures.",
+      "education": "B.Sc in Computer Science",
+      "experience": "5 years of software development",
+      "certifications": "AWS Certified Solutions Architect",
+      "githubLink": "https://github.com",
+      "portfolioLink": "https://portfolio.com",
+      "fatherName": "Father Name",
+      "motherName": "Mother Name",
+      "gender": "Male",
+      "dateOfBirth": "1995-05-15",
+      "nationality": "Bangladeshi",
+      "religion": "Islam",
+      "maritalStatus": "Single",
+      "bloodGroup": "O+",
+      "division": "Dhaka",
+      "district": "Dhaka",
+      "upazila": "Main Town",
+      "postCode": "1000",
+      "presentAddress": "Gulshan, Dhaka",
+      "permanentAddress": "Gulshan, Dhaka",
+      "careerObjective": "To work in a challenging environment where I can utilize my skills.",
+      "careerSummary": "Professional with experience in web and mobile development.",
+      "resumeHeadline": "Senior Angular Developer & Frontend Architect",
+      "presentSalary": 40000,
+      "expectedSalary": 60000,
+      "availableFor": "Full-time",
+      "preferredJobCategories": [
+        "Software Development",
+        "Web Development"
+      ],
+      "preferredLocations": [
+        "Dhaka",
+        "Chittagong"
+      ],
+      "careerLevel": "Mid Level",
+      "linkedinUrl": "https://linkedin.com",
+      "behanceUrl": "",
+      "dribbbleUrl": "",
+      "languagesKnown": [
+        "English",
+        "Bengali"
+      ],
+      "englishProficiency": "Fluent",
+      "nidNumber": "1234567890",
+      "nidVerified": true,
+      "profileCompletion": 85,
+      "cvVisibility": "Public",
+      "educations": [],
+      "experiences": [],
+      "skillEntries": [],
+      "certificationList": [],
+      "trainings": [],
+      "projects": []
+    },
+    {
+      "id": "res-4",
+      "userId": "4",
+      "summary": "Passionate about creating beautiful and functional designs that enhance user experiences.",
+      "education": "B.Sc in Computer Science",
+      "experience": "5 years of software development",
+      "certifications": "AWS Certified Solutions Architect",
+      "githubLink": "https://github.com",
+      "portfolioLink": "https://portfolio.com",
+      "fatherName": "Father Name",
+      "motherName": "Mother Name",
+      "gender": "Male",
+      "dateOfBirth": "1995-05-15",
+      "nationality": "Bangladeshi",
+      "religion": "Islam",
+      "maritalStatus": "Single",
+      "bloodGroup": "O+",
+      "division": "Dhaka",
+      "district": "Dhaka",
+      "upazila": "Main Town",
+      "postCode": "1000",
+      "presentAddress": "Dhanmondi, Dhaka",
+      "permanentAddress": "Dhanmondi, Dhaka",
+      "careerObjective": "To work in a challenging environment where I can utilize my skills.",
+      "careerSummary": "Professional with experience in web and mobile development.",
+      "resumeHeadline": "Creative Graphic Designer & UI/UX Expert",
+      "presentSalary": 40000,
+      "expectedSalary": 60000,
+      "availableFor": "Full-time",
+      "preferredJobCategories": [
+        "Software Development",
+        "Web Development"
+      ],
+      "preferredLocations": [
+        "Dhaka",
+        "Chittagong"
+      ],
+      "careerLevel": "Mid Level",
+      "linkedinUrl": "https://linkedin.com",
+      "behanceUrl": "",
+      "dribbbleUrl": "",
+      "languagesKnown": [
+        "English",
+        "Bengali"
+      ],
+      "englishProficiency": "Fluent",
+      "nidNumber": "1234567890",
+      "nidVerified": true,
+      "profileCompletion": 85,
+      "cvVisibility": "Public",
+      "educations": [],
+      "experiences": [],
+      "skillEntries": [],
+      "certificationList": [],
+      "trainings": [],
+      "projects": []
+    },
+    {
+      "id": "res-6",
+      "userId": "6",
+      "summary": "Expert in Node.js, Python, and cloud infrastructure. Passionate about building scalable backends and clean frontend interfaces.",
+      "education": "B.Sc in Computer Science",
+      "experience": "5 years of software development",
+      "certifications": "AWS Certified Solutions Architect",
+      "githubLink": "https://github.com",
+      "portfolioLink": "https://portfolio.com",
+      "fatherName": "Father Name",
+      "motherName": "Mother Name",
+      "gender": "Male",
+      "dateOfBirth": "1995-05-15",
+      "nationality": "Bangladeshi",
+      "religion": "Islam",
+      "maritalStatus": "Single",
+      "bloodGroup": "O+",
+      "division": "Rajshahi",
+      "district": "Rajshahi",
+      "upazila": "Main Town",
+      "postCode": "1000",
+      "presentAddress": "Uposhohor, Rajshahi",
+      "permanentAddress": "Uposhohor, Rajshahi",
+      "careerObjective": "To work in a challenging environment where I can utilize my skills.",
+      "careerSummary": "Professional with experience in web and mobile development.",
+      "resumeHeadline": "Full Stack Web Developer & Open Source Contributor",
+      "presentSalary": 40000,
+      "expectedSalary": 60000,
+      "availableFor": "Full-time",
+      "preferredJobCategories": [
+        "Software Development",
+        "Web Development"
+      ],
+      "preferredLocations": [
+        "Dhaka",
+        "Chittagong"
+      ],
+      "careerLevel": "Mid Level",
+      "linkedinUrl": "https://linkedin.com",
+      "behanceUrl": "",
+      "dribbbleUrl": "",
+      "languagesKnown": [
+        "English",
+        "Bengali"
+      ],
+      "englishProficiency": "Fluent",
+      "nidNumber": "1234567890",
+      "nidVerified": true,
+      "profileCompletion": 85,
+      "cvVisibility": "Public",
+      "educations": [],
+      "experiences": [],
+      "skillEntries": [],
+      "certificationList": [],
+      "trainings": [],
+      "projects": []
+    },
+    {
+      "userId": "1",
+      "summary": "",
+      "education": "",
+      "experience": "",
+      "certifications": "",
+      "resumeHeadline": "ffgdfgg",
+      "careerObjective": "fdfhzjggd",
+      "fatherName": "fdhdfhdfh",
+      "motherName": "fhfhddfh",
+      "gender": "Male",
+      "dateOfBirth": "2026-04-29",
+      "nationality": "Bangladeshi",
+      "religion": "Islam",
+      "maritalStatus": "Single",
+      "bloodGroup": "A+",
+      "division": "Dhaka",
+      "district": "Rajbari",
+      "upazila": "fhh",
+      "postCode": "34",
+      "presentAddress": "gghfgghgh",
+      "permanentAddress": "hfhghghdfhxdfh",
+      "careerSummary": "",
+      "careerLevel": "",
+      "presentSalary": 0,
+      "expectedSalary": 0,
+      "availableFor": "",
+      "preferredJobCategories": [],
+      "preferredLocations": [],
+      "englishProficiency": "",
+      "languagesKnown": [],
+      "linkedinUrl": "",
+      "githubLink": "",
+      "portfolioLink": "",
+      "behanceUrl": "",
+      "dribbbleUrl": "",
+      "cvVisibility": "Public",
+      "nidNumber": "54454646",
+      "nidVerified": false,
+      "educations": [],
+      "experiences": [],
+      "skillEntries": [],
+      "certificationList": [],
+      "trainings": [],
+      "projects": [],
+      "profileCompletion": 44,
+      "id": "7q3ixMLLgKQ"
+    }
+  ],
+  "wallets": [
+    {
+      "id": "wall-1",
+      "userId": "1",
+      "balance": 3255
+    },
+    {
+      "id": "wall-2",
+      "userId": "2",
+      "balance": 3521
+    },
+    {
+      "id": "wall-3",
+      "userId": "3",
+      "balance": 4492
+    },
+    {
+      "id": "wall-4",
+      "userId": "4",
+      "balance": 2191
+    },
+    {
+      "id": "wall-5",
+      "userId": "5",
+      "balance": 2293
+    },
+    {
+      "id": "wall-6",
+      "userId": "6",
+      "balance": 4982
+    }
+  ],
+  "chats": [],
+  "messages": [],
+  "payments": [],
+  "transactions": [],
+  "ratings": [],
+  "reviews": [],
+  "reports": [],
+  "disputes": [],
+  "hiringPipeline": [],
+  "interviewRounds": [],
+  "locations": [
+    {
+      "id": "l1",
+      "name": "Dhaka"
+    },
+    {
+      "id": "l2",
+      "name": "Chittagong"
+    },
+    {
+      "id": "l3",
+      "name": "Sylhet"
+    },
+    {
+      "id": "l4",
+      "name": "Rajshahi"
+    },
+    {
+      "id": "l5",
+      "name": "Khulna"
+    },
+    {
+      "id": "l6",
+      "name": "Barisal"
+    },
+    {
+      "id": "l7",
+      "name": "Rangpur"
+    },
+    {
+      "id": "l8",
+      "name": "Mymensingh"
+    }
+  ],
+  "analyticsDaily": [],
+  "applicationStatusHistory": [],
+  "badges": [],
+  "disputeEvidence": [],
+  "jobAlertNotifications": [],
+  "jobAlerts": [],
+  "jobShortlists": [],
+  "jobSkills": [],
+  "orderDeliveries": [],
+  "orderRevisions": [],
+  "orderStatusHistory": [],
+  "passwordResets": [],
+  "paymentMethods": [],
+  "platformEarnings": [],
+  "refunds": [],
+  "searchHistory": [],
+  "transactionLogs": [],
+  "userBadges": [],
+  "userLevels": [],
+  "userReputations": [],
+  "userSessions": [],
+  "userSkills": [],
+  "userVerifications": [],
+  "withdrawals": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}

@@ -1,0 +1,332 @@
+<div class="d-flex">
+    <app-sidebar></app-sidebar>
+
+    <div class="main-content">
+
+        <!-- Loading -->
+        <div *ngIf="loading" class="text-center py-5">
+            <div class="spinner-border text-primary"></div>
+        </div>
+
+        <div *ngIf="!loading">
+
+            <!-- Welcome header -->
+            <div class="welcome-banner mb-4 shadow-sm border-0">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="avatar-wrap">
+                        <img [src]="currentUser?.profileImage || 'https://i.pravatar.cc/56'" class="rounded-circle border border-white border-3"
+                            width="56" height="56" style="object-fit:cover"
+                            onerror="this.src='https://i.pravatar.cc/56'">
+                        <div class="online-indicator"></div>
+                    </div>
+                    <div>
+                        <h4 class="fw-bold mb-0 text-white">
+                            Welcome back, {{ currentUser?.name }}!
+                        </h4>
+                        <div class="text-white opacity-75 small d-flex align-items-center gap-2">
+                            <span class="badge bg-white text-primary rounded-pill px-3">
+                                {{ currentUser?.role | titlecase }}
+                            </span>
+                            <span><i class="bi bi-geo-alt me-1"></i>{{ currentUser?.city }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="row g-4 mb-4">
+            <div class="col-md-3">
+                <div class="dash-card text-center p-4">
+                    <div class="stat-icon bg-light-primary text-primary mb-3 mx-auto">
+                        <i class="bi {{ isCompany ? 'bi-briefcase' : 'bi-send' }}"></i>
+                    </div>
+                    <h3 class="fw-bold mb-1">{{ isCompany ? (empStats?.activeJobs || 0) : stats.applied }}</h3>
+                    <div class="text-muted small">{{ isCompany ? 'Jobs Posted' : 'Applications' }}</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="dash-card text-center p-4">
+                    <div class="stat-icon bg-light-success text-success mb-3 mx-auto">
+                        <i class="bi bi-box-seize"></i>
+                    </div>
+                    <h3 class="fw-bold mb-1">{{ stats.activeOrders }}</h3>
+                    <div class="text-muted small">Active Orders</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="dash-card text-center p-4">
+                    <div class="stat-icon bg-light-warning text-warning mb-3 mx-auto">
+                        <i class="bi bi-star"></i>
+                    </div>
+                    <h3 class="fw-bold mb-1">{{ isCompany ? (empStats?.hired || 0) : (freelancerStats?.averageRating || 0) }}</h3>
+                    <div class="text-muted small">{{ isCompany ? 'Total Hired' : 'Rating' }}</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="dash-card text-center p-4">
+                    <div class="stat-icon bg-light-info text-info mb-3 mx-auto">
+                        <i class="bi bi-bell"></i>
+                    </div>
+                    <h3 class="fw-bold mb-1">{{ stats.unread }}</h3>
+                    <div class="text-muted small">New Notifications</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="mb-4">
+            <h6 class="fw-bold mb-3">Quick Actions</h6>
+            <div class="d-flex flex-wrap gap-3">
+                <a *ngFor="let action of filteredQuickActions" [routerLink]="action.route" 
+                   class="btn {{ action.color }} d-inline-flex align-items-center gap-2 px-4 py-2 rounded-3 shadow-sm">
+                    <i class="bi {{ action.icon }}"></i>
+                    {{ action.label }}
+                </a>
+            </div>
+        </div>
+
+
+            <!-- Profile Completion Banner -->
+            <div *ngIf="jsStats && jsStats.profileCompletion < 80" class="profile-banner mb-4">
+                <div class="d-flex align-items-center gap-3">
+                    <i class="bi bi-person-check-fill fs-3 text-warning"></i>
+                    <div class="flex-grow-1">
+                        <div class="fw-semibold text-white mb-1">
+                            Complete your profile — {{ jsStats.profileCompletion }}% done
+                        </div>
+                        <div class="progress" style="height: 6px;">
+                            <div class="progress-bar bg-warning" [style.width]="jsStats.profileCompletion + '%'"></div>
+                        </div>
+                    </div>
+                    <a routerLink="/dashboard/profile" class="btn btn-warning btn-sm fw-semibold">
+                        Complete Now
+                    </a>
+                </div>
+            </div>
+
+            <!-- Extended Stats Row -->
+            <div class="row g-3 mb-4" *ngIf="jsStats">
+                <div class="col-6 col-lg-3">
+                    <div class="ext-stat-card border-primary">
+                        <div class="ext-stat-icon bg-primary-subtle text-primary">
+                            <i class="bi bi-eye"></i>
+                        </div>
+                        <div class="ext-stat-value">{{ jsStats.profileViews }}</div>
+                        <div class="ext-stat-label">Profile Views</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="ext-stat-card border-success">
+                        <div class="ext-stat-icon bg-success-subtle text-success">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        <div class="ext-stat-value">{{ jsStats.interviewInvitations }}</div>
+                        <div class="ext-stat-label">Interviews</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="ext-stat-card border-warning">
+                        <div class="ext-stat-icon bg-warning-subtle text-warning">
+                            <i class="bi bi-bookmark-star"></i>
+                        </div>
+                        <div class="ext-stat-value">{{ jsStats.savedJobs }}</div>
+                        <div class="ext-stat-label">Saved Jobs</div>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <div class="ext-stat-card border-info">
+                        <div class="ext-stat-icon bg-info-subtle text-info">
+                            <i class="bi bi-graph-up"></i>
+                        </div>
+                        <div class="ext-stat-value">{{ jsStats.recommendedJobsCount }}</div>
+                        <div class="ext-stat-label">Recommended</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Status Breakdown -->
+            <div class="dash-card mb-4" *ngIf="jsStats?.applicationsByStatus?.length">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="fw-bold mb-0">Application Status Breakdown</h6>
+                    <a routerLink="/dashboard/jobs" class="btn btn-link btn-sm p-0">View all</a>
+                </div>
+                <div class="row g-2">
+                    <div class="col-4" *ngFor="let item of jsStats!.applicationsByStatus">
+                        <div class="status-breakdown-card">
+                            <div class="sbc-count">{{ item.count }}</div>
+                            <div class="sbc-label">{{ item.status | titlecase }}</div>
+                            <div class="sbc-bar">
+                                <div class="sbc-fill" [style.width]="(item.count / jsStats!.appliedJobs * 100) + '%'"
+                                    [class.bg-warning]="item.status === 'pending'"
+                                    [class.bg-success]="item.status === 'shortlisted'"
+                                    [class.bg-danger]="item.status === 'rejected'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Freelancer Revenue Chart -->
+            <div class="dash-card mb-4" *ngIf="freelancerStats">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div>
+                        <h6 class="fw-bold mb-0">Weekly Revenue</h6>
+                        <small class="text-muted">Last 7 days</small>
+                    </div>
+                    <div class="text-end">
+                        <div class="fw-bold text-success">৳{{ freelancerStats.monthlyEarnings | number }}</div>
+                        <small class="text-muted">This month</small>
+                    </div>
+                </div>
+                <div class="revenue-chart">
+                    <div *ngFor="let val of freelancerStats.weeklyEarnings; let i = index" class="rev-bar-wrap">
+                        <div class="rev-bar-value" *ngIf="val">৳{{ val | number:'1.0-0' }}</div>
+                        <div class="rev-bar" [style.height]="getBarHeight(val)"></div>
+                        <div class="rev-bar-day">
+                            {{ ['M','T','W','T','F','S','S'][i] }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Freelancer Performance -->
+            <div class="row g-3 mb-4" *ngIf="freelancerStats">
+                <div class="col-md-4">
+                    <div class="perf-card">
+                        <div class="perf-icon text-success"><i class="bi bi-check-circle-fill"></i></div>
+                        <div class="perf-value">{{ freelancerStats.completionRate }}%</div>
+                        <div class="perf-label">Completion Rate</div>
+                        <div class="progress mt-2" style="height: 4px;">
+                            <div class="progress-bar bg-success" [style.width]="freelancerStats.completionRate + '%'">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="perf-card">
+                        <div class="perf-icon text-primary"><i class="bi bi-chat-dots-fill"></i></div>
+                        <div class="perf-value">{{ freelancerStats.responseRate }}%</div>
+                        <div class="perf-label">Response Rate</div>
+                        <div class="progress mt-2" style="height: 4px;">
+                            <div class="progress-bar bg-primary" [style.width]="freelancerStats.responseRate + '%'">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="perf-card">
+                        <div class="perf-icon text-warning"><i class="bi bi-star-fill"></i></div>
+                        <div class="perf-value">{{ freelancerStats.averageRating }}</div>
+                        <div class="perf-label">Average Rating</div>
+                        <div class="progress mt-2" style="height: 4px;">
+                            <div class="progress-bar bg-warning"
+                                [style.width]="(freelancerStats.averageRating / 5 * 100) + '%'"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Recent Applications -->
+                <div class="col-lg-6">
+                    <div class="dash-card h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="fw-bold mb-0">Recent Applications</h6>
+                            <a routerLink="/dashboard/jobs" class="btn btn-link btn-sm p-0">View all</a>
+                        </div>
+
+                        <div *ngIf="applications.length === 0" class="text-center py-3">
+                            <i class="bi bi-briefcase text-muted" style="font-size: 32px;"></i>
+                            <p class="text-muted small mt-2">No applications yet</p>
+                            <a routerLink="/jobs" class="btn btn-primary btn-sm">Browse Jobs</a>
+                        </div>
+
+                        <div *ngFor="let app of applications" class="app-item clickable-item" routerLink="/dashboard/jobs">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-semibold small">Job Application</div>
+                                    <div class="text-muted" style="font-size: 11px;">
+                                        {{ app.appliedAt | date:'dd MMM yyyy' }}
+                                    </div>
+                                </div>
+                                <span class="badge {{ getStatusClass(app.status) }}">
+                                    {{ app.status }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders -->
+                <div class="col-lg-6">
+                    <div class="dash-card h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="fw-bold mb-0">Recent Orders</h6>
+                            <a routerLink="/dashboard/orders" class="btn btn-link btn-sm p-0">View all</a>
+                        </div>
+
+                        <div *ngIf="orders.length === 0" class="text-center py-3">
+                            <i class="bi bi-box text-muted" style="font-size: 32px;"></i>
+                            <p class="text-muted small mt-2">No orders yet</p>
+                            <a routerLink="/gigs" class="btn btn-success btn-sm">Browse Gigs</a>
+                        </div>
+
+                        <div *ngFor="let order of orders" class="app-item clickable-item" routerLink="/dashboard/orders">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <div class="fw-semibold small">Order #{{ (order.id + '').slice(0,8) }}</div>
+                                    <div class="text-muted" style="font-size: 11px;">
+                                        ৳{{ order.totalAmount | number }} •
+                                        {{ order.createdAt | date:'dd MMM' }}
+                                    </div>
+                                </div>
+                                <span class="badge {{ getStatusClass(order.status) }}">
+                                    {{ order.status }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications -->
+                <div class="col-12">
+                    <div class="dash-card">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6 class="fw-bold mb-0">
+                                Recent Notifications
+                                <span *ngIf="stats.unread > 0" class="badge bg-danger">{{ stats.unread
+                                    }}</span>
+                            </h6>
+                            <a routerLink="/dashboard/notifications" class="btn btn-link btn-sm p-0">View all</a>
+                        </div>
+
+                        <div *ngIf="notifications.length === 0" class="text-center py-3">
+                            <i class="bi bi-bell text-muted" style="font-size: 32px;"></i>
+                            <p class="text-muted small mt-2">No notifications</p>
+                        </div>
+
+                        <div *ngFor="let notif of notifications" class="notif-item"
+                            [class.notif-unread]="!notif.isRead">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="notif-icon-wrap">
+                                    <i class="bi {{ getNotifIcon(notif.type) }}"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <div class="small fw-semibold">{{ notif.message }}</div>
+                                    <div class="text-muted" style="font-size: 11px;">
+                                        {{ notif.type | titlecase }}
+                                    </div>
+                                </div>
+                                <div *ngIf="!notif.isRead" class="unread-dot"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

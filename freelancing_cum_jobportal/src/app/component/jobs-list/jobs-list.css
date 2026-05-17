@@ -1,0 +1,267 @@
+/* ── Page Header ── */
+.page-header {
+    background: linear-gradient(135deg, #1E4D8C, #2E75B6);
+    padding: 28px 0;
+    color: white;
+}
+
+.header-search {
+    width: 100%;
+    max-width: 480px;
+}
+
+.header-search .form-control {
+    border-radius: 10px 0 0 10px;
+    padding: 10px 16px;
+    font-size: 14px;
+}
+
+/* ── Filter Card ── */
+.filter-card {
+    background: white;
+    border-radius: 14px;
+    padding: 18px;
+    border: 1.5px solid #e9ecef;
+    position: sticky;
+    top: 80px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.filter-group {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.filter-group:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.filter-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6c757d;
+    margin-bottom: 8px;
+}
+
+/* ── Quick Filter Buttons ── */
+.quick-filter-btn {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1.5px solid #e9ecef;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: white;
+}
+
+.quick-filter-btn:hover {
+    border-color: #0d6efd;
+    background: #f0f7ff;
+}
+
+.quick-active {
+    border-color: #0d6efd;
+    background: #e7f1ff;
+}
+
+/* ── Toolbar ── */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1.5px solid #e9ecef;
+}
+
+/* ── View Toggle ── */
+.view-toggle {
+    display: flex;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 2px;
+    border: 1px solid #e9ecef;
+}
+
+.view-btn {
+    padding: 5px 10px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    color: #6c757d;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.15s;
+}
+
+.view-active {
+    background: white;
+    color: #0d6efd;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Job List Card ── */
+.job-list-card {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 20px;
+    border: 1.5px solid #e9ecef;
+    transition: all 0.2s;
+}
+
+.job-list-card:hover {
+    border-color: #0d6efd;
+    box-shadow: 0 4px 20px rgba(13, 110, 253, 0.1);
+    transform: translateY(-1px);
+}
+
+.job-featured {
+    border-left: 4px solid #ffc107 !important;
+}
+
+.job-urgent {
+    border-left: 4px solid #dc3545 !important;
+}
+
+/* ── Job Grid Card ── */
+.job-grid-card {
+    background: white;
+    border-radius: 14px;
+    padding: 18px;
+    border: 1.5px solid #e9ecef;
+    transition: all 0.2s;
+    height: 100%;
+}
+
+.job-grid-card:hover {
+    border-color: #0d6efd;
+    box-shadow: 0 4px 20px rgba(13, 110, 253, 0.1);
+    transform: translateY(-2px);
+}
+
+/* ── Logo ── */
+.logo-wrap {
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.company-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid #e9ecef;
+}
+
+.verified-dot {
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    font-size: 14px;
+    color: #198754;
+    background: white;
+    border-radius: 50%;
+    line-height: 1;
+}
+
+/* ── Job Title ── */
+.job-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1E4D8C;
+    transition: color 0.15s;
+}
+
+.job-title:hover {
+    color: #0d6efd;
+}
+
+.job-title-sm {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1E4D8C;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.job-title-sm:hover {
+    color: #0d6efd;
+}
+
+/* ── Meta Chips ── */
+.meta-chip {
+    font-size: 12px;
+    color: #6c757d;
+    background: #f8f9fa;
+    padding: 3px 10px;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.meta-badge {
+    font-size: 11px;
+    padding: 3px 8px;
+}
+
+.badge-xs {
+    font-size: 10px;
+    padding: 2px 7px;
+}
+
+/* ── Skill Tags ── */
+.skill-tag {
+    font-size: 11px;
+    background: #e7f1ff;
+    color: #0d6efd;
+    padding: 2px 9px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+/* ── Salary Row ── */
+.salary-row {
+    display: flex;
+    align-items: center;
+}
+
+/* ── Empty State ── */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 14px;
+    border: 2px dashed #dee2e6;
+}
+
+.empty-state i {
+    font-size: 48px;
+    color: #dee2e6;
+    display: block;
+}
+
+/* ── Scrollbar for filter ── */
+.filter-card::-webkit-scrollbar {
+    width: 4px;
+}
+
+.filter-card::-webkit-scrollbar-thumb {
+    background: #e9ecef;
+    border-radius: 4px;
+}
+
+/* ── Pagination ── */
+.page-link {
+    cursor: pointer;
+}

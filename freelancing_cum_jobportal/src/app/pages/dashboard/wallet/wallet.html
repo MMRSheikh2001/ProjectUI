@@ -1,0 +1,222 @@
+<div class="d-flex">
+    <app-sidebar></app-sidebar>
+
+    <div class="main-content">
+        <h4 class="fw-bold mb-4">Wallet</h4>
+
+        <div *ngIf="loading" class="text-center py-5">
+            <div class="spinner-border text-primary"></div>
+        </div>
+
+        <div *ngIf="!loading">
+
+            <!-- Balance Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-md-3">
+                    <div class="balance-card balance-main">
+                        <div class="balance-label">Available Balance</div>
+                        <div class="balance-amount">৳{{ wallet?.balance | number }}</div>
+                        <button class="btn btn-warning btn-sm mt-3 fw-bold" (click)="showWithdrawModal = true">
+                            <i class="bi bi-arrow-up-circle me-1"></i>Withdraw
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="balance-card balance-green">
+                        <div class="balance-label">Total Earned</div>
+                        <div class="balance-amount">৳{{ getTotalEarned() | number }}</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="balance-card balance-amber">
+                        <div class="balance-label">Total Withdrawn</div>
+                        <div class="balance-amount">৳{{ getTotalWithdrawn() | number }}</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="balance-card balance-gray">
+                        <div class="balance-label">Payment Methods</div>
+                        <div class="balance-amount">{{ paymentMethods.length }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <ul class="nav nav-tabs mb-4">
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="activeTab === 'transactions'"
+                        (click)="activeTab = 'transactions'" style="cursor:pointer">
+                        Transactions
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="activeTab === 'withdrawals'" (click)="activeTab = 'withdrawals'"
+                        style="cursor:pointer">
+                        Withdrawals
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [class.active]="activeTab === 'methods'" (click)="activeTab = 'methods'"
+                        style="cursor:pointer">
+                        Payment Methods
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Transactions Tab -->
+            <div *ngIf="activeTab === 'transactions'" class="dash-card">
+                <div *ngIf="transactions.length === 0" class="text-center py-4">
+                    <i class="bi bi-receipt text-muted" style="font-size: 40px;"></i>
+                    <p class="text-muted mt-2">No transactions yet</p>
+                </div>
+                <div class="table-responsive" *ngIf="transactions.length > 0">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Type</th>
+                                <th>Amount</th>
+                                <th>Platform Fee</th>
+                                <th>Net Amount</th>
+                                <th>Hash (short)</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let t of transactions">
+                                <td>
+                                    <span class="badge" [class.bg-success]="t.type === 'credit'"
+                                        [class.bg-danger]="t.type === 'debit'">
+                                        <i class="bi me-1" [class.bi-arrow-down-circle]="t.type === 'credit'"
+                                            [class.bi-arrow-up-circle]="t.type === 'debit'"></i>
+                                        {{ t.type | titlecase }}
+                                    </span>
+                                </td>
+                                <td class="fw-semibold" [class.text-success]="t.type === 'credit'"
+                                    [class.text-danger]="t.type === 'debit'">
+                                    {{ t.type === 'credit' ? '+' : '-' }}৳{{ t.amount | number }}
+                                </td>
+                                <td class="text-muted small">৳{{ t.platformFee | number }}</td>
+                                <td class="fw-semibold">৳{{ t.freelancerAmount | number }}</td>
+                                <td>
+                                    <code class="text-muted" style="font-size: 10px;">
+                    {{ (t.currentHash + '').slice(0,10) }}...
+                  </code>
+                                </td>
+                                <td class="text-muted small">{{ t.createdAt | date:'dd MMM' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Withdrawals Tab -->
+            <div *ngIf="activeTab === 'withdrawals'" class="dash-card">
+                <div *ngIf="withdrawals.length === 0" class="text-center py-4">
+                    <i class="bi bi-bank text-muted" style="font-size: 40px;"></i>
+                    <p class="text-muted mt-2">No withdrawals yet</p>
+                </div>
+                <div class="table-responsive" *ngIf="withdrawals.length > 0">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Amount</th>
+                                <th>Method</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let w of withdrawals">
+                                <td class="fw-semibold">৳{{ w.amount | number }}</td>
+                                <td>
+                                    <span class="badge bg-light text-dark">
+                                        <i class="bi me-1" [class.bi-bank]="w.method === 'bank'"
+                                            [class.bi-phone]="w.method === 'mobile'"></i>
+                                        {{ w.method | titlecase }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge {{ getWithdrawalStatusClass(w.status) }}">
+                                        {{ w.status }}
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Payment Methods Tab -->
+            <div *ngIf="activeTab === 'methods'" class="dash-card">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="fw-bold mb-0">Saved Payment Methods</h6>
+                    <button class="btn btn-outline-primary btn-sm">
+                        <i class="bi bi-plus me-1"></i>Add New
+                    </button>
+                </div>
+                <div *ngIf="paymentMethods.length === 0" class="text-center py-4">
+                    <i class="bi bi-credit-card text-muted" style="font-size: 40px;"></i>
+                    <p class="text-muted mt-2">No payment methods added</p>
+                </div>
+                <div *ngFor="let method of paymentMethods" class="method-item">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="method-icon">
+                            <i class="bi" [class.bi-credit-card]="method.type === 'card'"
+                                [class.bi-bank]="method.type === 'bank'"
+                                [class.bi-phone]="method.type === 'mobile'"></i>
+                        </div>
+                        <div>
+                            <div class="fw-semibold small">{{ method.type | titlecase }}</div>
+                            <div class="text-muted small">{{ method.maskedDetails }}</div>
+                        </div>
+                        <span class="badge bg-success ms-auto">Active</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Withdraw Modal -->
+<div *ngIf="showWithdrawModal" class="modal-overlay" (click)="showWithdrawModal = false">
+    <div class="modal-box" (click)="$event.stopPropagation()">
+
+        <div *ngIf="withdrawSuccess" class="text-center py-3">
+            <i class="bi bi-check-circle-fill text-success" style="font-size: 48px;"></i>
+            <p class="fw-semibold mt-3">Withdrawal Requested!</p>
+        </div>
+
+        <div *ngIf="!withdrawSuccess">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-bold mb-0">Withdraw Funds</h5>
+                <button class="btn-close" (click)="showWithdrawModal = false"></button>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Available Balance</label>
+                <div class="fw-bold fs-5 text-success">৳{{ wallet?.balance | number }}</div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label fw-semibold small">Amount (৳)</label>
+                <input type="number" class="form-control" [(ngModel)]="withdrawAmount" placeholder="Enter amount"
+                    [max]="wallet?.balance || 0">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-semibold small">Withdrawal Method</label>
+                <select class="form-select" [(ngModel)]="withdrawMethod">
+                    <option value="bank">Bank Transfer</option>
+                    <option value="mobile">Mobile Banking</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary w-100" (click)="submitWithdrawal()"
+                [disabled]="withdrawing || !withdrawAmount">
+                <span *ngIf="withdrawing" class="spinner-border spinner-border-sm me-2"></span>
+                {{ withdrawing ? 'Processing...' : 'Confirm Withdrawal' }}
+            </button>
+        </div>
+
+    </div>
+</div>

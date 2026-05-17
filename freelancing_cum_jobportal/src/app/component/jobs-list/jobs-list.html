@@ -1,0 +1,415 @@
+<app-navbar></app-navbar>
+
+<!-- Page Header -->
+<div class="page-header">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <div>
+                <h3 class="fw-bold mb-1">Browse Jobs</h3>
+                <p class="mb-0 opacity-75">
+                    {{ filteredJobs.length }} jobs found
+                    <span *ngIf="activeFilterCount > 0">
+                        with {{ activeFilterCount }} filter(s) active
+                    </span>
+                </p>
+            </div>
+            <!-- Search bar in header -->
+            <div class="header-search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search job title, skills, company..."
+                        [(ngModel)]="searchKeyword" (input)="applyFilters()" (keyup.enter)="applyFilters()">
+                    <button class="btn btn-warning fw-bold px-3" (click)="applyFilters()">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-4">
+    <div class="row g-4">
+
+        <!-- ═══════════════════════
+         FILTER SIDEBAR
+    ═══════════════════════ -->
+        <div class="col-lg-3">
+            <div class="filter-card">
+
+                <!-- Header -->
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h6 class="fw-bold mb-0">
+                        <i class="bi bi-funnel me-2 text-primary"></i>Filters
+                    </h6>
+                    <button *ngIf="activeFilterCount > 0" class="btn btn-link btn-sm p-0 text-danger"
+                        (click)="clearFilters()">
+                        Clear All ({{ activeFilterCount }})
+                    </button>
+                </div>
+
+                <!-- Location -->
+                <div class="filter-group">
+                    <label class="filter-label">Location</label>
+                    <select class="form-select form-select-sm" [(ngModel)]="selectedCity" (change)="applyFilters()">
+                        <option value="">All Cities</option>
+                        <option *ngFor="let city of cities" [value]="city">{{ city }}</option>
+                    </select>
+                </div>
+
+                <!-- Job Type -->
+                <div class="filter-group">
+                    <label class="filter-label">Job Type</label>
+                    <div *ngFor="let type of jobTypes" class="form-check">
+                        <input class="form-check-input" type="radio" [value]="type" [(ngModel)]="selectedType"
+                            (change)="applyFilters()" [id]="'type-' + type">
+                        <label class="form-check-label small" [for]="'type-' + type">
+                            {{ type | titlecase }}
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="" [(ngModel)]="selectedType"
+                            (change)="applyFilters()" id="type-all">
+                        <label class="form-check-label small" for="type-all">All Types</label>
+                    </div>
+                </div>
+
+                <!-- Workplace Type -->
+                <div class="filter-group">
+                    <label class="filter-label">Workplace</label>
+                    <div *ngFor="let wp of workplaceTypes" class="form-check">
+                        <input class="form-check-input" type="radio" [value]="wp" [(ngModel)]="selectedWorkplace"
+                            (change)="applyFilters()" [id]="'wp-' + wp">
+                        <label class="form-check-label small" [for]="'wp-' + wp">
+                            <span class="badge me-1" [ngClass]="getWorkplaceBadge(wp)" style="font-size: 10px;">{{ wp
+                                }}</span>
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" value="" [(ngModel)]="selectedWorkplace"
+                            (change)="applyFilters()" id="wp-all">
+                        <label class="form-check-label small" for="wp-all">All</label>
+                    </div>
+                </div>
+
+                <!-- Industry -->
+                <div class="filter-group">
+                    <label class="filter-label">Industry</label>
+                    <select class="form-select form-select-sm" [(ngModel)]="selectedIndustry" (change)="applyFilters()">
+                        <option value="">All Industries</option>
+                        <option *ngFor="let ind of industries" [value]="ind">{{ ind }}</option>
+                    </select>
+                </div>
+
+                <!-- Salary Range -->
+                <div class="filter-group">
+                    <label class="filter-label">Salary Range (৳/month)</label>
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <input type="number" class="form-control form-control-sm" placeholder="Min"
+                                [(ngModel)]="salaryMin" (change)="applyFilters()">
+                        </div>
+                        <div class="col-6">
+                            <input type="number" class="form-control form-control-sm" placeholder="Max"
+                                [(ngModel)]="salaryMax" (change)="applyFilters()">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Filters -->
+                <div class="filter-group">
+                    <label class="filter-label">Quick Filters</label>
+
+                    <div class="quick-filter-btn" [class.quick-active]="showUrgent"
+                        (click)="showUrgent = !showUrgent; applyFilters()">
+                        <i class="bi bi-lightning-fill text-danger me-2"></i>
+                        <span class="small">Urgent Jobs</span>
+                        <i class="bi ms-auto" [class.bi-toggle-on]="showUrgent" [class.bi-toggle-off]="!showUrgent"
+                            [class.text-danger]="showUrgent" [class.text-muted]="!showUrgent"></i>
+                    </div>
+
+                    <div class="quick-filter-btn mt-2" [class.quick-active]="showFeatured"
+                        (click)="showFeatured = !showFeatured; applyFilters()">
+                        <i class="bi bi-star-fill text-warning me-2"></i>
+                        <span class="small">Featured Jobs</span>
+                        <i class="bi ms-auto" [class.bi-toggle-on]="showFeatured" [class.bi-toggle-off]="!showFeatured"
+                            [class.text-warning]="showFeatured" [class.text-muted]="!showFeatured"></i>
+                    </div>
+
+                    <div class="quick-filter-btn mt-2" [class.quick-active]="showVerified"
+                        (click)="showVerified = !showVerified; applyFilters()">
+                        <i class="bi bi-patch-check-fill text-success me-2"></i>
+                        <span class="small">Verified Companies</span>
+                        <i class="bi ms-auto" [class.bi-toggle-on]="showVerified" [class.bi-toggle-off]="!showVerified"
+                            [class.text-success]="showVerified" [class.text-muted]="!showVerified"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ═══════════════════════
+         JOBS LIST
+    ═══════════════════════ -->
+        <div class="col-lg-9">
+
+            <!-- Toolbar -->
+            <div class="toolbar mb-3">
+                <span class="text-muted small">
+                    Showing <strong>{{ pagedJobs.length }}</strong>
+                    of <strong>{{ filteredJobs.length }}</strong> jobs
+                </span>
+
+                <div class="d-flex align-items-center gap-2">
+                    <!-- Sort -->
+                    <select class="form-select form-select-sm w-auto" [(ngModel)]="sortBy" (change)="applyFilters()">
+                        <option value="latest">Latest First</option>
+                        <option value="salary-high">Salary: High to Low</option>
+                        <option value="salary-low">Salary: Low to High</option>
+                        <option value="deadline">Deadline: Soonest</option>
+                    </select>
+
+                    <!-- View toggle -->
+                    <div class="view-toggle">
+                        <button class="view-btn" [class.view-active]="viewMode === 'list'" (click)="viewMode = 'list'"
+                            title="List view">
+                            <i class="bi bi-list-ul"></i>
+                        </button>
+                        <button class="view-btn" [class.view-active]="viewMode === 'grid'" (click)="viewMode = 'grid'"
+                            title="Grid view">
+                            <i class="bi bi-grid-3x3-gap"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading -->
+            <div *ngIf="loading" class="text-center py-5">
+                <div class="spinner-border text-primary"></div>
+                <p class="mt-2 text-muted small">Loading jobs...</p>
+            </div>
+
+            <!-- Error -->
+            <div *ngIf="error" class="alert alert-danger">
+                <i class="bi bi-exclamation-circle me-2"></i>{{ error }}
+            </div>
+
+            <!-- Empty State -->
+            <div *ngIf="!loading && filteredJobs.length === 0 && !error" class="empty-state">
+                <i class="bi bi-briefcase-x"></i>
+                <h6 class="mt-3">No jobs found</h6>
+                <p class="text-muted small">
+                    Try adjusting your filters or search keyword
+                </p>
+                <button class="btn btn-outline-primary btn-sm" (click)="clearFilters()">
+                    <i class="bi bi-x-circle me-1"></i>Clear All Filters
+                </button>
+            </div>
+
+            <!-- ── LIST VIEW ── -->
+            <div *ngIf="!loading && viewMode === 'list'">
+                <div class="mb-3" *ngFor="let job of pagedJobs">
+                    <div class="job-list-card" [class.job-featured]="job.isFeatured" [class.job-urgent]="job.isUrgent">
+
+                        <div class="row align-items-start g-0">
+
+                            <!-- Logo -->
+                            <div class="col-auto pe-3">
+                                <div class="logo-wrap">
+                            <img [src]="job.companyLogo || 'https://i.pravatar.cc/48'" class="company-logo"
+                                        onerror="this.src='https://i.pravatar.cc/48'">
+                                    <span *ngIf="job.companyInfo?.isVerified" class="verified-dot"
+                                        title="Verified Company">
+                                        <i class="bi bi-patch-check-fill"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Main Info -->
+                            <div class="col">
+
+                                <!-- Title row -->
+                                <div class="d-flex align-items-start gap-2 flex-wrap mb-1">
+                                    <a [routerLink]="['/details', 'job', job.id]"
+                                        class="job-title text-decoration-none">
+                                        {{ job.title }}
+                                    </a>
+                                    <span *ngIf="job.isUrgent" class="badge bg-danger badge-xs">
+                                        <i class="bi bi-lightning-fill me-1"></i>Urgent
+                                    </span>
+                                    <span *ngIf="job.isFeatured" class="badge bg-warning text-dark badge-xs">
+                                        <i class="bi bi-star-fill me-1"></i>Featured
+                                    </span>
+                                </div>
+
+                                <!-- Company -->
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <span class="text-muted small fw-semibold">{{ job.companyName }}</span>
+                                    <span *ngIf="job.companyInfo?.isVerified" class="text-success"
+                                        style="font-size: 12px;">
+                                        <i class="bi bi-patch-check-fill"></i> Verified
+                                    </span>
+                                    <span *ngIf="job.companyInfo?.industry" class="text-muted small">· {{
+                                        job.companyInfo?.industry }}</span>
+                                </div>
+
+                                <!-- Meta chips -->
+                                <div class="d-flex flex-wrap gap-2 mb-2">
+                                    <span class="meta-chip">
+                                        <i class="bi bi-geo-alt me-1"></i>{{ job.city }}, {{ job.area }}
+                                    </span>
+                                    <span class="badge {{ getJobTypeBadge(job.jobType) }} meta-badge">
+                                        {{ job.jobType | titlecase }}
+                                    </span>
+                                    <span *ngIf="job.workplaceType"
+                                        class="badge {{ getWorkplaceBadge(job.workplaceType) }} meta-badge">
+                                        {{ job.workplaceType | titlecase }}
+                                    </span>
+                                    <span class="meta-chip fw-semibold text-success">
+                                        <i class="bi bi-currency-exchange me-1"></i>
+                                        ৳{{ job.salaryMin | number }} – ৳{{ job.salaryMax | number }}
+                                        <span *ngIf="job.salaryNegotiable" class="fw-normal text-muted">(Nego.)</span>
+                                    </span>
+                                    <span class="meta-chip">
+                                        <i class="bi bi-briefcase me-1"></i>{{ job.experienceRequired }}
+                                    </span>
+                                </div>
+
+                                <!-- Skills -->
+                                <div class="d-flex flex-wrap gap-1 mb-2" *ngIf="job.requiredSkills.length">
+                                    <span *ngFor="let skill of job.requiredSkills.slice(0, 5)" class="skill-tag">{{
+                                        skill }}</span>
+                                    <span *ngIf="job.requiredSkills.length > 5" class="skill-tag text-muted">
+                                        +{{ job.requiredSkills.length - 5 }} more
+                                    </span>
+                                </div>
+
+                                <!-- Bottom row -->
+                                <div class="d-flex align-items-center gap-3 flex-wrap">
+                                    <span class="{{ getDeadlineClass(job.deadline) }}" style="font-size: 12px;">
+                                        <i class="bi bi-calendar-x me-1"></i>
+                                        Deadline: {{ job.deadline | date:'dd MMM yyyy' }}
+                                        ({{ getDaysLeft(job.deadline) }} days left)
+                                    </span>
+                                    <span class="text-muted" style="font-size: 12px;">
+                                        <i class="bi bi-eye me-1"></i>{{ job.viewCount | number }} views
+                                    </span>
+                                    <span class="text-muted" style="font-size: 12px;">
+                                        <i class="bi bi-send me-1"></i>{{ job.applicantsCount }} applied
+                                    </span>
+                                    <span *ngIf="job.vacancyCount > 0" class="text-primary" style="font-size: 12px;">
+                                        <i class="bi bi-people me-1"></i>{{ job.vacancyCount }} vacancies
+                                    </span>
+                                </div>
+
+                            </div>
+
+                            <!-- Actions -->
+                            <div class="col-auto ps-3 d-flex flex-column align-items-end gap-2">
+                                <div class="text-muted" style="font-size: 11px;">
+                                    {{ job.publishedDate | date:'dd MMM' }}
+                                </div>
+                                <a [routerLink]="['/details', 'job', job.id]" class="btn btn-primary btn-sm px-3">
+                                    Apply Now
+                                </a>
+                                <button class="btn btn-outline-secondary btn-sm">
+                                    <i class="bi bi-bookmark"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── GRID VIEW ── -->
+            <div *ngIf="!loading && viewMode === 'grid'" class="row g-3">
+                <div class="col-md-6" *ngFor="let job of pagedJobs">
+                    <div class="job-grid-card" [class.job-featured]="job.isFeatured" [class.job-urgent]="job.isUrgent">
+
+                        <!-- Header -->
+                        <div class="d-flex align-items-start gap-2 mb-3">
+                            <div class="logo-wrap">
+                                <img [src]="job.companyLogo || 'https://i.pravatar.cc/44'" class="company-logo"
+                                    onerror="this.src='https://i.pravatar.cc/44'">
+                                <span *ngIf="job.companyInfo?.isVerified" class="verified-dot">
+                                    <i class="bi bi-patch-check-fill"></i>
+                                </span>
+                            </div>
+                            <div class="flex-grow-1 overflow-hidden">
+                                <a [routerLink]="['/details', 'job', job.id]"
+                                    class="job-title-sm text-decoration-none d-block">
+                                    {{ job.title }}
+                                </a>
+                                <div class="text-muted small">{{ job.companyName }}</div>
+                            </div>
+                            <div class="d-flex flex-column gap-1">
+                                <span *ngIf="job.isUrgent" class="badge bg-danger badge-xs">Urgent</span>
+                                <span *ngIf="job.isFeatured" class="badge bg-warning text-dark badge-xs">Featured</span>
+                            </div>
+                        </div>
+
+                        <!-- Chips -->
+                        <div class="d-flex flex-wrap gap-1 mb-2">
+                            <span class="meta-chip small">
+                                <i class="bi bi-geo-alt me-1"></i>{{ job.city }}
+                            </span>
+                            <span class="badge {{ getJobTypeBadge(job.jobType) }} meta-badge">
+                                {{ job.jobType }}
+                            </span>
+                            <span *ngIf="job.workplaceType"
+                                class="badge {{ getWorkplaceBadge(job.workplaceType) }} meta-badge">
+                                {{ job.workplaceType }}
+                            </span>
+                        </div>
+
+                        <!-- Salary -->
+                        <div class="salary-row mb-2">
+                            <i class="bi bi-currency-exchange text-success me-1"></i>
+                            <span class="fw-semibold text-success small">
+                                ৳{{ job.salaryMin | number }} – ৳{{ job.salaryMax | number }}
+                            </span>
+                        </div>
+
+                        <!-- Skills -->
+                        <div class="d-flex flex-wrap gap-1 mb-3" *ngIf="job.requiredSkills.length">
+                            <span *ngFor="let skill of job.requiredSkills.slice(0, 3)" class="skill-tag">{{ skill
+                                }}</span>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="{{ getDeadlineClass(job.deadline) }}" style="font-size: 11px;">
+                                <i class="bi bi-calendar-x me-1"></i>
+                                {{ getDaysLeft(job.deadline) }} days left
+                            </span>
+                            <a [routerLink]="['/details', 'job', job.id]" class="btn btn-primary btn-sm">Apply</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <nav *ngIf="totalPages > 1" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" [class.disabled]="currentPage === 1">
+                        <a class="page-link" style="cursor:pointer" (click)="currentPage = currentPage - 1">
+                            <i class="bi bi-chevron-left"></i>
+                        </a>
+                    </li>
+                    <li *ngFor="let p of pages" class="page-item" [class.active]="p === currentPage">
+                        <a class="page-link" style="cursor:pointer" (click)="currentPage = p">{{ p }}</a>
+                    </li>
+                    <li class="page-item" [class.disabled]="currentPage === totalPages">
+                        <a class="page-link" style="cursor:pointer" (click)="currentPage = currentPage + 1">
+                            <i class="bi bi-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

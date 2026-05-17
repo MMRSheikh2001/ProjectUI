@@ -1,0 +1,147 @@
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.admin-sidebar {
+    width: 240px;
+    flex-shrink: 0;
+    background: #1a1a2e;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.admin-sidebar-header {
+    padding: 20px 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    font-size: 15px;
+}
+
+.admin-nav {
+    padding: 12px 8px;
+    flex: 1;
+}
+
+.admin-nav-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 13px;
+    text-decoration: none;
+    margin-bottom: 2px;
+    transition: all 0.15s;
+}
+
+.admin-nav-link:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+.admin-nav-link.active {
+    background: #0d6efd;
+    color: white;
+}
+
+.admin-nav-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 10px 4px;
+}
+
+.admin-main {
+    flex: 1;
+    background: #f4f6fa;
+}
+
+.admin-topbar {
+    background: white;
+    padding: 16px 24px;
+    border-bottom: 1.5px solid #e9ecef;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.admin-card {
+    background: white;
+    border-radius: 14px;
+    border: 1.5px solid #e9ecef;
+    overflow: hidden;
+}
+
+.tab-nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: 1.5px solid #e9ecef;
+    background: white;
+    color: #6c757d;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.tab-btn:hover {
+    border-color: #0d6efd;
+    color: #0d6efd;
+}
+
+.tab-btn.active {
+    background: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+    font-weight: 500;
+}
+
+.user-avatar-sm {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.btn-xs {
+    padding: 3px 8px;
+    font-size: 11px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 14px;
+    border: 2px dashed #dee2e6;
+}
+
+.empty-state i {
+    font-size: 36px;
+    color: #dee2e6;
+    display: block;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.confirm-modal {
+    background: white;
+    border-radius: 14px;
+    padding: 24px;
+    width: 320px;
+}

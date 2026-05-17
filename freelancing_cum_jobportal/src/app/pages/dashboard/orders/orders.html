@@ -1,0 +1,211 @@
+<div class="d-flex">
+    <app-sidebar></app-sidebar>
+
+    <div class="main-content">
+        <h4 class="fw-bold mb-4">My Orders</h4>
+
+        <div *ngIf="loading" class="text-center py-5">
+            <div class="spinner-border text-primary"></div>
+        </div>
+
+        <div *ngIf="!loading">
+
+            <!-- List view -->
+            <div *ngIf="activeTab === 'list'">
+
+                <!-- Filter -->
+                <div class="d-flex gap-2 mb-3">
+                    <select class="form-select form-select-sm w-auto" [(ngModel)]="filterStatus"
+                        (change)="applyFilter()">
+                        <option value="">All Statuses</option>
+                        <option *ngFor="let s of statusOptions.slice(1)" [value]="s">
+                            {{ s | titlecase }}
+                        </option>
+                    </select>
+                    <span class="text-muted small align-self-center">
+                        {{ filteredOrders.length }} orders
+                    </span>
+                </div>
+
+                <!-- Empty state -->
+                <div *ngIf="filteredOrders.length === 0" class="text-center py-5">
+                    <i class="bi bi-box text-muted" style="font-size: 48px;"></i>
+                    <p class="text-muted mt-3">No orders found</p>
+                </div>
+
+                <!-- Orders table -->
+                <div class="dash-card" *ngIf="filteredOrders.length > 0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Amount</th>
+                                    <th>Commission</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let order of filteredOrders">
+                                    <td>
+                                        <span class="fw-semibold text-primary">
+                                            #{{ (order.id + '').slice(0,8) }}
+                                        </span>
+                                    </td>
+                                    <td class="fw-semibold">৳{{ order.totalAmount | number }}</td>
+                                    <td class="text-muted small">৳{{ order.commissionAmount | number }}</td>
+                                    <td>
+                                        <span class="badge {{ getStatusClass(order.status) }}">
+                                            {{ order.status }}
+                                        </span>
+                                    </td>
+                                    <td class="text-muted small">
+                                        {{ order.createdAt | date:'dd MMM yyyy' }}
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-outline-primary btn-sm" (click)="viewDetails(order)">
+                                            View Details
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Detail view -->
+            <div *ngIf="activeTab === 'detail' && selectedOrder">
+
+                <button class="btn btn-link p-0 mb-3" (click)="activeTab = 'list'; selectedOrder = null">
+                    <i class="bi bi-arrow-left me-2"></i>Back to Orders
+                </button>
+
+                <div class="row g-4">
+
+                    <!-- Order info -->
+                    <div class="col-lg-8">
+                        <div class="dash-card mb-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h5 class="fw-bold mb-1">
+                                        Order #{{ (selectedOrder.id + '').slice(0,8) }}
+                                    </h5>
+                                    <span class="badge {{ getStatusClass(selectedOrder.status) }}">
+                                        {{ selectedOrder.status }}
+                                    </span>
+                                </div>
+                                <div class="text-end">
+                                    <div class="fw-bold fs-5 text-primary">
+                                        ৳{{ selectedOrder.totalAmount | number }}
+                                    </div>
+                                    <div class="text-muted small">
+                                        Commission: ৳{{ selectedOrder.commissionAmount | number }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Status timeline -->
+                            <div class="timeline-wrap">
+                                <div class="timeline-step"
+                                    *ngFor="let step of ['Pending','Active','Delivered','Completed']; let i = index"
+                                    [class.timeline-done]="getTimelineStep(selectedOrder.status) >= i">
+                                    <div class="timeline-dot">
+                                        <i class="bi bi-check" *ngIf="getTimelineStep(selectedOrder.status) > i"></i>
+                                        <span *ngIf="getTimelineStep(selectedOrder.status) <= i">{{ i+1 }}</span>
+                                    </div>
+                                    <div class="timeline-label">{{ step }}</div>
+                                    <div class="timeline-line" *ngIf="i < 3"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Deliveries -->
+                        <div class="dash-card mb-4">
+                            <h6 class="fw-bold mb-3">Delivery Files</h6>
+                            <div *ngIf="deliveries.length === 0" class="text-muted small">
+                                No deliveries yet
+                            </div>
+                            <div *ngFor="let d of deliveries" class="delivery-item">
+                                <div class="d-flex align-items-center gap-3">
+                                    <i class="bi bi-file-earmark-zip text-primary fs-4"></i>
+                                    <div>
+                                        <div class="fw-semibold small">Delivery File</div>
+                                        <div class="text-muted small">{{ d.message }}</div>
+                                        <div class="text-muted" style="font-size:11px">
+                                            {{ d.deliveredAt | date:'dd MMM yyyy' }}
+                                        </div>
+                                    </div>
+                                    <a [href]="d.fileUrl" class="btn btn-outline-primary btn-sm ms-auto">
+                                        <i class="bi bi-download me-1"></i>Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Revisions -->
+                        <div class="dash-card">
+                            <h6 class="fw-bold mb-3">Revision Requests</h6>
+                            <div *ngIf="revisions.length === 0" class="text-muted small">
+                                No revision requests
+                            </div>
+                            <div *ngFor="let r of revisions" class="revision-item">
+                                <i class="bi bi-arrow-clockwise text-warning me-2"></i>
+                                <div>
+                                    <div class="small fw-semibold">Revision Requested</div>
+                                    <div class="text-muted small">{{ r.message }}</div>
+                                    <div class="text-muted" style="font-size:11px">
+                                        {{ r.createdAt | date:'dd MMM yyyy' }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions sidebar -->
+                    <div class="col-lg-4">
+                        <div class="dash-card">
+                            <h6 class="fw-bold mb-3">Actions</h6>
+
+                            <div *ngIf="selectedOrder.status === 'delivered'">
+                                <p class="text-muted small mb-3">
+                                    The freelancer has delivered the work. Please review and take action.
+                                </p>
+                                <button class="btn btn-success w-100 mb-2" (click)="approveDelivery()">
+                                    <i class="bi bi-check-circle me-2"></i>Approve Delivery
+                                </button>
+                                <button class="btn btn-outline-warning w-100 mb-2">
+                                    <i class="bi bi-arrow-clockwise me-2"></i>Request Revision
+                                </button>
+                                <button class="btn btn-outline-danger w-100" (click)="raiseDispute()">
+                                    <i class="bi bi-flag me-2"></i>Raise Dispute
+                                </button>
+                            </div>
+
+                            <div *ngIf="selectedOrder.status === 'completed'" class="text-center py-3">
+                                <i class="bi bi-check-circle-fill text-success" style="font-size: 40px;"></i>
+                                <p class="text-success fw-semibold mt-2 mb-0">Order Completed!</p>
+                            </div>
+
+                            <div *ngIf="selectedOrder.status === 'active'" class="text-center py-3 text-muted">
+                                <i class="bi bi-hourglass-split fs-3 mb-2 d-block"></i>
+                                Waiting for delivery...
+                            </div>
+
+                            <div *ngIf="selectedOrder.status === 'disputed'" class="text-center py-3">
+                                <i class="bi bi-shield-exclamation text-danger fs-3 mb-2 d-block"></i>
+                                <p class="text-danger small mb-0">Dispute under review by Admin</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

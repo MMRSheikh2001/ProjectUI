@@ -1,0 +1,203 @@
+<div class="admin-layout">
+
+    <!-- Admin Sidebar -->
+    <div class="admin-sidebar">
+        <div class="admin-sidebar-header">
+            <i class="bi bi-shield-fill-check text-warning me-2"></i>
+            <span class="fw-bold text-white">Admin Panel</span>
+        </div>
+        <nav class="admin-nav">
+            <a routerLink="/admin" class="admin-nav-link active">
+                <i class="bi bi-speedometer2 me-2"></i>Dashboard
+            </a>
+            <a routerLink="/admin/management" class="admin-nav-link">
+                <i class="bi bi-people me-2"></i>Management
+            </a>
+            <a routerLink="/admin/analytics" class="admin-nav-link">
+                <i class="bi bi-graph-up me-2"></i>Analytics
+            </a>
+            <div class="admin-nav-divider"></div>
+            <a routerLink="/" class="admin-nav-link">
+                <i class="bi bi-house me-2"></i>View Site
+            </a>
+        </nav>
+        <div class="admin-sidebar-footer">
+            <div class="text-white-50 small">
+                {{ currentAdmin?.name }}<br>
+                <span class="badge bg-warning text-dark">Super Admin</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="admin-main">
+
+        <div class="admin-topbar">
+            <h4 class="fw-bold mb-0">Admin Dashboard</h4>
+            <div class="text-muted small">
+                WorkBridge Control Panel · {{ currentAdmin?.email }}
+            </div>
+        </div>
+
+        <div *ngIf="loading" class="text-center py-5">
+            <div class="spinner-border text-primary"></div>
+        </div>
+
+        <div *ngIf="!loading" class="p-4">
+
+            <!-- KPI Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-md-4 col-xl-2">
+                    <div class="kpi-card kpi-blue">
+                        <i class="bi bi-people kpi-icon"></i>
+                        <div class="kpi-val">{{ totalUsers }}</div>
+                        <div class="kpi-lbl">Total Users</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <div class="kpi-card kpi-green">
+                        <i class="bi bi-briefcase kpi-icon"></i>
+                        <div class="kpi-val">{{ totalJobs }}</div>
+                        <div class="kpi-lbl">Total Jobs</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <div class="kpi-card kpi-purple">
+                        <i class="bi bi-grid kpi-icon"></i>
+                        <div class="kpi-val">{{ totalGigs }}</div>
+                        <div class="kpi-lbl">Total Gigs</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <div class="kpi-card kpi-amber">
+                        <i class="bi bi-box kpi-icon"></i>
+                        <div class="kpi-val">{{ totalOrders }}</div>
+                        <div class="kpi-lbl">Total Orders</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <div class="kpi-card kpi-teal">
+                        <i class="bi bi-cash-stack kpi-icon"></i>
+                        <div class="kpi-val">৳{{ totalRevenue | number }}</div>
+                        <div class="kpi-lbl">Revenue</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-xl-2">
+                    <div class="kpi-card kpi-red">
+                        <i class="bi bi-percent kpi-icon"></i>
+                        <div class="kpi-val">৳{{ totalCommission | number }}</div>
+                        <div class="kpi-lbl">Commission</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Revenue Chart (CSS) -->
+                <div class="col-lg-8">
+                    <div class="admin-card h-100">
+                        <div class="admin-card-header">
+                            <h6 class="fw-bold mb-0">
+                                <i class="bi bi-bar-chart-fill text-primary me-2"></i>
+                                Revenue — Last 7 Days
+                            </h6>
+                        </div>
+                        <div class="revenue-chart">
+                            <div *ngFor="let day of analytics" class="bar-col">
+                                <div class="bar-label-top">৳{{ day.revenue | number:'1.0-0' }}</div>
+                                <div class="bar-outer">
+                                    <div class="bar-fill" [style.height]="getBarWidth(day.revenue)"
+                                        [title]="'৳' + day.revenue"></div>
+                                </div>
+                                <div class="bar-date">{{ day.date | date:'dd MMM' }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- New Users -->
+                <div class="col-lg-4">
+                    <div class="admin-card h-100">
+                        <div class="admin-card-header">
+                            <h6 class="fw-bold mb-0">
+                                <i class="bi bi-person-plus text-success me-2"></i>
+                                Recent Users
+                            </h6>
+                            <a routerLink="/admin/management" class="btn btn-link btn-sm p-0">
+                                View all →
+                            </a>
+                        </div>
+                        <div *ngFor="let user of recentUsers" class="user-row">
+                            <img [src]="user.profileImage" class="user-avatar"
+                                onerror="this.src='https://i.pravatar.cc/36'">
+                            <div class="flex-grow-1 overflow-hidden">
+                                <div class="fw-semibold small text-truncate">{{ user.name }}</div>
+                                <div class="text-muted small">{{ user.city }}</div>
+                            </div>
+                            <span class="badge small" [class.bg-success]="user.status === 'active'"
+                                [class.bg-danger]="user.status === 'banned'"
+                                [class.bg-warning]="user.status === 'suspended'">
+                                {{ user.status }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Reports -->
+                <div class="col-lg-6">
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h6 class="fw-bold mb-0">
+                                <i class="bi bi-flag-fill text-danger me-2"></i>
+                                Recent Reports
+                            </h6>
+                            <a routerLink="/admin/management" class="btn btn-link btn-sm p-0">
+                                View all →
+                            </a>
+                        </div>
+                        <div *ngIf="recentReports.length === 0" class="text-muted small text-center py-3">
+                            No reports
+                        </div>
+                        <div *ngFor="let report of recentReports" class="report-row">
+                            <div class="flex-grow-1">
+                                <div class="small fw-semibold">Report #{{ (report.id + '').slice(0,8) }}</div>
+                                <div class="text-muted small">{{ (report.reason || '').slice(0,60) }}</div>
+                            </div>
+                            <span class="badge {{ getReportStatusClass(report.status) }}">
+                                {{ report.status | titlecase }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Disputes -->
+                <div class="col-lg-6">
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h6 class="fw-bold mb-0">
+                                <i class="bi bi-shield-exclamation text-warning me-2"></i>
+                                Recent Disputes
+                            </h6>
+                            <a routerLink="/admin/management" class="btn btn-link btn-sm p-0">
+                                View all →
+                            </a>
+                        </div>
+                        <div *ngIf="recentDisputes.length === 0" class="text-muted small text-center py-3">
+                            No disputes
+                        </div>
+                        <div *ngFor="let dispute of recentDisputes" class="report-row">
+                            <div class="flex-grow-1">
+                                <div class="small fw-semibold">Order #{{ (dispute.orderId + '').slice(0,8) }}</div>
+                                <div class="text-muted small">{{ (dispute.reason || '').slice(0,60) }}</div>
+                            </div>
+                            <span class="badge {{ getDisputeStatusClass(dispute.status) }}">
+                                {{ dispute.status | titlecase }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

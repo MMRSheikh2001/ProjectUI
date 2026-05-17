@@ -1,0 +1,40 @@
+.sidebar {
+    background: #ffffff !important;
+    border-right: 1px solid rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+}
+
+.sidebar-link {
+    color: #495057;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 10px;
+    margin-bottom: 2px;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.sidebar-link:hover {
+    background: #f8f9fa;
+    color: #0d6efd;
+}
+
+.sidebar-link.active {
+    background: rgba(13, 110, 253, 0.08) !important;
+    color: #0d6efd !important;
+    font-weight: 600;
+    border: 1px solid rgba(13, 110, 253, 0.1);
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.user-info-card {
+    background: #f8f9fa;
+    border: 1px solid rgba(0,0,0,0.03);
+    border-radius: 12px;
+    padding: 12px;
+}

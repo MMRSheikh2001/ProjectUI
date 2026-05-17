@@ -1,0 +1,138 @@
+<div class="d-flex">
+    <app-sidebar></app-sidebar>
+
+    <div class="main-content p-0">
+
+        <div *ngIf="loading" class="text-center py-5 mt-5">
+            <div class="spinner-border text-primary"></div>
+            <p class="mt-2 text-muted">Loading chats...</p>
+        </div>
+
+        <div *ngIf="!loading" class="chat-layout">
+
+            <!-- ── CHAT LIST PANEL ── -->
+            <div class="chat-list-panel">
+                <div class="chat-list-header">
+                    <h6 class="fw-bold mb-0">Messages</h6>
+                    <span class="badge bg-primary">{{ chats.length }}</span>
+                </div>
+
+                <div *ngIf="chats.length === 0" class="text-center p-4">
+                    <i class="bi bi-chat-dots text-muted" style="font-size:36px;display:block;margin-bottom:8px;"></i>
+                    <small class="text-muted">No chats yet.<br>Chats open after placing an order.</small>
+                </div>
+
+                <div class="chat-item-list">
+                    <div *ngFor="let chat of chats" class="chat-list-item"
+                        [class.selected]="selectedChat?.id === chat.id" (click)="selectChat(chat)">
+
+                        <div class="chat-avatar">
+                            <i class="bi bi-box text-primary"></i>
+                        </div>
+                        <div class="flex-grow-1 overflow-hidden">
+                            <div class="d-flex justify-content-between">
+                                <span class="fw-semibold small">{{ getChatLabel(chat) }}</span>
+                                <span class="badge badge-xs" [class.bg-success]="chat.isActive"
+                                    [class.bg-secondary]="!chat.isActive">
+                                    {{ chat.isActive ? 'Active' : 'Expired' }}
+                                </span>
+                            </div>
+                            <div class="text-muted small">
+                                <i class="bi bi-clock me-1"></i>
+                                {{ chat.startTime | date:'dd MMM' }}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ── CHAT WINDOW ── -->
+            <div class="chat-window">
+
+                <!-- No chat selected -->
+                <div *ngIf="!selectedChat" class="chat-placeholder">
+                    <i class="bi bi-chat-dots"></i>
+                    <p>Select a conversation to start messaging</p>
+                </div>
+
+                <!-- Chat window content -->
+                <div *ngIf="selectedChat" class="d-flex flex-column h-100">
+
+                    <!-- Chat Header -->
+                    <div class="chat-window-header">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="chat-avatar-lg">
+                                <i class="bi bi-box text-primary"></i>
+                            </div>
+                            <div>
+                                <div class="fw-bold">{{ getChatLabel(selectedChat) }}</div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <span class="badge badge-xs" [class.bg-success]="selectedChat.isActive"
+                                        [class.bg-secondary]="!selectedChat.isActive">
+                                        {{ selectedChat.isActive ? 'Active' : 'Expired' }}
+                                    </span>
+                                    <small class="text-muted">
+                                        Expires: {{ selectedChat.expiryTime | date:'dd MMM yyyy' }}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expired Banner -->
+                    <div *ngIf="!selectedChat.isActive" class="expired-banner">
+                        <i class="bi bi-lock-fill me-2"></i>
+                        This chat has expired after order completion. Messages are read-only.
+                    </div>
+
+                    <!-- Messages -->
+                    <div class="messages-area" #messageContainer>
+
+                        <div *ngIf="messages.length === 0" class="text-center py-5 text-muted">
+                            <i class="bi bi-chat" style="font-size:36px;display:block;margin-bottom:8px;"></i>
+                            <small>No messages yet. Start the conversation!</small>
+                        </div>
+
+                        <div *ngFor="let msg of messages" class="message-wrap" [class.message-mine]="isMine(msg)"
+                            [class.message-theirs]="!isMine(msg)">
+
+                            <div class="message-bubble" [class.bubble-mine]="isMine(msg)"
+                                [class.bubble-theirs]="!isMine(msg)">
+                                {{ msg.message }}
+                                <div class="message-time">
+                                    {{ getTimeLabel(msg.createdAt) }}
+                                    <i *ngIf="isMine(msg)" class="bi ms-1" [class.bi-check]="msg.status === 'sent'"
+                                        [class.bi-check-all]="msg.status === 'delivered' || msg.status === 'read'"
+                                        [class.text-primary]="msg.status === 'read'"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Input Area -->
+                    <div class="chat-input-area">
+                        <div *ngIf="!selectedChat.isActive" class="text-center text-muted small py-2">
+                            <i class="bi bi-lock me-1"></i>Chat expired — cannot send messages
+                        </div>
+
+                        <div *ngIf="selectedChat.isActive" class="d-flex align-items-end gap-2">
+                            <textarea class="form-control chat-textarea"
+                                placeholder="Type your message... (Enter to send)" [(ngModel)]="newMessage"
+                                (keydown)="onEnter($event)" rows="1"></textarea>
+                            <button class="btn btn-primary send-btn" (click)="sendMessage()"
+                                [disabled]="!newMessage.trim() || sending">
+                                <span *ngIf="sending" class="spinner-border spinner-border-sm"></span>
+                                <i *ngIf="!sending" class="bi bi-send-fill"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

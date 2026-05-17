@@ -1,0 +1,67 @@
+<div class="d-flex">
+    <app-sidebar></app-sidebar>
+
+    <div class="main-content">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h4 class="fw-bold mb-0">Notifications</h4>
+                <small class="text-muted">{{ unreadCount }} unread</small>
+            </div>
+            <button *ngIf="unreadCount > 0" class="btn btn-outline-primary btn-sm" (click)="markAllRead()">
+                <i class="bi bi-check-all me-1"></i>Mark All as Read
+            </button>
+        </div>
+
+        <!-- Tabs -->
+        <div class="notif-tabs mb-4">
+            <button *ngFor="let tab of tabs" class="notif-tab-btn" [class.active]="activeTab === tab.key"
+                (click)="filterByTab(tab.key)">
+                {{ tab.label }}
+                <span *ngIf="tab.key === 'all' && unreadCount > 0" class="badge bg-danger ms-1">{{ unreadCount }}</span>
+            </button>
+        </div>
+
+        <!-- Loading -->
+        <div *ngIf="loading" class="text-center py-5">
+            <div class="spinner-border text-primary"></div>
+        </div>
+
+        <!-- Empty state -->
+        <div *ngIf="!loading && filtered.length === 0" class="text-center py-5">
+            <i class="bi bi-bell-slash text-muted" style="font-size: 48px;"></i>
+            <p class="text-muted mt-3">No notifications in this category</p>
+        </div>
+
+        <!-- Notifications list -->
+        <div *ngIf="!loading && filtered.length > 0">
+            <div *ngFor="let notif of filtered" class="notif-card" [class.notif-unread]="!notif.isRead"
+                (click)="markAsRead(notif)" style="cursor: pointer;">
+
+                <div class="d-flex align-items-start gap-3">
+                    <div class="notif-icon-wrap" [style.background]="getBgColor(notif.type)">
+                        <i class="bi {{ getIcon(notif.type) }}"></i>
+                    </div>
+
+                    <div class="flex-grow-1">
+                        <div class="fw-semibold small mb-1">{{ notif.message }}</div>
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="text-muted" style="font-size: 11px;">
+                                {{ notif.type | titlecase }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column align-items-end gap-1">
+                        <div *ngIf="!notif.isRead" class="unread-dot"></div>
+                        <span *ngIf="notif.isRead" class="text-muted" style="font-size: 10px;">
+                            Read
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

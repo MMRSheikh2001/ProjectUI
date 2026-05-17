@@ -1,0 +1,999 @@
+<div class="d-flex">
+    <app-sidebar></app-sidebar>
+
+    <div class="main-content">
+
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h4 class="fw-bold mb-0">My CV / Profile</h4>
+                <small class="text-muted">BDJobs-style professional profile</small>
+            </div>
+            <div class="d-flex gap-2">
+                <span *ngIf="saved" class="badge bg-success py-2 px-3">
+                    <i class="bi bi-check-circle me-1"></i>Saved!
+                </span>
+                <span *ngIf="saveError" class="badge bg-danger py-2 px-3">
+                    {{ saveError }}
+                </span>
+                <button class="btn btn-outline-secondary btn-sm" (click)="onPreview()">
+                    <i class="bi bi-eye me-1"></i>Preview CV
+                </button>
+                <button class="btn btn-outline-success btn-sm" (click)="onDownload()" [disabled]="saving">
+                    <span *ngIf="saving" class="spinner-border spinner-border-sm me-1"></span>
+                    <i class="bi bi-download me-1"></i>Download CV
+                </button>
+                <button class="btn btn-primary btn-sm" (click)="onSave()" [disabled]="saving">
+                    <span *ngIf="saving" class="spinner-border spinner-border-sm me-1"></span>
+                    {{ saving ? 'Saving...' : 'Save Profile' }}
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div *ngIf="loading" class="text-center py-5">
+            <div class="spinner-border text-primary"></div>
+            <p class="mt-2 text-muted">Loading your profile...</p>
+        </div>
+
+        <div *ngIf="!loading">
+
+            <div class="row g-4">
+
+                <!-- LEFT COLUMN -->
+                <div class="col-lg-3">
+
+                    <!-- Profile card -->
+                    <div class="profile-card text-center mb-3">
+                        <img [src]="currentUser?.profileImage || 'https://i.pravatar.cc/100'"
+                            class="profile-avatar mb-3" width="90" height="90">
+                        <h6 class="fw-bold mb-1">{{ currentUser?.name }}</h6>
+                        <div class="text-muted small mb-1">{{ currentUser?.email }}</div>
+                        <div class="text-muted small mb-2">
+                            {{ form.get('resumeHeadline')?.value || 'Add your headline' }}
+                        </div>
+                        <div class="d-flex justify-content-center gap-1 flex-wrap">
+                            <span class="badge bg-primary small">{{ currentUser?.role | titlecase }}</span>
+                            <span *ngIf="level" class="badge {{ getLevelBadge() }} small">
+                                {{ level.freelancerLevel | titlecase }}
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Profile completion -->
+                    <div class="dash-card mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <small class="fw-semibold">Profile Strength</small>
+                            <small class="fw-bold">{{ profileCompletion }}%</small>
+                        </div>
+                        <div class="progress mb-2" style="height: 8px;">
+                            <div class="progress-bar {{ getCompletionColor() }}"
+                                [style.width]="profileCompletion + '%'">
+                            </div>
+                        </div>
+                        <div *ngIf="missingFields.length > 0">
+                            <small class="text-muted fw-semibold d-block mb-1">Add to improve:</small>
+                            <div *ngFor="let field of missingFields.slice(0,5)"
+                                class="d-flex align-items-center gap-1 mb-1">
+                                <i class="bi bi-exclamation-circle text-warning" style="font-size: 11px;"></i>
+                                <small class="text-muted" style="font-size: 11px;">{{ field }}</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reputation -->
+                    <div class="dash-card mb-3" *ngIf="reputation">
+                        <small class="fw-semibold d-block mb-2">Reputation</small>
+                        <div class="rep-row">
+                            <small class="text-muted">Score</small>
+                            <small class="fw-bold text-warning">
+                                <i class="bi bi-star-fill me-1"></i>{{ reputation.score }}
+                            </small>
+                        </div>
+                        <div class="rep-row">
+                            <small class="text-muted">Jobs Done</small>
+                            <small class="fw-bold">{{ reputation.completedJobs }}</small>
+                        </div>
+                        <div class="rep-row">
+                            <small class="text-muted">Orders Done</small>
+                            <small class="fw-bold">{{ reputation.completedOrders }}</small>
+                        </div>
+                    </div>
+
+                    <!-- CV Visibility -->
+                    <div class="dash-card">
+                        <small class="fw-semibold d-block mb-2">
+                            <i class="bi bi-eye me-1 text-primary"></i>CV Visibility
+                        </small>
+                        <select class="form-select form-select-sm" [formControl]="$any(form.get('cvVisibility'))">
+                            <option *ngFor="let v of visibilityOptions" [value]="v">{{ v }}</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN — Tabs + Form -->
+                <div class="col-lg-9">
+
+                    <!-- Tab Nav -->
+                    <div class="tab-scroll mb-3">
+                        <button *ngFor="let tab of tabs" class="tab-btn" [class.active]="activeTab === tab.key"
+                            (click)="activeTab = tab.key">
+                            <i class="bi {{ tab.icon }} me-1"></i>{{ tab.label }}
+                        </button>
+                    </div>
+
+                    <form [formGroup]="form">
+
+                        <!-- ── PERSONAL INFO TAB ── -->
+                        <div *ngIf="activeTab === 'personal'">
+
+                            <div class="dash-card mb-3">
+                                <h6 class="section-label">Resume Headline</h6>
+                                <input formControlName="resumeHeadline" type="text" class="form-control"
+                                    placeholder="e.g. Angular Developer | 3 Years | Spring Boot">
+                                <small class="text-muted">This appears at the top of your CV</small>
+                            </div>
+
+                            <div class="dash-card mb-3">
+                                <h6 class="section-label">Career Objective</h6>
+                                <textarea formControlName="careerObjective" class="form-control" rows="3"
+                                    placeholder="Write a brief career objective (2-3 sentences)..."></textarea>
+                            </div>
+
+                            <div class="dash-card mb-3">
+                                <h6 class="section-label">Personal Information</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Father's Name</label>
+                                        <input formControlName="fatherName" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Mother's Name</label>
+                                        <input formControlName="motherName" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Gender</label>
+                                        <select formControlName="gender" class="form-select">
+                                            <option value="">Select</option>
+                                            <option *ngFor="let g of genders" [value]="g">{{ g }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Date of Birth</label>
+                                        <input formControlName="dateOfBirth" type="date" class="form-control">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Blood Group</label>
+                                        <select formControlName="bloodGroup" class="form-select">
+                                            <option value="">Select</option>
+                                            <option *ngFor="let b of bloodGroups" [value]="b">{{ b }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Nationality</label>
+                                        <input formControlName="nationality" type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Religion</label>
+                                        <select formControlName="religion" class="form-select">
+                                            <option value="">Select</option>
+                                            <option *ngFor="let r of religions" [value]="r">{{ r }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Marital Status</label>
+                                        <select formControlName="maritalStatus" class="form-select">
+                                            <option value="">Select</option>
+                                            <option *ngFor="let m of maritalStatuses" [value]="m">{{ m }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Address -->
+                            <div class="dash-card mb-3">
+                                <h6 class="section-label">Address Information</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Division</label>
+                                        <select formControlName="division" class="form-select">
+                                            <option value="">Select Division</option>
+                                            <option *ngFor="let d of divisions" [value]="d">{{ d }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">District</label>
+                                        <select formControlName="district" class="form-select">
+                                            <option value="">Select District</option>
+                                            <option *ngFor="let d of districts" [value]="d">{{ d }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Upazila / Thana</label>
+                                        <input formControlName="upazila" type="text" class="form-control"
+                                            placeholder="Upazila / Thana">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label small fw-semibold">Post Code</label>
+                                        <input formControlName="postCode" type="text" class="form-control"
+                                            placeholder="1212">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <label class="form-label small fw-semibold">NID Number</label>
+                                        <input formControlName="nidNumber" type="text" class="form-control"
+                                            placeholder="National ID Number">
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label small fw-semibold">Present Address</label>
+                                        <textarea formControlName="presentAddress" class="form-control" rows="2"
+                                            placeholder="House, Road, Area, City"></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label small fw-semibold">Permanent Address</label>
+                                        <textarea formControlName="permanentAddress" class="form-control" rows="2"
+                                            placeholder="Village, Thana, District"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- ── CAREER TAB ── -->
+                        <div *ngIf="activeTab === 'career'">
+
+                            <div class="dash-card mb-3">
+                                <h6 class="section-label">Career Summary</h6>
+                                <textarea formControlName="careerSummary" class="form-control" rows="4"
+                                    placeholder="Write your professional summary for recruiters..."></textarea>
+                            </div>
+
+                            <div class="dash-card mb-3">
+                                <h6 class="section-label">Career & Salary</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Career Level</label>
+                                        <select formControlName="careerLevel" class="form-select">
+                                            <option value="">Select Level</option>
+                                            <option *ngFor="let l of careerLevels" [value]="l">{{ l }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Present Salary (৳/month)</label>
+                                        <input formControlName="presentSalary" type="number" class="form-control"
+                                            placeholder="0">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="form-label small fw-semibold">Expected Salary (৳/month)</label>
+                                        <input formControlName="expectedSalary" type="number" class="form-control"
+                                            placeholder="0">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">Available For</label>
+                                        <select formControlName="availableFor" class="form-select">
+                                            <option value="">Select</option>
+                                            <option *ngFor="let a of availableForOptions" [value]="a">{{ a }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">English Proficiency</label>
+                                        <select formControlName="englishProficiency" class="form-select">
+                                            <option value="">Select Level</option>
+                                            <option *ngFor="let e of englishProficiencies" [value]="e">{{ e }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Preferred Job Categories -->
+                            <div class="dash-card mb-3">
+                                <h6 class="section-label">Preferred Job Categories</h6>
+                                <div class="d-flex flex-wrap gap-2 mb-2">
+                                    <span *ngFor="let cat of getArrayValue('preferredJobCategories')" class="chip-tag">
+                                        {{ cat }}
+                                        <i class="bi bi-x ms-1" style="cursor:pointer"
+                                            (click)="removeFromArray('preferredJobCategories', cat)"></i>
+                                    </span>
+                                </div>
+                                <div class="input-group input-group-sm" style="max-width: 380px;">
+                                    <select class="form-select" [(ngModel)]="newCategory"
+                                        [ngModelOptions]="{standalone: true}">
+                                        <option value="">Add category...</option>
+                                        <option *ngFor="let c of jobCategories" [value]="c">{{ c }}</option>
+                                    </select>
+                                    <button class="btn btn-outline-primary"
+                                        (click)="addToArray('preferredJobCategories', newCategory); newCategory=''">
+                                        Add
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Preferred Locations -->
+                            <div class="dash-card mb-3">
+                                <h6 class="section-label">Preferred Job Locations</h6>
+                                <div class="d-flex flex-wrap gap-2 mb-2">
+                                    <span *ngFor="let loc of getArrayValue('preferredLocations')"
+                                        class="chip-tag chip-green">
+                                        {{ loc }}
+                                        <i class="bi bi-x ms-1" style="cursor:pointer"
+                                            (click)="removeFromArray('preferredLocations', loc)"></i>
+                                    </span>
+                                </div>
+                                <div class="input-group input-group-sm" style="max-width: 380px;">
+                                    <input type="text" class="form-control" placeholder="e.g. Dhaka, Remote..."
+                                        [(ngModel)]="newLocation" [ngModelOptions]="{standalone: true}"
+                                        (keyup.enter)="addToArray('preferredLocations', newLocation); newLocation=''">
+                                    <button class="btn btn-outline-success"
+                                        (click)="addToArray('preferredLocations', newLocation); newLocation=''">
+                                        Add
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Languages -->
+                            <div class="dash-card mb-3">
+                                <h6 class="section-label">Languages Known</h6>
+                                <div class="d-flex flex-wrap gap-2 mb-2">
+                                    <span *ngFor="let lang of getArrayValue('languagesKnown')"
+                                        class="chip-tag chip-purple">
+                                        {{ lang }}
+                                        <i class="bi bi-x ms-1" style="cursor:pointer"
+                                            (click)="removeFromArray('languagesKnown', lang)"></i>
+                                    </span>
+                                </div>
+                                <div class="input-group input-group-sm" style="max-width: 380px;">
+                                    <input type="text" class="form-control" placeholder="e.g. Bangla, English..."
+                                        [(ngModel)]="newLanguage" [ngModelOptions]="{standalone: true}"
+                                        (keyup.enter)="addToArray('languagesKnown', newLanguage); newLanguage=''">
+                                    <button class="btn btn-outline-secondary"
+                                        (click)="addToArray('languagesKnown', newLanguage); newLanguage=''">
+                                        Add
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- ── EDUCATION TAB ── -->
+                        <div *ngIf="activeTab === 'education'">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="fw-bold mb-0">Education History</h6>
+                                <button type="button" class="btn btn-primary btn-sm" (click)="addEducation()">
+                                    <i class="bi bi-plus me-1"></i>Add Education
+                                </button>
+                            </div>
+
+                            <div *ngIf="educationsArray.length === 0" class="empty-state">
+                                <i class="bi bi-mortarboard"></i>
+                                <p>No education added yet. Click "Add Education" to start.</p>
+                            </div>
+
+                            <div formArrayName="educations">
+                                <div *ngFor="let edu of educationsArray.controls; let i = index" [formGroupName]="i"
+                                    class="array-card mb-3">
+
+                                    <div class="array-card-header">
+                                        <span class="fw-semibold">
+                                            {{ asFormGroup(edu).get('degree')?.value || 'Education ' + (i+1) }}
+                                        </span>
+                                        <button type="button" class="btn btn-outline-danger btn-sm"
+                                            (click)="removeEducation(i)">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="row g-3 p-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">Degree / Level *</label>
+                                            <input formControlName="degree" type="text" class="form-control"
+                                                placeholder="e.g. BSc in Computer Science">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">Group / Major</label>
+                                            <input formControlName="groupMajor" type="text" class="form-control"
+                                                placeholder="e.g. Computer Science, Science">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label class="form-label small fw-semibold">Institute Name *</label>
+                                            <input formControlName="institute" type="text" class="form-control"
+                                                placeholder="University / College / School name">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label small fw-semibold">Board / University</label>
+                                            <input formControlName="board" type="text" class="form-control"
+                                                placeholder="e.g. Dhaka Board">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label small fw-semibold">Result / GPA</label>
+                                            <input formControlName="result" type="text" class="form-control"
+                                                placeholder="e.g. GPA 5.00 / CGPA 3.75">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label small fw-semibold">Passing Year</label>
+                                            <input formControlName="passingYear" type="number" class="form-control"
+                                                placeholder="2022">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label small fw-semibold">Duration</label>
+                                            <input formControlName="duration" type="text" class="form-control"
+                                                placeholder="e.g. 4 years">
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label small fw-semibold">Achievements</label>
+                                            <input formControlName="achievements" type="text" class="form-control"
+                                                placeholder="e.g. Dean's List, Scholarship">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ── EXPERIENCE TAB ── -->
+                        <div *ngIf="activeTab === 'experience'">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="fw-bold mb-0">Work Experience</h6>
+                                <button type="button" class="btn btn-primary btn-sm" (click)="addExperience()">
+                                    <i class="bi bi-plus me-1"></i>Add Experience
+                                </button>
+                            </div>
+
+                            <div *ngIf="experiencesArray.length === 0" class="empty-state">
+                                <i class="bi bi-building"></i>
+                                <p>No experience added yet. Click "Add Experience" to start.</p>
+                            </div>
+
+                            <div formArrayName="experiences">
+                                <div *ngFor="let exp of experiencesArray.controls; let i = index" [formGroupName]="i"
+                                    class="array-card mb-3">
+
+                                    <div class="array-card-header">
+                                        <span class="fw-semibold">
+                                            {{ asFormGroup(exp).get('designation')?.value || 'Experience ' + (i+1) }}
+                                            <span class="text-muted fw-normal"
+                                                *ngIf="asFormGroup(exp).get('companyName')?.value">
+                                                at {{ asFormGroup(exp).get('companyName')?.value }}
+                                            </span>
+                                        </span>
+                                        <button type="button" class="btn btn-outline-danger btn-sm"
+                                            (click)="removeExperience(i)">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="row g-3 p-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">Company Name *</label>
+                                            <input formControlName="companyName" type="text" class="form-control"
+                                                placeholder="Company name">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">Designation *</label>
+                                            <input formControlName="designation" type="text" class="form-control"
+                                                placeholder="e.g. Frontend Developer">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">Department</label>
+                                            <input formControlName="department" type="text" class="form-control"
+                                                placeholder="e.g. Engineering, Marketing">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">Employment Period</label>
+                                            <input formControlName="employmentPeriod" type="text" class="form-control"
+                                                placeholder="e.g. Jan 2023 - Present">
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                    formControlName="currentlyWorking" [id]="'working-' + i">
+                                                <label class="form-check-label small" [for]="'working-' + i">
+                                                    I currently work here
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label small fw-semibold">Responsibilities</label>
+                                            <textarea formControlName="responsibilities" class="form-control" rows="3"
+                                                placeholder="Describe your key responsibilities..."></textarea>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label small fw-semibold">Achievements</label>
+                                            <textarea formControlName="achievements" class="form-control" rows="2"
+                                                placeholder="Key achievements in this role..."></textarea>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ── SKILLS TAB ── -->
+                        <div *ngIf="activeTab === 'skills'">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="fw-bold mb-0">Skills</h6>
+                                <button type="button" class="btn btn-primary btn-sm" (click)="addSkill()">
+                                    <i class="bi bi-plus me-1"></i>Add Skill
+                                </button>
+                            </div>
+
+                            <div *ngIf="skillEntriesArray.length === 0" class="empty-state">
+                                <i class="bi bi-tools"></i>
+                                <p>No skills added yet. Click "Add Skill" to start.</p>
+                            </div>
+
+                            <div formArrayName="skillEntries">
+                                <div class="row g-3">
+                                    <div class="col-md-6"
+                                        *ngFor="let skill of skillEntriesArray.controls; let i = index"
+                                        [formGroupName]="i">
+
+                                        <div class="skill-card">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <input formControlName="skillName" type="text"
+                                                    class="form-control form-control-sm fw-semibold border-0 p-0 bg-transparent"
+                                                    placeholder="Skill name" style="font-size: 14px;">
+                                                <button type="button" class="btn btn-link text-danger btn-sm p-0"
+                                                    (click)="removeSkill(i)">
+                                                    <i class="bi bi-x-circle"></i>
+                                                </button>
+                                            </div>
+                                            <div class="row g-2">
+                                                <div class="col-8">
+                                                    <select formControlName="skillLevel"
+                                                        class="form-select form-select-sm">
+                                                        <option *ngFor="let l of skillLevels" [value]="l">{{ l }}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-4">
+                                                    <input formControlName="yearsOfExperience" type="number"
+                                                        class="form-control form-control-sm" placeholder="Yrs" min="0"
+                                                        max="30">
+                                                </div>
+                                            </div>
+                                            <div class="mt-2">
+                                                <span
+                                                    class="badge {{ getSkillLevelColor(asFormGroup(skill).get('skillLevel')?.value) }} small">
+                                                    {{ asFormGroup(skill).get('skillLevel')?.value }}
+                                                </span>
+                                                <small class="text-muted ms-2">
+                                                    {{ asFormGroup(skill).get('yearsOfExperience')?.value }} yr(s)
+                                                </small>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ── CERTIFICATIONS TAB ── -->
+                        <div *ngIf="activeTab === 'certifications'">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="fw-bold mb-0">Certifications & Training</h6>
+                                <div class="d-flex gap-2">
+                                    <button type="button" class="btn btn-outline-primary btn-sm"
+                                        (click)="addCertification()">
+                                        <i class="bi bi-plus me-1"></i>Certification
+                                    </button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm"
+                                        (click)="addTraining()">
+                                        <i class="bi bi-plus me-1"></i>Training
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Certifications -->
+                            <h6 class="text-muted small fw-semibold mb-2">CERTIFICATIONS</h6>
+                            <div *ngIf="certificationListArray.length === 0" class="empty-state mb-3">
+                                <i class="bi bi-patch-check"></i>
+                                <p>No certifications added</p>
+                            </div>
+
+                            <div formArrayName="certificationList">
+                                <div *ngFor="let cert of certificationListArray.controls; let i = index"
+                                    [formGroupName]="i" class="array-card mb-3">
+
+                                    <div class="array-card-header">
+                                        <span class="fw-semibold">
+                                            {{ asFormGroup(cert).get('courseName')?.value || 'Certification ' + (i+1) }}
+                                        </span>
+                                        <button type="button" class="btn btn-outline-danger btn-sm"
+                                            (click)="removeCertification(i)">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="row g-3 p-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">Course Name *</label>
+                                            <input formControlName="courseName" type="text" class="form-control"
+                                                placeholder="e.g. Angular Developer Certification">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">Issuing Institute</label>
+                                            <input formControlName="institute" type="text" class="form-control"
+                                                placeholder="e.g. Google, Coursera">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="form-label small fw-semibold">Completion Year</label>
+                                            <input formControlName="completionYear" type="number" class="form-control">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label class="form-label small fw-semibold">Credential ID</label>
+                                            <input formControlName="credentialId" type="text" class="form-control"
+                                                placeholder="e.g. GD-ANG-2023-12345">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Trainings -->
+                            <h6 class="text-muted small fw-semibold mb-2 mt-4">TRAININGS</h6>
+                            <div *ngIf="trainingsArray.length === 0" class="empty-state mb-3">
+                                <i class="bi bi-award"></i>
+                                <p>No trainings added</p>
+                            </div>
+
+                            <div formArrayName="trainings">
+                                <div *ngFor="let training of trainingsArray.controls; let i = index" [formGroupName]="i"
+                                    class="array-card mb-3">
+
+                                    <div class="array-card-header">
+                                        <span class="fw-semibold">
+                                            {{ asFormGroup(training).get('title')?.value || 'Training ' + (i+1) }}
+                                        </span>
+                                        <button type="button" class="btn btn-outline-danger btn-sm"
+                                            (click)="removeTraining(i)">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="row g-3 p-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">Training Title *</label>
+                                            <input formControlName="title" type="text" class="form-control"
+                                                placeholder="e.g. Full Stack Web Development">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">Institute</label>
+                                            <input formControlName="institute" type="text" class="form-control"
+                                                placeholder="e.g. Creative IT Institute">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">Duration</label>
+                                            <input formControlName="duration" type="text" class="form-control"
+                                                placeholder="e.g. 6 months">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">Year</label>
+                                            <input formControlName="year" type="number" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- ── PROJECTS TAB ── -->
+                        <div *ngIf="activeTab === 'projects'">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h6 class="fw-bold mb-0">Projects</h6>
+                                <button type="button" class="btn btn-primary btn-sm" (click)="addProject()">
+                                    <i class="bi bi-plus me-1"></i>Add Project
+                                </button>
+                            </div>
+
+                            <div *ngIf="projectsArray.length === 0" class="empty-state">
+                                <i class="bi bi-code-slash"></i>
+                                <p>No projects added yet. Click "Add Project" to start.</p>
+                            </div>
+
+                            <div formArrayName="projects">
+                                <div *ngFor="let proj of projectsArray.controls; let i = index" [formGroupName]="i"
+                                    class="array-card mb-3">
+
+                                    <div class="array-card-header">
+                                        <span class="fw-semibold">
+                                            {{ asFormGroup(proj).get('projectName')?.value || 'Project ' + (i+1) }}
+                                        </span>
+                                        <button type="button" class="btn btn-outline-danger btn-sm"
+                                            (click)="removeProject(i)">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+
+                                    <div class="row g-3 p-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">Project Name *</label>
+                                            <input formControlName="projectName" type="text" class="form-control"
+                                                placeholder="Project name">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">Technologies Used</label>
+                                            <input formControlName="technologies" type="text" class="form-control"
+                                                placeholder="e.g. Angular, Spring Boot, MySQL">
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label small fw-semibold">Description</label>
+                                            <textarea formControlName="description" class="form-control" rows="3"
+                                                placeholder="Describe what the project does..."></textarea>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">
+                                                <i class="bi bi-github me-1"></i>GitHub Link
+                                            </label>
+                                            <input formControlName="githubLink" type="url" class="form-control"
+                                                placeholder="https://github.com/...">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label small fw-semibold">
+                                                <i class="bi bi-link me-1"></i>Live Link
+                                            </label>
+                                            <input formControlName="liveLink" type="url" class="form-control"
+                                                placeholder="https://...">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ── SOCIAL & CV TAB ── -->
+                        <div *ngIf="activeTab === 'social'">
+
+                            <div class="dash-card mb-3">
+                                <h6 class="section-label">Social & Portfolio Links</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">
+                                            <i class="bi bi-linkedin text-primary me-1"></i>LinkedIn
+                                        </label>
+                                        <input formControlName="linkedinUrl" type="url" class="form-control"
+                                            placeholder="https://linkedin.com/in/username">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">
+                                            <i class="bi bi-github me-1"></i>GitHub
+                                        </label>
+                                        <input formControlName="githubLink" type="url" class="form-control"
+                                            placeholder="https://github.com/username">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">
+                                            <i class="bi bi-globe me-1"></i>Portfolio Website
+                                        </label>
+                                        <input formControlName="portfolioLink" type="url" class="form-control"
+                                            placeholder="https://yourportfolio.com">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">
+                                            <i class="bi bi-palette me-1"></i>Behance
+                                        </label>
+                                        <input formControlName="behanceUrl" type="url" class="form-control"
+                                            placeholder="https://behance.net/username">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">
+                                            <i class="bi bi-dribbble me-1 text-danger"></i>Dribbble
+                                        </label>
+                                        <input formControlName="dribbbleUrl" type="url" class="form-control"
+                                            placeholder="https://dribbble.com/username">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dash-card">
+                                <h6 class="section-label">CV Settings</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label small fw-semibold">CV Visibility</label>
+                                        <select formControlName="cvVisibility" class="form-select">
+                                            <option *ngFor="let v of visibilityOptions" [value]="v">{{ v }}</option>
+                                        </select>
+                                        <small class="text-muted">Controls who can see your CV</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                    <!-- Bottom save bar -->
+                    <div class="save-bar mt-4">
+                        <span class="text-muted small">Last saved: just now</span>
+                        <div class="d-flex gap-2">
+                            <span *ngIf="saved" class="text-success small align-self-center">
+                                <i class="bi bi-check-circle me-1"></i>Saved!
+                            </span>
+                            <button class="btn btn-primary" (click)="onSave()" [disabled]="saving">
+                                <span *ngIf="saving" class="spinner-border spinner-border-sm me-1"></span>
+                                {{ saving ? 'Saving...' : 'Save All Changes' }}
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── PREVIEW MODAL ── -->
+<div class="modal-backdrop fade show" *ngIf="showPreview"></div>
+<div class="modal fade show d-block" *ngIf="showPreview" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 16px;">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title fw-bold text-primary">CV Preview</h5>
+                <button type="button" class="btn-close" (click)="showPreview = false"></button>
+            </div>
+            <div class="modal-body p-0 bg-light">
+                <div class="preview-container p-4 d-flex justify-content-center">
+                    <!-- Real Preview of the CV -->
+                    <div class="cv-live-preview shadow-sm bg-white" style="transform: scale(0.65); transform-origin: top center; width: 210mm; height: 297mm; overflow: hidden; pointer-events: none;">
+                        
+                        <!-- Header -->
+                        <div class="d-flex justify-content-between align-items-start mb-4 pb-3 border-bottom border-primary border-2 p-5">
+                            <div>
+                                <h1 class="fw-bold text-primary mb-1" style="font-size: 28px;">{{ currentUser?.name | uppercase }}</h1>
+                                <p class="text-secondary fw-semibold mb-2" style="font-size: 16px;">{{ form.get('resumeHeadline')?.value }}</p>
+                                <div class="d-flex flex-wrap gap-3 small text-muted">
+                                    <span><i class="bi bi-envelope-fill text-primary me-1"></i>{{ currentUser?.email }}</span>
+                                    <span><i class="bi bi-telephone-fill text-primary me-1"></i>{{ currentUser?.phone }}</span>
+                                </div>
+                            </div>
+                            <div *ngIf="currentUser?.profileImage">
+                                <img [src]="currentUser.profileImage" class="rounded border" width="80" height="80" style="object-fit: cover;">
+                            </div>
+                        </div>
+
+                        <!-- Content snippet -->
+                        <div class="px-5">
+                            <div class="mb-4">
+                                <h6 class="text-primary fw-bold border-bottom pb-1 mb-2" style="letter-spacing: 1px; font-size: 12px;">CAREER OBJECTIVE</h6>
+                                <p class="extra-small text-muted" style="line-height: 1.4;">{{ form.get('careerObjective')?.value || 'Building impactful digital solutions...' }}</p>
+                            </div>
+
+                            <div class="mb-4" *ngIf="skillEntriesArray.length > 0">
+                                <h6 class="text-primary fw-bold border-bottom pb-1 mb-2" style="letter-spacing: 1px; font-size: 12px;">SKILLS</h6>
+                                <div class="d-flex flex-wrap gap-1">
+                                    <span *ngFor="let s of skillEntriesArray.value" class="extra-small badge bg-light text-dark border px-2 py-1 fw-normal">
+                                        {{ s.skillName }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="mb-4" *ngIf="experiencesArray.length > 0">
+                                <h6 class="text-primary fw-bold border-bottom pb-1 mb-2" style="letter-spacing: 1px; font-size: 12px;">EXPERIENCE</h6>
+                                <div *ngFor="let exp of experiencesArray.value.slice(0,1)" class="mb-2">
+                                    <div class="fw-bold text-dark extra-small">{{ exp.designation }} at {{ exp.companyName }}</div>
+                                    <p class="extra-small text-muted mb-0">{{ exp.employmentPeriod }}</p>
+                                </div>
+                            </div>
+                            
+                            <p class="text-center text-primary fw-bold mt-4" style="font-size: 14px; opacity: 0.5;">... Full Details in PDF ...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-light px-4" (click)="showPreview = false">Close</button>
+                <button type="button" class="btn btn-success px-4" (click)="onDownload(); showPreview = false">
+                    <i class="bi bi-download me-1"></i>Download PDF
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── HIDDEN CV TEMPLATE FOR PDF GENERATION ── -->
+<div style="position: fixed; left: -210mm; top: 0; z-index: -1000; overflow: visible;">
+    <div id="cv-pdf-template" class="bg-white shadow-sm p-5" style="width: 210mm; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333;">
+        
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-start mb-4 pb-3 border-bottom border-primary border-2">
+            <div>
+                <h1 class="fw-bold text-primary mb-1" style="font-size: 28px;">{{ currentUser?.name | uppercase }}</h1>
+                <p class="text-secondary fw-semibold mb-2" style="font-size: 16px;">{{ form.get('resumeHeadline')?.value }}</p>
+                <div class="d-flex flex-wrap gap-3 small text-muted">
+                    <span><i class="bi bi-envelope-fill text-primary me-1"></i>{{ currentUser?.email }}</span>
+                    <span><i class="bi bi-telephone-fill text-primary me-1"></i>{{ currentUser?.phone }}</span>
+                    <span *ngIf="form.get('presentAddress')?.value"><i class="bi bi-geo-alt-fill text-primary me-1"></i>{{ form.get('presentAddress')?.value }}</span>
+                </div>
+                <div class="d-flex gap-3 mt-1 small">
+                    <a *ngIf="form.get('linkedinUrl')?.value" [href]="form.get('linkedinUrl')?.value" class="text-decoration-none text-primary">LinkedIn</a>
+                    <a *ngIf="form.get('githubLink')?.value" [href]="form.get('githubLink')?.value" class="text-decoration-none text-primary">GitHub</a>
+                    <a *ngIf="form.get('portfolioLink')?.value" [href]="form.get('portfolioLink')?.value" class="text-decoration-none text-primary">Portfolio</a>
+                </div>
+            </div>
+            <div *ngIf="currentUser?.profileImage">
+                <img [src]="currentUser.profileImage" class="rounded border" width="100" height="100" style="object-fit: cover;">
+            </div>
+        </div>
+
+        <!-- Objective -->
+        <div class="mb-4" *ngIf="form.get('careerObjective')?.value">
+            <h6 class="text-primary fw-bold border-bottom pb-1 mb-2" style="letter-spacing: 1px;">CAREER OBJECTIVE</h6>
+            <p class="small text-justify" style="line-height: 1.6;">{{ form.get('careerObjective')?.value }}</p>
+        </div>
+
+        <!-- Skills -->
+        <div class="mb-4" *ngIf="skillEntriesArray.length > 0">
+            <h6 class="text-primary fw-bold border-bottom pb-1 mb-2" style="letter-spacing: 1px;">SPECIAL SKILLS</h6>
+            <div class="d-flex flex-wrap gap-2">
+                <span *ngFor="let s of skillEntriesArray.value" class="badge bg-light text-dark border px-3 py-2 fw-normal" style="font-size: 12px;">
+                    {{ s.skillName }} ({{ s.skillLevel }})
+                </span>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="mb-4" *ngIf="experiencesArray.length > 0">
+            <h6 class="text-primary fw-bold border-bottom pb-1 mb-2" style="letter-spacing: 1px;">WORK EXPERIENCE</h6>
+            <div *ngFor="let exp of experiencesArray.value" class="mb-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span class="fw-bold text-dark">{{ exp.designation }}</span>
+                    <span class="small text-muted fw-semibold">{{ exp.employmentPeriod }}</span>
+                </div>
+                <div class="text-primary small fw-semibold mb-1">{{ exp.companyName }}</div>
+                <p class="small text-muted mb-0" style="white-space: pre-line;">{{ exp.responsibilities }}</p>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="mb-4" *ngIf="educationsArray.length > 0">
+            <h6 class="text-primary fw-bold border-bottom pb-1 mb-2" style="letter-spacing: 1px;">EDUCATION</h6>
+            <div *ngFor="let edu of educationsArray.value" class="mb-2">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span class="fw-bold text-dark">{{ edu.degree }}</span>
+                    <span class="small text-muted fw-semibold">{{ edu.passingYear }}</span>
+                </div>
+                <div class="text-secondary small">{{ edu.institute }}</div>
+                <div class="small text-muted" *ngIf="edu.result">Result: {{ edu.result }}</div>
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="mb-4" *ngIf="projectsArray.length > 0">
+            <h6 class="text-primary fw-bold border-bottom pb-1 mb-2" style="letter-spacing: 1px;">PROJECTS</h6>
+            <div *ngFor="let proj of projectsArray.value" class="mb-3">
+                <div class="fw-bold text-dark small mb-1">{{ proj.projectName }}</div>
+                <div class="text-muted extra-small mb-1">Tech: {{ proj.technologies }}</div>
+                <p class="small text-muted mb-1">{{ proj.description }}</p>
+                <a *ngIf="proj.liveLink" [href]="proj.liveLink" class="extra-small text-decoration-none text-primary">Live Demo</a>
+            </div>
+        </div>
+
+        <!-- Personal Details -->
+        <div class="mb-4">
+            <h6 class="text-primary fw-bold border-bottom pb-1 mb-2" style="letter-spacing: 1px;">PERSONAL DETAILS</h6>
+            <div class="row g-2 small">
+                <div class="col-4 text-muted fw-semibold">Father's Name:</div>
+                <div class="col-8">{{ form.get('fatherName')?.value || 'N/A' }}</div>
+                <div class="col-4 text-muted fw-semibold">Mother's Name:</div>
+                <div class="col-8">{{ form.get('motherName')?.value || 'N/A' }}</div>
+                <div class="col-4 text-muted fw-semibold">Date of Birth:</div>
+                <div class="col-8">{{ form.get('dateOfBirth')?.value || 'N/A' }}</div>
+                <div class="col-4 text-muted fw-semibold">Gender:</div>
+                <div class="col-8">{{ form.get('gender')?.value || 'N/A' }}</div>
+                <div class="col-4 text-muted fw-semibold">Nationality:</div>
+                <div class="col-8">{{ form.get('nationality')?.value || 'N/A' }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .extra-small { font-size: 11px; }
+    #cv-pdf-template {
+        box-sizing: border-box;
+    }
+    .preview-container {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+    .cv-live-preview {
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+    }
+</style>
